@@ -21,13 +21,15 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.turism.tests;
+package co.edu.uniandes.csw.turism.tests.rest;
 
 import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
-import co.edu.uniandes.csw.turism.entities.AgencyEntity;
-import co.edu.uniandes.csw.turism.dtos.minimum.AgencyDTO;
-import co.edu.uniandes.csw.turism.resources.AgencyResource;
+import co.edu.uniandes.csw.turism.entities.ItemEntity;
+import co.edu.uniandes.csw.turism.entities.ClientEntity;
+import co.edu.uniandes.csw.turism.dtos.minimum.ItemDTO;
+import co.edu.uniandes.csw.turism.resources.ItemResource;
+import co.edu.uniandes.csw.turism.tests.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -61,10 +63,10 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /*
- * Testing URI: agencys/
+ * Testing URI: clients/{wishListId: \\d+}/wishList/
  */
 @RunWith(Arquillian.class)
-public class AgencyTest {
+public class ItemTest {
 
     private WebTarget target;
     private final String apiPath = Utils.apiPath;
@@ -76,10 +78,12 @@ public class AgencyTest {
     private final int Created = Status.CREATED.getStatusCode();
     private final int OkWithoutContent = Status.NO_CONTENT.getStatusCode();
 
-    private final static List<AgencyEntity> oraculo = new ArrayList<>();
+    private final static List<ItemEntity> oraculo = new ArrayList<>();
 
-    private final String agencyPath = "agencys";
+    private final String clientPath = "clients";
+    private final String itemPath = "wishList";
 
+    ClientEntity fatherClientEntity;
 
     @ArquillianResource
     private URL deploymentURL;
@@ -92,7 +96,7 @@ public class AgencyTest {
                         .importRuntimeDependencies().resolve()
                         .withTransitivity().asFile())
                 // Se agregan los compilados de los paquetes de servicios
-                .addPackage(AgencyResource.class.getPackage())
+                .addPackage(ItemResource.class.getPackage())
                 // El archivo que contiene la configuracion a la base de datos.
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 // El archivo beans.xml es necesario para injeccion de dependencias.
@@ -114,7 +118,8 @@ public class AgencyTest {
     private UserTransaction utx;
 
     private void clearData() {
-        em.createQuery("delete from AgencyEntity").executeUpdate();
+        em.createQuery("delete from ItemEntity").executeUpdate();
+        em.createQuery("delete from ClientEntity").executeUpdate();
         oraculo.clear();
     }
 
@@ -124,11 +129,16 @@ public class AgencyTest {
      * @generated
      */
     public void insertData() {
+        fatherClientEntity = factory.manufacturePojo(ClientEntity.class);
+        fatherClientEntity.setId(1L);
+        em.persist(fatherClientEntity);
+
         for (int i = 0; i < 3; i++) {            
-            AgencyEntity agency = factory.manufacturePojo(AgencyEntity.class);
-            agency.setId(i + 1L);
-            em.persist(agency);
-            oraculo.add(agency);
+            ItemEntity item = factory.manufacturePojo(ItemEntity.class);
+            item.setId(i + 1L);
+            item.setClient(fatherClientEntity);
+            em.persist(item);
+            oraculo.add(item);
         }
     }
 
@@ -153,7 +163,9 @@ public class AgencyTest {
             }
         }
         target = createWebTarget()
-                .path(agencyPath);
+                .path(clientPath)
+                .path(fatherClientEntity.getId().toString())
+                .path(itemPath);
     }
 
     /**
@@ -179,100 +191,104 @@ public class AgencyTest {
     }
 
     /**
-     * Prueba para crear un Agency
+     * Prueba para crear un Item
      *
      * @generated
      */
     @Test
-    public void createAgencyTest() throws IOException {
-        AgencyDTO agency = factory.manufacturePojo(AgencyDTO.class);
+    public void createItemTest() throws IOException {
+        ItemDTO item = factory.manufacturePojo(ItemDTO.class);
         Cookie cookieSessionId = login(username, password);
 
         Response response = target
             .request().cookie(cookieSessionId)
-            .post(Entity.entity(agency, MediaType.APPLICATION_JSON));
+            .post(Entity.entity(item, MediaType.APPLICATION_JSON));
 
-        AgencyDTO  agencyTest = (AgencyDTO) response.readEntity(AgencyDTO.class);
+        ItemDTO  itemTest = (ItemDTO) response.readEntity(ItemDTO.class);
 
         Assert.assertEquals(Created, response.getStatus());
 
-        Assert.assertEquals(agency.getName(), agencyTest.getName());
+        Assert.assertEquals(item.getName(), itemTest.getName());
+        Assert.assertEquals(item.getQty(), itemTest.getQty());
 
-        AgencyEntity entity = em.find(AgencyEntity.class, agencyTest.getId());
+        ItemEntity entity = em.find(ItemEntity.class, itemTest.getId());
         Assert.assertNotNull(entity);
     }
 
     /**
-     * Prueba para consultar un Agency
+     * Prueba para consultar un Item
      *
      * @generated
      */
     @Test
-    public void getAgencyByIdTest() {
+    public void getItemByIdTest() {
         Cookie cookieSessionId = login(username, password);
 
-        AgencyDTO agencyTest = target
+        ItemDTO itemTest = target
             .path(oraculo.get(0).getId().toString())
-            .request().cookie(cookieSessionId).get(AgencyDTO.class);
+            .request().cookie(cookieSessionId).get(ItemDTO.class);
         
-        Assert.assertEquals(agencyTest.getId(), oraculo.get(0).getId());
-        Assert.assertEquals(agencyTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(itemTest.getId(), oraculo.get(0).getId());
+        Assert.assertEquals(itemTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(itemTest.getQty(), oraculo.get(0).getQty());
     }
 
     /**
-     * Prueba para consultar la lista de Agencys
+     * Prueba para consultar la lista de Items
      *
      * @generated
      */
     @Test
-    public void listAgencyTest() throws IOException {
+    public void listItemTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
 
         Response response = target
             .request().cookie(cookieSessionId).get();
 
-        String listAgency = response.readEntity(String.class);
-        List<AgencyDTO> listAgencyTest = new ObjectMapper().readValue(listAgency, List.class);
+        String listItem = response.readEntity(String.class);
+        List<ItemDTO> listItemTest = new ObjectMapper().readValue(listItem, List.class);
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(3, listAgencyTest.size());
+        Assert.assertEquals(3, listItemTest.size());
     }
 
     /**
-     * Prueba para actualizar un Agency
+     * Prueba para actualizar un Item
      *
      * @generated
      */
     @Test
-    public void updateAgencyTest() throws IOException {
+    public void updateItemTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        AgencyDTO agency = new AgencyDTO(oraculo.get(0));
+        ItemDTO item = new ItemDTO(oraculo.get(0));
 
-        AgencyDTO agencyChanged = factory.manufacturePojo(AgencyDTO.class);
+        ItemDTO itemChanged = factory.manufacturePojo(ItemDTO.class);
 
-        agency.setName(agencyChanged.getName());
+        item.setName(itemChanged.getName());
+        item.setQty(itemChanged.getQty());
 
         Response response = target
-            .path(agency.getId().toString())
+            .path(item.getId().toString())
             .request().cookie(cookieSessionId)
-            .put(Entity.entity(agency, MediaType.APPLICATION_JSON));
+            .put(Entity.entity(item, MediaType.APPLICATION_JSON));
 
-        AgencyDTO agencyTest = (AgencyDTO) response.readEntity(AgencyDTO.class);
+        ItemDTO itemTest = (ItemDTO) response.readEntity(ItemDTO.class);
 
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(agency.getName(), agencyTest.getName());
+        Assert.assertEquals(item.getName(), itemTest.getName());
+        Assert.assertEquals(item.getQty(), itemTest.getQty());
     }
 
     /**
-     * Prueba para eliminar un Agency
+     * Prueba para eliminar un Item
      *
      * @generated
      */
     @Test
-    public void deleteAgencyTest() {
+    public void deleteItemTest() {
         Cookie cookieSessionId = login(username, password);
-        AgencyDTO agency = new AgencyDTO(oraculo.get(0));
+        ItemDTO item = new ItemDTO(oraculo.get(0));
         Response response = target
-            .path(agency.getId().toString())
+            .path(item.getId().toString())
             .request().cookie(cookieSessionId).delete();
 
         Assert.assertEquals(OkWithoutContent, response.getStatus());

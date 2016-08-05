@@ -21,13 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.turism.tests;
+package co.edu.uniandes.csw.turism.tests.rest;
 
 import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.turism.entities.ClientEntity;
 import co.edu.uniandes.csw.turism.dtos.minimum.ClientDTO;
 import co.edu.uniandes.csw.turism.resources.ClientResource;
+import co.edu.uniandes.csw.turism.tests.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;

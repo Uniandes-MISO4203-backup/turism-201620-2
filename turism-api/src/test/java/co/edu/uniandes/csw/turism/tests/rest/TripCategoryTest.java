@@ -21,14 +21,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.turism.tests;
+package co.edu.uniandes.csw.turism.tests.rest;
 
 import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
+import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import co.edu.uniandes.csw.turism.dtos.minimum.TripDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.CategoryDTO;
 import co.edu.uniandes.csw.turism.resources.TripResource;
+import co.edu.uniandes.csw.turism.tests.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -48,14 +51,12 @@ import javax.ws.rs.core.Response.Status;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.arquillian.junit.InSequence;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
@@ -65,24 +66,25 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  * Testing URI: agencys/{tripsId: \\d+}/trips/
  */
 @RunWith(Arquillian.class)
-public class TripTest {
+public class TripCategoryTest {
 
     private WebTarget target;
+    private PodamFactory factory = new PodamFactoryImpl();
     private final String apiPath = Utils.apiPath;
     private final String username = Utils.username;
     private final String password = Utils.password;
-    PodamFactory factory = new PodamFactoryImpl();
 
     private final int Ok = Status.OK.getStatusCode();
-    private final int Created = Status.CREATED.getStatusCode();
     private final int OkWithoutContent = Status.NO_CONTENT.getStatusCode();
 
-    private final static List<TripEntity> oraculo = new ArrayList<>();
+    private final static List<CategoryEntity> oraculo = new ArrayList<>();
 
     private final String agencyPath = "agencys";
     private final String tripPath = "trips";
+    private final String categoryPath = "category";
 
-    AgencyEntity fatherAgencyEntity;
+    private AgencyEntity fatherAgencyEntity;
+    private TripEntity fatherTripEntity;
 
     @ArquillianResource
     private URL deploymentURL;
@@ -117,7 +119,11 @@ public class TripTest {
     private UserTransaction utx;
 
     private void clearData() {
-        em.createQuery("delete from TripEntity").executeUpdate();
+        List<TripEntity> records = em.createQuery("SELECT u FROM TripEntity u").getResultList();
+        for (TripEntity record : records) {
+            em.remove(record);
+        }
+        em.createQuery("delete from CategoryEntity").executeUpdate();
         em.createQuery("delete from AgencyEntity").executeUpdate();
         oraculo.clear();
     }
@@ -127,18 +133,21 @@ public class TripTest {
      *
      * @generated
      */
-    public void insertData() {
-        fatherAgencyEntity = factory.manufacturePojo(AgencyEntity.class);
-        fatherAgencyEntity.setId(1L);
-        em.persist(fatherAgencyEntity);
+    private void insertData() {
+            fatherAgencyEntity = factory.manufacturePojo(AgencyEntity.class);
+            em.persist(fatherAgencyEntity);
+            fatherTripEntity = factory.manufacturePojo(TripEntity.class);
+            fatherTripEntity.setAgency(fatherAgencyEntity);
+            em.persist(fatherTripEntity);
 
-        for (int i = 0; i < 3; i++) {            
-            TripEntity trip = factory.manufacturePojo(TripEntity.class);
-            trip.setId(i + 1L);
-            trip.setAgency(fatherAgencyEntity);
-            em.persist(trip);
-            oraculo.add(trip);
-        }
+            for (int i = 0; i < 3; i++) {
+                CategoryEntity category = factory.manufacturePojo(CategoryEntity.class);
+                em.persist(category);
+                if(i<2){                
+                    fatherTripEntity.getCategory().add(category);
+                }
+                oraculo.add(category);
+            }
     }
 
     /**
@@ -152,7 +161,7 @@ public class TripTest {
             utx.begin();
             clearData();
             insertData();
-            utx.commit();
+            utx.commit();            
         } catch (Exception e) {
             e.printStackTrace();
             try {
@@ -164,7 +173,9 @@ public class TripTest {
         target = createWebTarget()
                 .path(agencyPath)
                 .path(fatherAgencyEntity.getId().toString())
-                .path(tripPath);
+                .path(tripPath)
+                .path(fatherTripEntity.getId().toString())
+                .path(categoryPath);
     }
 
     /**
@@ -180,7 +191,10 @@ public class TripTest {
         user.setUserName(username);
         user.setPassword(password);
         user.setRememberMe(true);
-        Response response = createWebTarget().path("users").path("login").request()
+        Response response = createWebTarget()
+                .path("users")
+                .path("login")
+                .request()
                 .post(Entity.entity(user, MediaType.APPLICATION_JSON));
         if (response.getStatus() == Ok) {
             return response.getCookies().get(JWT.cookieName);
@@ -190,110 +204,73 @@ public class TripTest {
     }
 
     /**
-     * Prueba para crear un Trip
+     *Prueba para asociar un Category existente a un Trip
      *
      * @generated
      */
     @Test
-    public void createTripTest() throws IOException {
-        TripDTO trip = factory.manufacturePojo(TripDTO.class);
+    public void addCategoryTest() {
         Cookie cookieSessionId = login(username, password);
 
-        Response response = target
-            .request().cookie(cookieSessionId)
-            .post(Entity.entity(trip, MediaType.APPLICATION_JSON));
+        CategoryDTO category = new CategoryDTO(oraculo.get(2));
 
-        TripDTO  tripTest = (TripDTO) response.readEntity(TripDTO.class);
+        Response response = target.path(category.getId().toString())
+                .request().cookie(cookieSessionId)
+                .post(Entity.entity(category, MediaType.APPLICATION_JSON));
 
-        Assert.assertEquals(Created, response.getStatus());
-
-        Assert.assertEquals(trip.getName(), tripTest.getName());
-        Assert.assertEquals(trip.getImage(), tripTest.getImage());
-        Assert.assertEquals(trip.getPrice(), tripTest.getPrice());
-
-        TripEntity entity = em.find(TripEntity.class, tripTest.getId());
-        Assert.assertNotNull(entity);
-    }
-
-    /**
-     * Prueba para consultar un Trip
-     *
-     * @generated
-     */
-    @Test
-    public void getTripByIdTest() {
-        Cookie cookieSessionId = login(username, password);
-
-        TripDTO tripTest = target
-            .path(oraculo.get(0).getId().toString())
-            .request().cookie(cookieSessionId).get(TripDTO.class);
-        
-        Assert.assertEquals(tripTest.getId(), oraculo.get(0).getId());
-        Assert.assertEquals(tripTest.getName(), oraculo.get(0).getName());
-        Assert.assertEquals(tripTest.getImage(), oraculo.get(0).getImage());
-        Assert.assertEquals(tripTest.getPrice(), oraculo.get(0).getPrice());
-    }
-
-    /**
-     * Prueba para consultar la lista de Trips
-     *
-     * @generated
-     */
-    @Test
-    public void listTripTest() throws IOException {
-        Cookie cookieSessionId = login(username, password);
-
-        Response response = target
-            .request().cookie(cookieSessionId).get();
-
-        String listTrip = response.readEntity(String.class);
-        List<TripDTO> listTripTest = new ObjectMapper().readValue(listTrip, List.class);
+        CategoryDTO categoryTest = (CategoryDTO) response.readEntity(CategoryDTO.class);
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(3, listTripTest.size());
+        Assert.assertEquals(category.getId(), categoryTest.getId());
     }
 
     /**
-     * Prueba para actualizar un Trip
+     * Prueba para obtener una colección de instancias de Category asociadas a una instancia Trip
      *
      * @generated
      */
     @Test
-    public void updateTripTest() throws IOException {
+    public void listCategoryTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        TripDTO trip = new TripDTO(oraculo.get(0));
-
-        TripDTO tripChanged = factory.manufacturePojo(TripDTO.class);
-
-        trip.setName(tripChanged.getName());
-        trip.setImage(tripChanged.getImage());
-        trip.setPrice(tripChanged.getPrice());
 
         Response response = target
-            .path(trip.getId().toString())
-            .request().cookie(cookieSessionId)
-            .put(Entity.entity(trip, MediaType.APPLICATION_JSON));
+                .request().cookie(cookieSessionId).get();
 
-        TripDTO tripTest = (TripDTO) response.readEntity(TripDTO.class);
-
+        String categoryList = response.readEntity(String.class);
+        List<CategoryDTO> categoryListTest = new ObjectMapper().readValue(categoryList, List.class);
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(trip.getName(), tripTest.getName());
-        Assert.assertEquals(trip.getImage(), tripTest.getImage());
-        Assert.assertEquals(trip.getPrice(), tripTest.getPrice());
+        Assert.assertEquals(2, categoryListTest.size());
     }
 
     /**
-     * Prueba para eliminar un Trip
+     * Prueba para obtener una instancia de Category asociada a una instancia Trip
      *
      * @generated
      */
     @Test
-    public void deleteTripTest() {
+    public void getCategoryTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        TripDTO trip = new TripDTO(oraculo.get(0));
-        Response response = target
-            .path(trip.getId().toString())
-            .request().cookie(cookieSessionId).delete();
+        CategoryDTO category = new CategoryDTO(oraculo.get(0));
 
+        CategoryDTO categoryTest = target.path(category.getId().toString())
+                .request().cookie(cookieSessionId).get(CategoryDTO.class);
+
+        Assert.assertEquals(category.getId(), categoryTest.getId());
+        Assert.assertEquals(category.getName(), categoryTest.getName());
+    }
+
+    /**
+     * Prueba para desasociar un Category existente de un Trip existente
+     *
+     * @generated
+     */
+    @Test
+    public void removeCategoryTest() {
+        Cookie cookieSessionId = login(username, password);
+
+        CategoryDTO category = new CategoryDTO(oraculo.get(0));
+
+        Response response = target.path(category.getId().toString())
+                .request().cookie(cookieSessionId).delete();
         Assert.assertEquals(OkWithoutContent, response.getStatus());
     }
 }

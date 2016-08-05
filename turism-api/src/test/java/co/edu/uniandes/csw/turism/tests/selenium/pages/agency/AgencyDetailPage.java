@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,22 +20,43 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><strong>Image: </strong></label><span id="image"> {{currentRecord.image}}</span>
-        </p>
-        <p>
-        <label><strong>Price: </strong></label><span id="price"> {{currentRecord.price}}</span>
-        </p>
-    </div>
-</div>
-<div ui-view="tripChieldView"></div>
-<!-- TODO -->
+*/
+package co.edu.uniandes.csw.turism.tests.selenium.pages.agency;
+
+import co.edu.uniandes.csw.turism.dtos.minimum.AgencyDTO;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class AgencyDetailPage {
+
+    @FindBy(id = "delete-agency")
+    private WebElement deleteBtn;
+
+    @FindBy(id = "edit-agency")
+    private WebElement editBtn;
+
+    @FindBy(id = "list-agency")
+    private WebElement listBtn;
+
+    
+    @FindBy(id = "name")
+    private WebElement name;
+
+    public void list() {
+        listBtn.click();
+    }
+
+    public void edit() {
+        editBtn.click();
+    }
+
+    public void delete() {
+        deleteBtn.click();
+    }
+
+    public AgencyDTO getData() {
+        AgencyDTO agency = new AgencyDTO();        
+        agency.setName(name.getText());
+        return agency;
+    }
+}

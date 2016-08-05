@@ -21,13 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.turism.tests;
+package co.edu.uniandes.csw.turism.tests.rest;
 
 import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
-import co.edu.uniandes.csw.turism.entities.CategoryEntity;
-import co.edu.uniandes.csw.turism.dtos.minimum.CategoryDTO;
-import co.edu.uniandes.csw.turism.resources.CategoryResource;
+import co.edu.uniandes.csw.turism.entities.ProductEntity;
+import co.edu.uniandes.csw.turism.dtos.minimum.ProductDTO;
+import co.edu.uniandes.csw.turism.resources.ProductResource;
+import co.edu.uniandes.csw.turism.tests.Utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -61,10 +62,10 @@ import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /*
- * Testing URI: categorys/
+ * Testing URI: products/
  */
 @RunWith(Arquillian.class)
-public class CategoryTest {
+public class ProductTest {
 
     private WebTarget target;
     private final String apiPath = Utils.apiPath;
@@ -76,9 +77,9 @@ public class CategoryTest {
     private final int Created = Status.CREATED.getStatusCode();
     private final int OkWithoutContent = Status.NO_CONTENT.getStatusCode();
 
-    private final static List<CategoryEntity> oraculo = new ArrayList<>();
+    private final static List<ProductEntity> oraculo = new ArrayList<>();
 
-    private final String categoryPath = "categorys";
+    private final String productPath = "products";
 
 
     @ArquillianResource
@@ -92,7 +93,7 @@ public class CategoryTest {
                         .importRuntimeDependencies().resolve()
                         .withTransitivity().asFile())
                 // Se agregan los compilados de los paquetes de servicios
-                .addPackage(CategoryResource.class.getPackage())
+                .addPackage(ProductResource.class.getPackage())
                 // El archivo que contiene la configuracion a la base de datos.
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 // El archivo beans.xml es necesario para injeccion de dependencias.
@@ -114,7 +115,7 @@ public class CategoryTest {
     private UserTransaction utx;
 
     private void clearData() {
-        em.createQuery("delete from CategoryEntity").executeUpdate();
+        em.createQuery("delete from ProductEntity").executeUpdate();
         oraculo.clear();
     }
 
@@ -125,10 +126,10 @@ public class CategoryTest {
      */
     public void insertData() {
         for (int i = 0; i < 3; i++) {            
-            CategoryEntity category = factory.manufacturePojo(CategoryEntity.class);
-            category.setId(i + 1L);
-            em.persist(category);
-            oraculo.add(category);
+            ProductEntity product = factory.manufacturePojo(ProductEntity.class);
+            product.setId(i + 1L);
+            em.persist(product);
+            oraculo.add(product);
         }
     }
 
@@ -153,7 +154,7 @@ public class CategoryTest {
             }
         }
         target = createWebTarget()
-                .path(categoryPath);
+                .path(productPath);
     }
 
     /**
@@ -179,100 +180,104 @@ public class CategoryTest {
     }
 
     /**
-     * Prueba para crear un Category
+     * Prueba para crear un Product
      *
      * @generated
      */
     @Test
-    public void createCategoryTest() throws IOException {
-        CategoryDTO category = factory.manufacturePojo(CategoryDTO.class);
+    public void createProductTest() throws IOException {
+        ProductDTO product = factory.manufacturePojo(ProductDTO.class);
         Cookie cookieSessionId = login(username, password);
 
         Response response = target
             .request().cookie(cookieSessionId)
-            .post(Entity.entity(category, MediaType.APPLICATION_JSON));
+            .post(Entity.entity(product, MediaType.APPLICATION_JSON));
 
-        CategoryDTO  categoryTest = (CategoryDTO) response.readEntity(CategoryDTO.class);
+        ProductDTO  productTest = (ProductDTO) response.readEntity(ProductDTO.class);
 
         Assert.assertEquals(Created, response.getStatus());
 
-        Assert.assertEquals(category.getName(), categoryTest.getName());
+        Assert.assertEquals(product.getName(), productTest.getName());
+        Assert.assertEquals(product.getPrice(), productTest.getPrice());
 
-        CategoryEntity entity = em.find(CategoryEntity.class, categoryTest.getId());
+        ProductEntity entity = em.find(ProductEntity.class, productTest.getId());
         Assert.assertNotNull(entity);
     }
 
     /**
-     * Prueba para consultar un Category
+     * Prueba para consultar un Product
      *
      * @generated
      */
     @Test
-    public void getCategoryByIdTest() {
+    public void getProductByIdTest() {
         Cookie cookieSessionId = login(username, password);
 
-        CategoryDTO categoryTest = target
+        ProductDTO productTest = target
             .path(oraculo.get(0).getId().toString())
-            .request().cookie(cookieSessionId).get(CategoryDTO.class);
+            .request().cookie(cookieSessionId).get(ProductDTO.class);
         
-        Assert.assertEquals(categoryTest.getId(), oraculo.get(0).getId());
-        Assert.assertEquals(categoryTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(productTest.getId(), oraculo.get(0).getId());
+        Assert.assertEquals(productTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(productTest.getPrice(), oraculo.get(0).getPrice());
     }
 
     /**
-     * Prueba para consultar la lista de Categorys
+     * Prueba para consultar la lista de Products
      *
      * @generated
      */
     @Test
-    public void listCategoryTest() throws IOException {
+    public void listProductTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
 
         Response response = target
             .request().cookie(cookieSessionId).get();
 
-        String listCategory = response.readEntity(String.class);
-        List<CategoryDTO> listCategoryTest = new ObjectMapper().readValue(listCategory, List.class);
+        String listProduct = response.readEntity(String.class);
+        List<ProductDTO> listProductTest = new ObjectMapper().readValue(listProduct, List.class);
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(3, listCategoryTest.size());
+        Assert.assertEquals(3, listProductTest.size());
     }
 
     /**
-     * Prueba para actualizar un Category
+     * Prueba para actualizar un Product
      *
      * @generated
      */
     @Test
-    public void updateCategoryTest() throws IOException {
+    public void updateProductTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
-        CategoryDTO category = new CategoryDTO(oraculo.get(0));
+        ProductDTO product = new ProductDTO(oraculo.get(0));
 
-        CategoryDTO categoryChanged = factory.manufacturePojo(CategoryDTO.class);
+        ProductDTO productChanged = factory.manufacturePojo(ProductDTO.class);
 
-        category.setName(categoryChanged.getName());
+        product.setName(productChanged.getName());
+        product.setPrice(productChanged.getPrice());
 
         Response response = target
-            .path(category.getId().toString())
+            .path(product.getId().toString())
             .request().cookie(cookieSessionId)
-            .put(Entity.entity(category, MediaType.APPLICATION_JSON));
+            .put(Entity.entity(product, MediaType.APPLICATION_JSON));
 
-        CategoryDTO categoryTest = (CategoryDTO) response.readEntity(CategoryDTO.class);
+        ProductDTO productTest = (ProductDTO) response.readEntity(ProductDTO.class);
 
         Assert.assertEquals(Ok, response.getStatus());
-        Assert.assertEquals(category.getName(), categoryTest.getName());
+        Assert.assertEquals(product.getName(), productTest.getName());
+        Assert.assertEquals(product.getPrice(), productTest.getPrice());
     }
 
     /**
-     * Prueba para eliminar un Category
+     * Prueba para eliminar un Product
      *
      * @generated
      */
     @Test
-    public void deleteCategoryTest() {
+    public void deleteProductTest() {
         Cookie cookieSessionId = login(username, password);
-        CategoryDTO category = new CategoryDTO(oraculo.get(0));
+        ProductDTO product = new ProductDTO(oraculo.get(0));
         Response response = target
-            .path(category.getId().toString())
+            .path(product.getId().toString())
             .request().cookie(cookieSessionId).delete();
 
         Assert.assertEquals(OkWithoutContent, response.getStatus());
