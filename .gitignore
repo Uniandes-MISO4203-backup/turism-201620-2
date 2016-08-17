@@ -26,3 +26,7 @@ nbactions.xml
 
 #Bower
 /turism-api/src/main/webapp/bower_components/
+
+#idea
+.idea/
+*.iml
