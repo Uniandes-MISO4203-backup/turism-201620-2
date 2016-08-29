@@ -41,7 +41,7 @@ public class AgencyEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "agency", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TripEntity> trips = new ArrayList<>();
-
+    private Integer number_phone;
     /**
      * Obtiene la colección de trips.
      *
@@ -60,5 +60,25 @@ public class AgencyEntity extends BaseEntity implements Serializable {
      */
     public void setTrips(List<TripEntity> trips) {
         this.trips = trips;
+    }
+    
+    /**
+     * Obtiene el atributo number_phone.
+     *
+     * @return atributo number_phone.
+     * @generated
+     */
+    public Integer getNumber_Phone() {
+        return number_phone;
+    }
+
+    /**
+     * Establece el valor del atributo number_phone.
+     *
+     * @param number_phone nuevo valor del atributo
+     * @generated
+     */   
+    public void setNumber_Phone(Integer number_phone) {
+        this.number_phone = number_phone;
     }
 }

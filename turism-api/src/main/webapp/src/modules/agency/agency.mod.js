@@ -32,7 +32,12 @@ SOFTWARE.
                 displayName: 'Name',
                 type: 'String',
                 required: true
-            }        }
+            },
+        number_phone: {
+                displayName: 'Número Teléfono',
+                type: 'Integer',
+                required: true
+            }}
     });
 
     mod.config(['$stateProvider',

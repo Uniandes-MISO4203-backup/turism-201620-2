@@ -35,7 +35,8 @@ public class AgencyDTO implements Serializable{
 
     private Long id;
     private String name;
-
+    private Integer number_phone;
+    
     /**
      * @generated
      */
@@ -52,6 +53,7 @@ public class AgencyDTO implements Serializable{
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
+        this.number_phone=entity.getNumber_Phone();
        }
     }
 
@@ -65,6 +67,7 @@ public class AgencyDTO implements Serializable{
         AgencyEntity entity = new AgencyEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
+        entity.setNumber_Phone(this.getNumber_Phone());
     return entity;
     }
 
@@ -107,5 +110,25 @@ public class AgencyDTO implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
+    
+    /**
+     * Obtiene el atributo number_phone.
+     *
+     * @return atributo number_phone.
+     * @generated
+     */
+    public Integer getNumber_Phone() {
+        return number_phone;
+    }
 
+    /**
+     * Establece el valor del atributo number_phone.
+     *
+     * @param number_phone nuevo valor del atributo
+     * @generated
+     */      
+    public void setNumber_Phone(Integer number_phone) {
+        this.number_phone = number_phone;
+    }
+    
 }
