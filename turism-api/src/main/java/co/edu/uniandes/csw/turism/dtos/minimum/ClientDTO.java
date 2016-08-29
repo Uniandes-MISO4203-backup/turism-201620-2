@@ -35,6 +35,7 @@ public class ClientDTO implements Serializable{
 
     private Long id;
     private String name;
+    private String address;
 
     /**
      * @generated
@@ -49,10 +50,11 @@ public class ClientDTO implements Serializable{
      * @generated
      */
     public ClientDTO(ClientEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-       }
+        if (entity != null) {
+            this.id = entity.getId();
+            this.name = entity.getName();
+            this.address = entity.getAddress();
+        }
     }
 
     /**
@@ -65,7 +67,8 @@ public class ClientDTO implements Serializable{
         ClientEntity entity = new ClientEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
-    return entity;
+        entity.setAddress(this.getAddress());
+        return entity;
     }
 
     /**
@@ -106,6 +109,26 @@ public class ClientDTO implements Serializable{
      */
     public void setName(String name) {
         this.name = name;
+    }
+    
+    /**
+     * Obtiene el atributo address.
+     * 
+     * @return atributo address
+     * @generated
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * Establece el valor del atributo address.
+     *
+     * @param address nuevo valor del atributo
+     * @generated
+     */
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }
