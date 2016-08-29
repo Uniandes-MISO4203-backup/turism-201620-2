@@ -127,7 +127,7 @@ public class AgencyDTO implements Serializable{
      * @param numberPhone nuevo valor del atributo
      * @generated
      */      
-    public void setNumber_Phone(Integer numberPhone) {
+    public void setNumberPhone(Integer numberPhone) {
         this.numberPhone = numberPhone;
     }
     
