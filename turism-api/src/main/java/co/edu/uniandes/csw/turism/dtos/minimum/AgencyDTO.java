@@ -130,5 +130,4 @@ public class AgencyDTO implements Serializable{
     public void setNumberPhone(Integer numberPhone) {
         this.numberPhone = numberPhone;
     }
-    
 }
