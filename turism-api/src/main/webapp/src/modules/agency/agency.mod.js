@@ -33,7 +33,7 @@ SOFTWARE.
                 type: 'String',
                 required: true
             },
-        number_phone: {
+        numberPhone: {
                 displayName: 'Número Teléfono',
                 type: 'Integer',
                 required: true
