@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>turism-api</artifactId>
+    <artifactId>turism-api2</artifactId>
     <name>Turism.api</name>
     <packaging>war</packaging>
     <parent>
         <groupId>co.edu.uniandes.csw.turism</groupId>
-        <artifactId>turism</artifactId>
+        <artifactId>turism2</artifactId>
         <version>0.1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -64,7 +64,7 @@
         </dependency>
         <dependency>
             <groupId>co.edu.uniandes.csw.turism</groupId>
-            <artifactId>turism-logic</artifactId>
+            <artifactId>turism-logic2</artifactId>
             <version>0.1.0</version>
         </dependency>
         <dependency>
