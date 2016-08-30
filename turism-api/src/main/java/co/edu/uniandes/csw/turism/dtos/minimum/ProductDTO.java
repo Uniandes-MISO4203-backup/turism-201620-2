@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.turism.dtos.minimum;
 import co.edu.uniandes.csw.turism.entities.ProductEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @generated
@@ -36,6 +37,7 @@ public class ProductDTO implements Serializable{
     private Long id;
     private String name;
     private Long price;
+    private Date expirationDate;
 
     /**
      * @generated
@@ -54,6 +56,7 @@ public class ProductDTO implements Serializable{
         this.id=entity.getId();
         this.name=entity.getName();
         this.price=entity.getPrice();
+        this.expirationDate=entity.getExpirationDate();
        }
     }
 
@@ -68,6 +71,7 @@ public class ProductDTO implements Serializable{
         entity.setId(this.getId());
         entity.setName(this.getName());
         entity.setPrice(this.getPrice());
+        entity.setExpirationDate(this.getExpirationDate());
     return entity;
     }
 
@@ -130,5 +134,16 @@ public class ProductDTO implements Serializable{
     public void setPrice(Long price) {
         this.price = price;
     }
+    
+    
+    public Date getExpirationDate(){
+        return expirationDate;
+    }
+    
+    
+    public void setExpirationdate(Date expirationDate){
+        this.expirationDate= expirationDate;
+    }
+    
 
 }
