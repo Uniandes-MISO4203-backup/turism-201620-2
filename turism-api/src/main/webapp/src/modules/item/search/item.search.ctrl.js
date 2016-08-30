@@ -28,7 +28,6 @@ SOFTWARE.
 
     mod.controller("itemSearchCtrl", ["$scope", "$state", "items",
         function ($scope, $state, items) {
-            debugger;
             $scope.show=false;
             $scope.currentRecord = {};
             $scope.actions = {
