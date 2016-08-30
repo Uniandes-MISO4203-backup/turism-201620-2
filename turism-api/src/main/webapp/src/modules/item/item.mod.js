@@ -151,5 +151,16 @@ SOFTWARE.
                     }
                 }
             });
+            $sp.state('itemSearch', {
+                url: '/search',
+                parent: 'item',
+                views: {
+                    itemView: {
+                        templateUrl: basePath + 'sea/item.search.tpl.html',
+                        controller: 'itemSearchCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
 	}]);
 })(window.angular);

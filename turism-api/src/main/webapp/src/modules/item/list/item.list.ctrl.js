@@ -59,6 +59,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('clientDetail');
                     }
+                },
+                search: {
+                    displayName: 'Search',
+                    icon: 'search',
+                    fn: function () {
+                        $state.go('itemSearch');
+                    }
                 }
 
             };

@@ -21,5 +21,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}} </alert>
-<div ui-view="itemView">bleh</div>
+<div ng-messages="itemForm.$error" multiple>
+    <!--<ng-message when="required">-->
+        <!--<alert type="warning">Please, Fill the required fields!</alert>-->
+    <!--</ng-message>-->
+    <!--<ng-message when="url">-->
+        <!--<alert type="warning">Image field must be a URL</alert>-->
+    <!--</ng-message>-->
+</div>
+<header>
+    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+</header>
+<form novalidate name="itemForm" role="form">
+    <fieldset >
+        <label>Item name</label>
+        <input type="text" name="nameSearchInput" class="form-control" ng-model="itemName">
+        <div ng-if="show">
+            <br>
+            <label>Results</label>
+            <div>
+                <label ng-model="itemLabel"></label>
+                <label>2</label>
+            </div>
+        </div>
+    </fieldset>
+</form>
