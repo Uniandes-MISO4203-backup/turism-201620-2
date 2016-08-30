@@ -37,7 +37,13 @@ SOFTWARE.
                 displayName: 'Price',
                 type: 'Long',
                 required: true
-            }        }
+            },
+            expirationDate: {
+                displayName: 'Date expiration',
+                type: 'Date',
+                required: true
+            }
+        }
     });
 
     mod.config(['$stateProvider',
