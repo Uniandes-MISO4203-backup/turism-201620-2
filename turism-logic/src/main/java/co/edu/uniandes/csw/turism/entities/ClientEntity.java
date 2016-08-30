@@ -41,6 +41,8 @@ public class ClientEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemEntity> wishList = new ArrayList<>();
+    
+    private String address;
 
     /**
      * Obtiene la colección de wishList.
@@ -60,5 +62,25 @@ public class ClientEntity extends BaseEntity implements Serializable {
      */
     public void setWishList(List<ItemEntity> wishlist) {
         this.wishList = wishlist;
+    }
+    
+    /**
+     * Obtiene el atributo address.
+     *
+     * @return artributo address.
+     * @generated
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * Establece el valor del atributo address.
+     *
+     * @param address nuevo valor del atributo
+     * @generated
+     */
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

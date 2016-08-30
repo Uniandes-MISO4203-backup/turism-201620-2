@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.turism.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
+import java.sql.Date;
 
 /**
  * @generated
@@ -34,6 +35,8 @@ import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 public class ProductEntity extends BaseEntity implements Serializable {
 
     private Long price;
+    
+    private Date expirationDate;
 
     /**
      * Obtiene el atributo price.
@@ -54,4 +57,13 @@ public class ProductEntity extends BaseEntity implements Serializable {
     public void setPrice(Long price){
         this.price = price;
     }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate=expirationDate;
+    }
+
 }
