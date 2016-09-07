@@ -22,14 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 (function (ng) {
-    var mod = ng.module('commentsModule', ['ngCrud', 'ui.router']);
+    var mod = ng.module('commentaryModule', ['ngCrud', 'ui.router']);
 
-    mod.constant('commentsModel', {
-        name: 'comments',
-        displayName: 'Comments',
-		url: 'comments',
-        fields: {      comentary: {
-                displayName: 'Comentary',
+    mod.constant('commentaryModel', {
+        name: 'commentary',
+        displayName: 'Commentary',
+		url: 'commentarys',
+        fields: {      description: {
+                displayName: 'Description',
                 type: 'String',
                 required: true
             }        
@@ -38,92 +38,92 @@ SOFTWARE.
 
     mod.config(['$stateProvider',
         function($sp){
-            var basePath = 'src/modules/comments/';
+            var basePath = 'src/modules/commentary/';
             var baseInstancePath = basePath + 'instance/';
 
-            $sp.state('comments', {
-                url: '/comments?page&limit',
+            $sp.state('commentary', {
+                url: '/commentarys?page&limit',
                 abstract: true,
                 
                 views: {
                      mainView: {
-                        templateUrl: basePath + 'comments.tpl.html',
-                        controller: 'commentsCtrl'
+                        templateUrl: basePath + 'commentary.tpl.html',
+                        controller: 'commentaryCtrl'
                     }
                 },
                 resolve: {
-                    model: 'commentsModel',
-                    comments: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                    model: 'commentaryModel',
+                    commentarys: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
                         }]
                 }
             });
-            $sp.state('commentsList', {
+            $sp.state('commentaryList', {
                 url: '/list',
-                parent: 'comments',
+                parent: 'commentary',
                 views: {
-                    commentsView: {
-                        templateUrl: basePath + 'list/comments.list.tpl.html',
-                        controller: 'commentsListCtrl',
+                    commentaryView: {
+                        templateUrl: basePath + 'list/commentary.list.tpl.html',
+                        controller: 'commentaryListCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
             });
-            $sp.state('commentsNew', {
+            $sp.state('commentaryNew', {
                 url: '/new',
-                parent: 'comments',
+                parent: 'commentary',
                 views: {
-                    commentsView: {
-                        templateUrl: basePath + 'new/comments.new.tpl.html',
-                        controller: 'commentsNewCtrl',
+                    commentaryView: {
+                        templateUrl: basePath + 'new/commentary.new.tpl.html',
+                        controller: 'commentaryNewCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
             });
-            $sp.state('commentsInstance', {
-                url: '/{commentsId:int}',
+            $sp.state('commentaryInstance', {
+                url: '/{commentaryId:int}',
                 abstract: true,
-                parent: 'comments',
+                parent: 'commentary',
                 views: {
-                    commentsView: {
-                        template: '<div ui-view="commentsInstanceView"></div>'
+                    commentaryView: {
+                        template: '<div ui-view="commentaryInstanceView"></div>'
                     }
                 },
                 resolve: {
-                    comments: ['comments', '$stateParams', function (comments, $params) {
-                            return comments.get($params.commentsId);
+                    commentary: ['commentarys', '$stateParams', function (commentarys, $params) {
+                            return commentarys.get($params.commentaryId);
                         }]
                 }
             });
-            $sp.state('commentsDetail', {
+            $sp.state('commentaryDetail', {
                 url: '/details',
-                parent: 'commentsInstance',
+                parent: 'commentaryInstance',
                 views: {
-                    commentsInstanceView: {
-                        templateUrl: baseInstancePath + 'detail/comments.detail.tpl.html',
-                        controller: 'commentsDetailCtrl'
+                    commentaryInstanceView: {
+                        templateUrl: baseInstancePath + 'detail/commentary.detail.tpl.html',
+                        controller: 'commentaryDetailCtrl'
                     }
                 }
             });
-            $sp.state('commentsEdit', {
+            $sp.state('commentaryEdit', {
                 url: '/edit',
                 sticky: true,
-                parent: 'commentsInstance',
+                parent: 'commentaryInstance',
                 views: {
-                    commentsInstanceView: {
-                        templateUrl: baseInstancePath + 'edit/comments.edit.tpl.html',
-                        controller: 'commentsEditCtrl',
+                    commentaryInstanceView: {
+                        templateUrl: baseInstancePath + 'edit/commentary.edit.tpl.html',
+                        controller: 'commentaryEditCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
             });
-            $sp.state('commentsDelete', {
+            $sp.state('commentaryDelete', {
                 url: '/delete',
-                parent: 'commentsInstance',
+                parent: 'commentaryInstance',
                 views: {
-                    commentsInstanceView: {
-                        templateUrl: baseInstancePath + 'delete/comments.delete.tpl.html',
-                        controller: 'commentsDeleteCtrl',
+                    commentaryInstanceView: {
+                        templateUrl: baseInstancePath + 'delete/commentary.delete.tpl.html',
+                        controller: 'commentaryDeleteCtrl',
                         controllerAs: 'ctrl'
                     }
                 }

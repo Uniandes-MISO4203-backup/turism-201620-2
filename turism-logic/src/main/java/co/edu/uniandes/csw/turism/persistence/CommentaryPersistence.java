@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.turism.persistence;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import co.edu.uniandes.csw.turism.entities.CommentsEntity;
+import co.edu.uniandes.csw.turism.entities.CommentaryEntity;
 import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
 /**
  *
@@ -19,7 +19,7 @@ import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
  * @generated
  */
 @Stateless
-public class CommentsPersistence extends CrudPersistence<CommentsEntity>{
+public class CommentaryPersistence extends CrudPersistence<CommentaryEntity>{
    
     @PersistenceContext(unitName="TurismPU")
     protected EntityManager em;
@@ -36,7 +36,7 @@ public class CommentsPersistence extends CrudPersistence<CommentsEntity>{
      * @generated
      */
     @Override
-    protected Class<CommentsEntity> getEntityClass() {
-        return CommentsEntity.class;
+    protected Class<CommentaryEntity> getEntityClass() {
+        return CommentaryEntity.class;
     }  
 }

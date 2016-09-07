@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,15 +20,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong> Comentary: </strong></label><span id="comentary"> {{currentRecord.comentary}}</span>
-        </p>
-    </div>
-</div>
-<!-- TODO -->
+*/
+(function (ng) {
+
+    var mod = ng.module("commentaryModule");
+
+    mod.controller("commentaryDeleteCtrl", ["$state", "commentary", function ($state, commentary) {
+            this.confirmDelete = function () {
+                commentary.remove().then(function () {
+                    $state.go('commentaryList', null, {reload: true});
+                });
+            };
+        }]);
+})(window.angular);

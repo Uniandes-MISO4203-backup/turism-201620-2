@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,8 +20,33 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<div class="container">
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}} </alert>
-<div ui-view="commentsView"></div>
-</div>
+*/
+(function (ng) {
+
+    var mod = ng.module("commentaryModule");
+
+    mod.controller("commentaryEditCtrl", ["$scope", "$state", "commentary",
+        function ($scope, $state, commentary) {
+            $scope.currentRecord = commentary;
+            $scope.actions = {
+                save: {
+                    displayName: 'Save',
+                    icon: 'save',
+                    fn: function () {
+                        if ($scope.commentaryForm.$valid) {
+                            $scope.currentRecord.put().then(function (rc) {
+                                $state.go('commentaryDetail', {commentaryId: rc.id}, {reload: true});
+                            });
+                        }
+                    }
+                },
+                cancel: {
+                    displayName: 'Cancel',
+                    icon: 'remove',
+                    fn: function () {
+                        $state.go('commentaryDetail');
+                    }
+                }
+            };
+        }]);
+})(window.angular);

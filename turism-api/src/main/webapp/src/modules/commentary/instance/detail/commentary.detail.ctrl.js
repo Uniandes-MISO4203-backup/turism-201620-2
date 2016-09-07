@@ -23,31 +23,31 @@ SOFTWARE.
 */
 (function (ng) {
 
-    var mod = ng.module("commentsModule");
+    var mod = ng.module("commentaryModule");
 
-    mod.controller("commentsDetailCtrl", ['$scope', "$state", "comments",
-        function ($scope, $state, comments) {
-            $scope.currentRecord = comments;
+    mod.controller("commentaryDetailCtrl", ['$scope', "$state", "commentary",
+        function ($scope, $state, commentary) {
+            $scope.currentRecord = commentary;
             $scope.actions = {
                 create: {
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('commentsNew');
+                        $state.go('commentaryNew');
                     }
                 },
                 edit: {
                     displayName: 'Edit',
                     icon: 'edit',
                     fn: function () {
-                        $state.go('commentsEdit');
+                        $state.go('commentaryEdit');
                     }
                 },
                 delete: {
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function () {
-                        $state.go('commentsDelete');
+                        $state.go('commentaryDelete');
                     }
                 },
                 refresh: {
@@ -61,7 +61,7 @@ SOFTWARE.
                     displayName: 'List',
                     icon: 'th-list',
                     fn: function () {
-                        $state.go('commentsList');
+                        $state.go('commentaryList');
                     }
                 }
             };

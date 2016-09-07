@@ -21,22 +21,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
 (function (ng) {
 
-    var mod = ng.module("commentsModule");
+    var mod = ng.module("commentaryModule");
 
-    mod.controller("commentsEditCtrl", ["$scope", "$state", "comments",
-        function ($scope, $state, comments) {
-            $scope.currentRecord = comments;
+    mod.controller("commentaryNewCtrl", ["$scope", "$state", "commentarys",
+        function ($scope, $state, commentarys) {
+            $scope.currentRecord = {};
             $scope.actions = {
                 save: {
                     displayName: 'Save',
                     icon: 'save',
                     fn: function () {
-                        if ($scope.commentsForm.$valid) {
-                            $scope.currentRecord.put().then(function (rc) {
-                                $state.go('commentsDetail', {commentsId: rc.id}, {reload: true});
+                        if ($scope.commentaryForm.$valid) {
+                           //alert (" Responde 38");
+                               commentarys.post($scope.currentRecord).then(function (rc) {
+                               $state.go('commentaryDetail', {commentaryId: rc.id}, {reload: true});
                             });
+                            //alert (" Responde !!! scope "+$scope.currentRecord+" state "+$state);
                         }
                     }
                 },
@@ -44,7 +47,7 @@ SOFTWARE.
                     displayName: 'Cancel',
                     icon: 'remove',
                     fn: function () {
-                        $state.go('commentsDetail');
+                        $state.go('commentaryList');
                     }
                 }
             };

@@ -38,99 +38,99 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import co.edu.uniandes.csw.turism.api.ICommentsLogic;
-import co.edu.uniandes.csw.turism.dtos.detail.CommentsDetailDTO;
-import co.edu.uniandes.csw.turism.entities.CommentsEntity;
+import co.edu.uniandes.csw.turism.dtos.detail.CommentaryDetailDTO;
+import co.edu.uniandes.csw.turism.entities.CommentaryEntity;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
+import co.edu.uniandes.csw.turism.api.ICommentaryLogic;
 
 /**
- * URI: comments/
+ * URI: commentarys/
  * @generated
  */
-@Path("/comments")
+@Path("/commentarys")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class CommentsResource {
+public class CommentaryResource {
 
-    @Inject private ICommentsLogic commentsLogic;
+    @Inject private ICommentaryLogic commentaryLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
 
    
     /**
-     * Convierte una lista de CommentsEntity a una lista de CommentsDetailDTO.
+     * Convierte una lista de CommentaryEntity a una lista de CommentaryDetailDTO.
      *
-     * @param entityList Lista de CommentsEntity a convertir.
-     * @return Lista de CommentsDetailDTO convertida.
+     * @param entityList Lista de CommentaryEntity a convertir.
+     * @return Lista de CommentaryDetailDTO convertida.
      * @generated
      */
-    private List<CommentsDetailDTO> listEntity2DTO(List<CommentsEntity> entityList){
-        List<CommentsDetailDTO> list = new ArrayList<>();
-        for (CommentsEntity entity : entityList) {
-            list.add(new CommentsDetailDTO(entity));
+    private List<CommentaryDetailDTO> listEntity2DTO(List<CommentaryEntity> entityList){
+        List<CommentaryDetailDTO> list = new ArrayList<>();
+        for (CommentaryEntity entity : entityList) {
+            list.add(new CommentaryDetailDTO(entity));
         }
         return list;
     }
 
 
     /**
-     * Obtiene la lista de los registros de Product
+     * Obtiene la lista de los registros de Comments
      *
-     * @return Colección de objetos de CommentsDetailDTO
+     * @return Colección de objetos de CommentaryDetailDTO
      * @generated
      */
     @GET
-    public List<CommentsDetailDTO> getComments (){
+    public List<CommentaryDetailDTO> getComments (){
         if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", commentsLogic.countComments());
-            return listEntity2DTO(commentsLogic.getComments(page, maxRecords));
+            this.response.setIntHeader("X-Total-Count", commentaryLogic.countComments());
+            return listEntity2DTO(commentaryLogic.getComments(page, maxRecords));
         }
-        return listEntity2DTO(commentsLogic.getComments());
+        return listEntity2DTO(commentaryLogic.getComments());
     }
 
     /**
-     * Obtiene los datos de una instancia de Product a partir de su ID
+     * Obtiene los datos de una instancia de Comments a partir de su ID
      *
      * @param id Identificador de la instancia a consultar
-     * @return Instancia de CommentsDetailDTO con los datos del Product consultado
+     * @return Instancia de CommentaryDetailDTO con los datos del Product consultado
      * @generated
      */
     @GET
     @Path("{id: \\d+}")
-    public CommentsDetailDTO getComment(@PathParam("id") Long id) {
-        return new CommentsDetailDTO(commentsLogic.getComment(id));
+    public CommentaryDetailDTO getComment(@PathParam("id") Long id) {
+        return new CommentaryDetailDTO(commentaryLogic.getComment(id));
     }
 
     /**
      * Se encarga de crear un Comments en la base de datos
      *
-     * @param dto Objeto de CommentsDetailDTO con los datos nuevos
+     * @param dto Objeto de CommentaryDetailDTO con los datos nuevos
      * @return Objeto de CommentsDetailDTOcon los datos nuevos y su ID
      * @generated
      */
     @POST
     @StatusCreated
-    public CommentsDetailDTO createComment(CommentsDetailDTO dto) {
-        return new CommentsDetailDTO(commentsLogic.createComment(dto.toEntity()));
+    public CommentaryDetailDTO createCommentary(CommentaryDetailDTO dto) {
+        return new CommentaryDetailDTO(commentaryLogic.createComment(dto.toEntity()));
     }
 
     /**
      * Actualiza la información de una instancia de Product
      *
      * @param id Identificador de la instancia de Product a modificar
-     * @param dto Instancia de CommentsDetailDTO con los nuevos datos
-     * @return Instancia de CommentsDetailDTO con los datos actualizados
+     * @param dto Instancia de CommentaryDetailDTO con los nuevos datos
+     * @return Instancia de CommentaryDetailDTO con los datos actualizados
      * @generated
      */
     @PUT
     @Path("{id: \\d+}")
-    public CommentsDetailDTO updateComment(@PathParam("id") Long id, CommentsDetailDTO dto) {
-        CommentsEntity entity = dto.toEntity();
+    public CommentaryDetailDTO updateComment(@PathParam("id") Long id, CommentaryDetailDTO dto) {
+        CommentaryEntity entity = dto.toEntity();
         entity.setId(id);
-        CommentsEntity oldEntity = commentsLogic.getComment(id);
-        return new CommentsDetailDTO( commentsLogic.updateComment(entity));
+        CommentaryEntity oldEntity = commentaryLogic.getComment(id);
+        return new CommentaryDetailDTO( commentaryLogic.updateComment(entity));
     }
 
     /**
@@ -142,7 +142,7 @@ public class CommentsResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deletComment(@PathParam("id") Long id) {
-        commentsLogic.deleteComment(id);
+        commentaryLogic.deleteComment(id);
     }
     
 }

@@ -6,26 +6,26 @@
 package co.edu.uniandes.csw.turism.dtos.detail;
 
 import co.edu.uniandes.csw.turism.dtos.minimum.*;
-import co.edu.uniandes.csw.turism.entities.CommentsEntity;
+import co.edu.uniandes.csw.turism.entities.CommentaryEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author fe.ruiz
  */
-public class CommentsDetailDTO extends CommentsDTO{
+public class CommentaryDetailDTO extends CommentaryDTO{
 
-    public CommentsDetailDTO() {
+    public CommentaryDetailDTO() {
      super();
     }
 
-    public CommentsDetailDTO(CommentsEntity entity) {
+    public CommentaryDetailDTO(CommentaryEntity entity) {
         super(entity);
     }
 
     @Override
-    public CommentsEntity toEntity() {
-        CommentsEntity entity = new CommentsEntity();
+    public CommentaryEntity toEntity() {
+        CommentaryEntity entity = super.toEntity();//new CommentaryEntity();
         return entity; //To change body of generated methods, choose Tools | Templates.
     }
 }

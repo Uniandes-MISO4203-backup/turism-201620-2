@@ -30,3 +30,4 @@ nbactions.xml
 #idea
 .idea/
 *.iml
+/turism-logic/nbproject/

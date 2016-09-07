@@ -23,19 +23,19 @@ SOFTWARE.
 */
 (function (ng) {
 
-    var mod = ng.module("commentsModule");
+    var mod = ng.module("commentaryModule");
 
-    mod.controller("commentsListCtrl", ["$scope", '$state', 'comments', '$stateParams',
-        function ($scope, $state, comments, $params) {
-            $scope.records = comments;
+    mod.controller("commentaryListCtrl", ["$scope", '$state', 'commentarys', '$stateParams',
+        function ($scope, $state, commentarys, $params) {
+            $scope.records = commentarys;
 
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
-            this.totalItems = comments.totalRecords;
+            this.totalItems = commentarys.totalRecords;
 
             this.pageChanged = function () {
-                $state.go('commentsList', {page: this.currentPage});
+                $state.go('commentaryList', {page: this.currentPage});
             };
 
             $scope.actions = {
@@ -43,7 +43,7 @@ SOFTWARE.
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('commentsNew');
+                        $state.go('commentaryNew');
                     }
                 },
                 refresh: {
@@ -58,7 +58,7 @@ SOFTWARE.
                     displayName: 'Detail',
                     icon: 'eye-open',
                     fn: function (rc) {
-                        $state.go('commentsDetail', {commentsId: rc.id});
+                        $state.go('commentaryDetail', {commentaryId: rc.id});
                     },
                     show: function () {
                         return true;
@@ -68,7 +68,7 @@ SOFTWARE.
                     displayName: 'Edit',
                     icon: 'edit',
                     fn: function (rc) {
-                        $state.go('commentsEdit', {commentsId: rc.id});
+                        $state.go('commentaryEdit', {commentaryId: rc.id});
                     },
                     show: function () {
                         return true;
@@ -78,7 +78,7 @@ SOFTWARE.
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function (rc) {
-                        $state.go('commentsDelete', {commentsId: rc.id});
+                        $state.go('commentaryDelete', {commentaryId: rc.id});
                     },
                     show: function () {
                         return true;

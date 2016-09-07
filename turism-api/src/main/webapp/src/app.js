@@ -34,7 +34,7 @@ SOFTWARE.
         'categoryModule',
         'authModule',
         'roleModule',
-        'commentsModule'
+        'commentaryModule'
     ]);
 
     mod.config(['$logProvider', function ($logProvider) {
@@ -101,10 +101,10 @@ SOFTWARE.
                         state: 'productList'                    
                     }
                     , {
-                        id: 'comments',
-                        label: 'Comments',
+                        id: 'commentary',
+                        label: 'Commentarys',
                         icon: 'list-alt',
-                        state: 'commentsList'                    
+                        state: 'commentaryList'                    
                     }
                    ]
             });
