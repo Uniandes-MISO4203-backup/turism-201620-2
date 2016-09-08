@@ -47,6 +47,7 @@ public class CommentaryLogic implements ICommentaryLogic{
         return persistence.findAll();
     }
     
+    
       /**
      * Obtiene la lista de los registros de comments
      *
