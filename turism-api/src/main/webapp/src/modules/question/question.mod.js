@@ -31,7 +31,7 @@
             $sp.state('question', {
                 url: '/questions?page&limit',
                 abstract: true,
-
+                parent: 'tripDetail',
                 views: {
                      tripChieldView: {
                         templateUrl: basePath + 'question.tpl.html',
