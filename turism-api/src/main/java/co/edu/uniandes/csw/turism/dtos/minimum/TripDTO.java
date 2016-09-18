@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.turism.dtos.minimum;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @generated
@@ -37,6 +38,11 @@ public class TripDTO implements Serializable{
     private String name;
     private String image;
     private Long price;
+    private Date departureDate;
+    private String destination;
+    private int quota;
+    private int duration;
+    private String transport;
 
     /**
      * @generated
@@ -51,12 +57,17 @@ public class TripDTO implements Serializable{
      * @generated
      */
     public TripDTO(TripEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.image=entity.getImage();
-        this.price=entity.getPrice();
-       }
+        if (entity != null) {
+            this.id = entity.getId();
+            this.name = entity.getName();
+            this.image = entity.getImage();
+            this.price = entity.getPrice();
+            this.departureDate = entity.getDepartureDate();
+            this.destination = entity.getDestination();
+            this.quota = entity.getQuota();
+            this.duration = entity.getDuration();
+            this.transport = entity.getTransport();
+        }
     }
 
     /**
@@ -71,7 +82,12 @@ public class TripDTO implements Serializable{
         entity.setName(this.getName());
         entity.setImage(this.getImage());
         entity.setPrice(this.getPrice());
-    return entity;
+        entity.setDepartureDate(this.getDepartureDate());
+        entity.setDestination(this.getDestination());
+        entity.setQuota(this.getQuota());
+        entity.setDuration(this.getDuration());
+        entity.setTransport(this.getTransport());
+        return entity;
     }
 
     /**
@@ -152,6 +168,106 @@ public class TripDTO implements Serializable{
      */
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    /**
+     * Obtiene el atributo departureDate.
+     *
+     * @return atributo departureDate.
+     * @generated
+     */
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    /**
+     * Establece el valor del atributo departureDate.
+     *
+     * @param departureDate nuevo valor del atributo
+     * @generated
+     */
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    /**
+     * Obtiene el atributo destination.
+     *
+     * @return atributo destination.
+     * @generated
+     */
+    public String getDestination() {
+        return destination;
+    }
+
+    /**
+     * Establece el valor del atributo destination.
+     *
+     * @param destination nuevo valor del atributo
+     * @generated
+     */
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    /**
+     * Obtiene el atributo quota.
+     *
+     * @return atributo quota.
+     * @generated
+     */
+    public int getQuota() {
+        return quota;
+    }
+
+    /**
+     * Establece el valor del atributo quota.
+     *
+     * @param quota nuevo valor del atributo
+     * @generated
+     */
+    public void setQuota(int quota) {
+        this.quota = quota;
+    }
+
+    /**
+     * Obtiene el atributo duration.
+     *
+     * @return atributo duration.
+     * @generated
+     */
+    public int getDuration() {
+        return duration;
+    }
+
+    /**
+     * Establece el valor del atributo duration.
+     *
+     * @param duration nuevo valor del atributo
+     * @generated
+     */
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    /**
+     * Obtiene el atributo transport.
+     *
+     * @return atributo transport.
+     * @generated
+     */
+    public String getTransport() {
+        return transport;
+    }
+
+    /**
+     * Establece el valor del atributo transport.
+     *
+     * @param transport nuevo valor del atributo
+     * @generated
+     */
+    public void setTransport(String transport) {
+        this.transport = transport;
     }
 
 }

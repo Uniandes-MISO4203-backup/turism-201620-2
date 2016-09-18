@@ -50,7 +50,7 @@ SOFTWARE.
                 });
             };
             $scope.getCategorys("");
-
+            
             this.pageChanged = function () {
                 $state.go('tripList', {page: this.currentPage});
             };
