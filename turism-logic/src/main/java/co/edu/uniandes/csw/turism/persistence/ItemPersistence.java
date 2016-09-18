@@ -28,7 +28,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.turism.entities.ItemEntity;
 import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.TypedQuery;
 
 /**
@@ -71,5 +74,18 @@ public class ItemPersistence extends CrudPersistence<ItemEntity> {
             q.setMaxResults(maxRecords);
         }
         return q.getResultList();
+    }
+
+    /**
+     * Obtains a list of {@link ItemEntity} according to a string and comparing to it's name
+     *
+     * @param name the name of the {@link ItemEntity}
+     * @return the list of {@link ItemEntity} with similar names
+     */
+    public List<ItemEntity> findAllByName(String name) {
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", "%" + name.toUpperCase() + "%");
+        return executeListNamedQuery("Item.getByName", params);
     }
 }

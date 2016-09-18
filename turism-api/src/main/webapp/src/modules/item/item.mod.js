@@ -60,7 +60,7 @@ SOFTWARE.
             var baseInstancePath = basePath + 'instance/';
 
             $sp.state('item', {
-                url: '/wishList?page&limit',
+                url: '/wishList?page&limit&name',
                 abstract: true,
                 parent: 'clientDetail',
                 views: {
@@ -72,8 +72,8 @@ SOFTWARE.
                 resolve: {
                     references: ['$q', 'Restangular', function ($q, r) {
                             return $q.all({
-                                trip: r.all('trips').getList()
-,                                 product: r.all('products').getList()
+                                trip: r.all('trips').getList(),
+                                product: r.all('products').getList()
                             });
                         }],
                     model: 'itemModel',
@@ -156,7 +156,7 @@ SOFTWARE.
                 parent: 'item',
                 views: {
                     itemView: {
-                        templateUrl: basePath + 'sea/item.search.tpl.html',
+                        templateUrl: basePath + 'search/item.search.tpl.html',
                         controller: 'itemSearchCtrl',
                         controllerAs: 'ctrl'
                     }

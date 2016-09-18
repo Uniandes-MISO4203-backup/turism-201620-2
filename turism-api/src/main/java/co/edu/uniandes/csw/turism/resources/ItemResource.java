@@ -40,6 +40,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.turism.api.IItemLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.ItemDetailDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.ItemDTO;
 import co.edu.uniandes.csw.turism.entities.ItemEntity;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
@@ -57,6 +58,7 @@ public class ItemResource {
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
     @PathParam("clientsId") private Long clientsId;
+    @QueryParam("name") private String name;
 
    
     /**
@@ -83,11 +85,16 @@ public class ItemResource {
      */
     @GET
     public List<ItemDetailDTO> getItems() {
-        if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
-            return listEntity2DTO(itemLogic.getItems(page, maxRecords, clientsId));
+
+        if (null != name) {
+            return listEntity2DTO(itemLogic.findAllByName(name));
+        } else {
+            if (page != null && maxRecords != null) {
+                this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
+                return listEntity2DTO(itemLogic.getItems(page, maxRecords, clientsId));
+            }
+            return listEntity2DTO(itemLogic.getItems(clientsId));
         }
-        return listEntity2DTO(itemLogic.getItems(clientsId));
     }
 
     /**
@@ -147,5 +154,5 @@ public class ItemResource {
     public void deleteItem(@PathParam("itemId") Long itemId) {
         itemLogic.deleteItem(itemId);
     }
-    
+
 }

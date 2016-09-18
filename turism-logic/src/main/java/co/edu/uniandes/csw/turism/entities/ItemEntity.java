@@ -28,11 +28,16 @@ import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import uk.co.jemos.podam.common.PodamExclude;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * @generated
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Item.getByName", query = "select u from ItemEntity u Where UPPER(u.name) like :name")
+})
 public class ItemEntity extends BaseEntity implements Serializable {
 
     private Long qty;

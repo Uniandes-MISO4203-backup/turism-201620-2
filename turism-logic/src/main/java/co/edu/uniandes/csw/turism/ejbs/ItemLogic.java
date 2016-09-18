@@ -141,5 +141,16 @@ public class ItemLogic implements IItemLogic {
         ItemEntity old = getItem(id);
         persistence.delete(old.getId());
     }
-  
+
+    /**
+     * Retrieves the list of {@link ItemEntity} that have a name similar to a given string
+     *
+     * @param name the String to compare to the item name
+     * @return the list of {@link ItemEntity}
+     */
+    @Override
+    public List<ItemEntity> findAllByName(String name) {
+        return persistence.findAllByName(name);
+    }
+
 }
