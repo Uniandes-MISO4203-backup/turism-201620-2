@@ -127,14 +127,5 @@ public class QuestionResource {
     @Path("{questionId: \\d+}")
     public void deleteQuestion(@PathParam("questionId") Long questionId) {
         questionLogic.deleteQuestion(questionId);
-    }
-    public void existsQuestion(Long questionsId){
-        QuestionDetailDTO question = getQuestion(questionsId);
-        if (question== null) {
-            throw new WebApplicationException(404);
-        }
-    }
-    
-    
-    
+    }    
 }
