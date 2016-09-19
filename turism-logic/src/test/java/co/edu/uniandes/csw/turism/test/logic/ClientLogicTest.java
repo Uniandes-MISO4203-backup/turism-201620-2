@@ -156,6 +156,8 @@ public class ClientLogicTest {
         ClientEntity entity = em.find(ClientEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
+
+        
     }
 
     /**
