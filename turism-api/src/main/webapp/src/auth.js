@@ -18,6 +18,7 @@
                             $rootScope.client = true;
                             $rootScope.product = false;
                             $rootScope.commentary = false;
+                            $rootScope.users = false;
                         }
                         if (roles.indexOf("agency") !== -1) {
                             $rootScope.category = false;
@@ -25,6 +26,7 @@
                             $rootScope.client = false;
                             $rootScope.product = false;
                             $rootScope.commentary = false;
+                            $rootScope.users = false;
                         }
                         if (roles.indexOf("admin") !== -1) {
                             $rootScope.category = true;
