@@ -32,6 +32,7 @@
                             $rootScope.client = true;
                             $rootScope.product = true;
                             $rootScope.commentary = true;
+                            $rootScope.users = true;
                         }
                     }
                 });

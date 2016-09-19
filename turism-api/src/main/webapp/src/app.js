@@ -34,6 +34,7 @@ SOFTWARE.
         'categoryModule',
         'authModule',
         'roleModule',
+        'usersModule',
         'commentaryModule'
     ]);
 
@@ -105,6 +106,11 @@ SOFTWARE.
                         label: 'Commentarys',
                         icon: 'list-alt',
                         state: 'commentaryList'                    
+                    }, {
+                        id: 'users',
+                        label: 'Users',
+                        icon: 'list-alt',
+                        state: 'usersList'
                     }
                    ]
             });
