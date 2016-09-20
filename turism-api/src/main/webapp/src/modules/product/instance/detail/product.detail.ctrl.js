@@ -63,6 +63,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('productList');
                     }
+                },
+                buys: {
+                    displayName: 'Buys',
+                    icon: 'link',
+                     fn: function () {
+                        $state.go('productBuysList');
+                    }
                 }
             };
         }]);

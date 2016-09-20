@@ -16,13 +16,14 @@ copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+productS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.api;
 
+import co.edu.uniandes.csw.turism.entities.BuyEntity;
 import co.edu.uniandes.csw.turism.entities.ProductEntity;
 import java.util.List;
 
@@ -34,4 +35,11 @@ public interface IProductLogic {
     public ProductEntity createProduct(ProductEntity entity); 
     public ProductEntity updateProduct(ProductEntity entity);
     public void deleteProduct(Long id);
+    
+    
+    public List<BuyEntity> listBuys(Long productId);
+    public BuyEntity getBuys(Long productId, Long buysId);
+    public BuyEntity addBuys(Long productId, Long buysId);
+    public List<BuyEntity> replaceBuys(Long productId, List<BuyEntity> list);
+    public void removeBuys(Long productId, Long buysId);
 }

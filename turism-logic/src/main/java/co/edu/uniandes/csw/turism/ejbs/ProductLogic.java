@@ -16,14 +16,16 @@ copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+productS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.ejbs;
 
+import co.edu.uniandes.csw.turism.api.IBuyLogic;
 import co.edu.uniandes.csw.turism.api.IProductLogic;
+import co.edu.uniandes.csw.turism.entities.BuyEntity;
 import co.edu.uniandes.csw.turism.entities.ProductEntity;
 import co.edu.uniandes.csw.turism.persistence.ProductPersistence;
 import java.util.List;
@@ -40,6 +42,9 @@ public class ProductLogic implements IProductLogic {
     @Inject private ProductPersistence persistence;
 
 
+    
+    @Inject
+    private IBuyLogic buyLogic;
     /**
      * Obtiene el número de registros de Product.
      *
@@ -119,6 +124,51 @@ public class ProductLogic implements IProductLogic {
     @Override
     public void deleteProduct(Long id) {
         persistence.delete(id);
+    }
+
+    @Override
+    public List<BuyEntity> listBuys(Long productId) {
+        return getProduct(productId).getBuys();
+    }
+
+    @Override
+    public BuyEntity getBuys(Long productId, Long buysId) {
+        List<BuyEntity> list = getProduct(productId).getBuys();
+        BuyEntity buyEntity = new BuyEntity();
+        buyEntity.setId(buysId);
+        int index = list.indexOf(buyEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;}
+
+    @Override
+    public BuyEntity addBuys(Long productId, Long buysId) {
+        ProductEntity productEntity = getProduct(productId);
+        BuyEntity buysEntity = buyLogic.getBuy(buysId);
+        buysEntity.setProduct(productEntity);
+        return buysEntity;
+    }
+
+    @Override
+    public List<BuyEntity> replaceBuys(Long productId, List<BuyEntity> list) {
+        ProductEntity productEntity = getProduct(productId);
+        List<BuyEntity> buysList = buyLogic.getBuys();
+        for (BuyEntity buy : buysList) {
+            if (list.contains(buy)) {
+                buy.setProduct(productEntity);
+            } else if (buy.getProduct() != null && buy.getProduct().equals(productEntity)) {
+                buy.setProduct(null);
+            }
+        }
+        productEntity.setBuy(list);
+        return productEntity.getBuys();
+    }
+
+    @Override
+    public void removeBuys(Long productId, Long buysId) {
+        BuyEntity entity = buyLogic.getBuy(buysId);
+        entity.setProduct(null);
     }
   
 }

@@ -123,6 +123,19 @@ SOFTWARE.
 
         <script src="src/modules/users/users.ctrl.js"></script>
         <script src="src/modules/users/list/user.list.ctrl.js"></script>
+        
+        
+        
+        
+        <script src="src/modules/buy/buy.mod.js"></script>
+        <script src="src/modules/buy/buy.ctrl.js"></script>
+        <script src="src/modules/buy/instance/delete/buy.delete.ctrl.js"></script>
+        <script src="src/modules/buy/instance/detail/buy.detail.ctrl.js"></script>
+        <script src="src/modules/buy/instance/edit/buy.edit.ctrl.js"></script>
+        <script src="src/modules/buy/list/buy.list.ctrl.js"></script>
+        <script src="src/modules/buy/new/buy.new.ctrl.js"></script>
+        <script src="src/modules/product/instance/buys/edit/product.buys.edit.ctrl.js"></script>
+        <script src="src/modules/product/instance/buys/list/product.buys.list.ctrl.js"></script>
 
       <!-- /include -->
         <!-- endbuild -->
@@ -153,6 +166,7 @@ SOFTWARE.
                                 <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
                                 <li ng-if="commentary"><a ui-sref="commentaryList">Commentary</a></li>
                                 <li ng-if="users"><a ui-sref="usersList">Users</a></li>
+                                <li ng-if="users"><a ui-sref="buyList">Buys</a></li>
 
                                 </ul>
                             <ul class="nav navbar-nav navbar-right">

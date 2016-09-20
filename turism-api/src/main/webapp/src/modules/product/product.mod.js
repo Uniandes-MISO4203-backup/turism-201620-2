@@ -138,5 +138,60 @@ SOFTWARE.
                     }
                 }
             });
+            
+            
+            
+            
+            
+            $sp.state('productBuys', {
+                url: '/buys',
+                parent: 'productDetail',
+                abstract: true,
+                views: {
+                    productChieldView: {
+                        template: '<div ui-view="productBuysView"></div>'
+                    }
+                },
+                resolve: {
+                    buys: ['product', function (product) {
+                            return product.getList('buys');
+                        }],
+                    model: 'buyModel'
+                }
+            });
+            $sp.state('productBuysList', {
+                url: '/list',
+                parent: 'productBuys',
+                views: {
+                    productBuysView: {
+                        templateUrl: baseInstancePath + 'buys/list/product.buys.list.tpl.html',
+                        controller: 'productBuysListCtrl'
+                    }
+                }
+            });
+            $sp.state('productBuysEdit', {
+                url: '/edit',
+                parent: 'productBuys',
+                views: {
+                    productBuysView: {
+                        templateUrl: baseInstancePath + 'buys/edit/product.buys.edit.tpl.html',
+                        controller: 'productBuysEditCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                },
+                resolve: {
+                    pool: ['Restangular', 'model', function (r, model) {
+                            return r.all(model.url).getList();
+                        }]
+                }
+            });
+            
+            
+            
+            
+            
+            
+            
+            
 	}]);
 })(window.angular);
