@@ -20,7 +20,9 @@ import java.io.Serializable;
 public class CommentaryDTO  implements Serializable{
   private Long id ; 
   private String description; 
-
+  private Long score ;
+    
+  
 /**
 * @generated
 */ 
@@ -32,6 +34,7 @@ public class CommentaryDTO  implements Serializable{
       if (entity!=null){
         this.id=entity.getId();
         this.description = entity.getDescription();
+        this.score =  entity.getScore();
        }
   }
   
@@ -39,6 +42,7 @@ public class CommentaryDTO  implements Serializable{
       CommentaryEntity entity = new CommentaryEntity();
       entity.setId(this.getId());
       entity.setDescription(this.description);
+      entity.setScore(this.score);
       return entity;
   }
   
@@ -80,6 +84,24 @@ public class CommentaryDTO  implements Serializable{
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+     /**
+     * Obtiene el atributo score
+     *
+     * @return atributo score.
+     * @generated
+     */
+    public Long getScore() {
+        return score;
+    }
+
+     /**
+     * Establece el atributo score 
+     * @generated
+     */
+    public void setScore(Long score) {
+        this.score = score;
     }
 }
 
