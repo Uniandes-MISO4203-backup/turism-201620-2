@@ -27,8 +27,8 @@ SOFTWARE.
     mod.constant('tripModel', {
         name: 'trip',
         displayName: 'Trip',
-		url: 'trips',
-        fields: {            name: {
+        url: 'trips',
+        fields: {name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -42,7 +42,32 @@ SOFTWARE.
                 displayName: 'Price',
                 type: 'Long',
                 required: true
-            }        }
+            },
+            departureDate: {
+                displayName: 'Departure Date',
+                type: 'Date',
+                required: true
+            },
+            destination: {
+                displayName: 'Destination',
+                type: 'String',
+                required: true
+            },
+            quota: {
+                displayName: 'Quota',
+                type: 'Integer',
+                required: true
+            },
+            duration: {
+                displayName: 'Duration',
+                type: 'Integer',
+                required: true
+            },
+            transport: {
+                displayName: 'Transport',
+                type: 'String',
+                required: true
+            }}
     });
 
     mod.config(['$stateProvider',
