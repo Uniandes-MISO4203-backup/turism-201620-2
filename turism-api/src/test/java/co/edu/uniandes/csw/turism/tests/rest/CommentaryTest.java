@@ -29,6 +29,7 @@ import co.edu.uniandes.csw.turism.dtos.minimum.CommentaryDTO;
 import co.edu.uniandes.csw.turism.entities.CommentaryEntity;
 import co.edu.uniandes.csw.turism.resources.CommentaryResource;
 import co.edu.uniandes.csw.turism.tests.Utils;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
