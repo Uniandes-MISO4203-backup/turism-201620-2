@@ -16,7 +16,7 @@ copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+productS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
@@ -40,6 +40,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.turism.api.IProductLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.ProductDetailDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.ProductDTO;
 import co.edu.uniandes.csw.turism.entities.ProductEntity;
 import java.util.ArrayList;
 import javax.ws.rs.WebApplicationException;
@@ -143,6 +144,21 @@ public class ProductResource {
     @Path("{id: \\d+}")
     public void deleteProduct(@PathParam("id") Long id) {
         productLogic.deleteProduct(id);
+    }
+    
+    
+    
+    @Path("{productsId: \\d+}/buys")
+    public Class<ProductBuysResource> getProductBuysResource(@PathParam("productsId") Long productsId) {
+        existsProduct(productsId);
+        return ProductBuysResource.class;
+    }
+
+    private void existsProduct(Long productsId) {
+        ProductDTO client = getProduct(productsId);
+        if (client== null) {
+            throw new WebApplicationException(404);
+        }
     }
     
 }

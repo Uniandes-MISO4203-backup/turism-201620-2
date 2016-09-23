@@ -27,6 +27,10 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @generated
@@ -37,6 +41,19 @@ public class ProductEntity extends BaseEntity implements Serializable {
     private Long price;
     
     private Date expirationDate;
+    
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "product")
+    private List<BuyEntity> buys = new ArrayList<>();
+
+    public List<BuyEntity> getBuys() {
+        return buys;
+    }
+
+    public void setBuy(List<BuyEntity> buys) {
+        this.buys = buys;
+    }
 
     /**
      * Obtiene el atributo price.

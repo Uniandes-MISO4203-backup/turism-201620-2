@@ -19,7 +19,7 @@ public class CommentaryDetailDTO extends CommentaryDTO{
 
     @PodamExclude
     private ClientDTO client;
-     
+
     /**
      * @generated
      */
@@ -54,8 +54,8 @@ public class CommentaryDetailDTO extends CommentaryDTO{
         }
         return entity; //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+
     public ClientDTO getClient() {
         return client;
     }

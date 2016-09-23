@@ -21,8 +21,8 @@ public class CommentaryDTO  implements Serializable{
   private Long id ; 
   private String description; 
   private Long score ;
-    
-  
+
+
 /**
 * @generated
 */ 
@@ -97,7 +97,7 @@ public class CommentaryDTO  implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
      /**
      * Obtiene el atributo score
      *
@@ -109,7 +109,7 @@ public class CommentaryDTO  implements Serializable{
     }
 
      /**
-     * Establece el atributo score 
+     * Establece el atributo score
      * @generated
      */
     public void setScore(Long score) {
