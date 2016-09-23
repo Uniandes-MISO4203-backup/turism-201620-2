@@ -198,7 +198,6 @@ public class AgencyTest {
         Assert.assertEquals(Created, response.getStatus());
 
         Assert.assertEquals(agency.getName(), agencyTest.getName());
-        Assert.assertEquals(agency.getNumberPhone(), agencyTest.getNumberPhone());
 
         AgencyEntity entity = em.find(AgencyEntity.class, agencyTest.getId());
         Assert.assertNotNull(entity);
@@ -219,7 +218,6 @@ public class AgencyTest {
         
         Assert.assertEquals(agencyTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(agencyTest.getName(), oraculo.get(0).getName());
-        Assert.assertEquals(agencyTest.getNumberPhone(), oraculo.get(0).getNumberPhone());
     }
 
     /**
@@ -253,7 +251,6 @@ public class AgencyTest {
         AgencyDTO agencyChanged = factory.manufacturePojo(AgencyDTO.class);
 
         agency.setName(agencyChanged.getName());
-        agency.setNumberPhone(agencyChanged.getNumberPhone());
 
         Response response = target
             .path(agency.getId().toString())
@@ -264,7 +261,6 @@ public class AgencyTest {
 
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(agency.getName(), agencyTest.getName());
-        Assert.assertEquals(agency.getNumberPhone(), agencyTest.getNumberPhone());
     }
 
     /**

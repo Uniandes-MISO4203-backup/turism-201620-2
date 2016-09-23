@@ -156,7 +156,6 @@ public class AgencyLogicTest {
         AgencyEntity entity = em.find(AgencyEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getNumberPhone(), entity.getNumberPhone());
     }
 
     /**
@@ -192,7 +191,6 @@ public class AgencyLogicTest {
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
-        Assert.assertEquals(entity.getNumberPhone(), resultEntity.getNumberPhone());
     }
 
     /**
@@ -226,7 +224,6 @@ public class AgencyLogicTest {
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
-        Assert.assertEquals(pojoEntity.getNumberPhone(), resp.getNumberPhone());
     }
 }
 

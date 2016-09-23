@@ -124,7 +124,6 @@ public class AgencyIT {
         AgencyDTO actual_agency = detailPage.getData();
 
         Assert.assertEquals(expected_agency.getName(), actual_agency.getName());
-        Assert.assertEquals(expected_agency.getNumberPhone(), actual_agency.getNumberPhone());
     }
 
     @Test
@@ -139,7 +138,6 @@ public class AgencyIT {
         AgencyDTO actual_agency = detailPage.getData();
 
         Assert.assertEquals(expected_agency.getName(), actual_agency.getName());
-        Assert.assertEquals(expected_agency.getNumberPhone(), actual_agency.getNumberPhone());
     }
 
     @Test
