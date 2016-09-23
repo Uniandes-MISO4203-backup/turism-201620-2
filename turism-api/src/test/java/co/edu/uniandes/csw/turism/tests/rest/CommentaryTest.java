@@ -195,22 +195,15 @@ public class CommentaryTest {
        
         CommentaryDTO commentary = factory.manufacturePojo(CommentaryDTO.class);
         Cookie cookieSessionId = login(username, password);
-
         Response response = target
             .request().cookie(cookieSessionId)
             .post(Entity.entity(commentary, MediaType.APPLICATION_JSON));
-
-        //CommentaryDTO  commentaryTest = (CommentaryDTO) response.readEntity(CommentaryDTO.class);
-
-        Assert.assertEquals(1, 1);
-        /*
+        CommentaryDTO  commentaryTest = (CommentaryDTO) response.readEntity(CommentaryDTO.class);
         Assert.assertEquals(Created, response.getStatus());
-
         Assert.assertEquals(commentary.getDescription(), commentaryTest.getDescription());
         //Assert.assertEquals(commentary.getScore(), commentaryTest.getScore());
-
         CommentaryEntity entity = em.find(CommentaryEntity.class, commentaryTest.getId());
-        Assert.assertNotNull(entity); */
+        Assert.assertNotNull(entity); 
     }
 
     /**
@@ -218,7 +211,7 @@ public class CommentaryTest {
      *
      * @generated
      */
-    /*
+    
     @Test
     public void getCommentaryByIdTest() {
         Cookie cookieSessionId = login(username, password);
@@ -231,13 +224,13 @@ public class CommentaryTest {
         Assert.assertEquals(commentaryTest.getDescription(), oraculo.get(0).getDescription());
         Assert.assertEquals(commentaryTest.getScore(), oraculo.get(0).getScore());
     }
-*/
+
     /**
      * Prueba para consultar la lista de Commentarys
      *
      * @generated
      */
-    /*
+    
     @Test
     public void listCommentaryTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
@@ -250,13 +243,12 @@ public class CommentaryTest {
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(3, listCommentaryTest.size());
     }
-*/
+
     /**
      * Prueba para actualizar un Commentary
      *
      * @generated
      */
-    /*
     @Test
     public void updateCommentaryTest() throws IOException {
         Cookie cookieSessionId = login(username, password);
@@ -278,13 +270,12 @@ public class CommentaryTest {
         Assert.assertEquals(commentary.getDescription(), commentaryTest.getDescription());
         Assert.assertEquals(commentary.getScore(), commentaryTest.getScore());
     }
-*/
+
     /**
      * Prueba para eliminar un Commentary
      *
      * @generated
      */
-    /*
     @Test
     public void deleteCommentaryTest() {
         Cookie cookieSessionId = login(username, password);
@@ -294,5 +285,5 @@ public class CommentaryTest {
             .request().cookie(cookieSessionId).delete();
 
         Assert.assertEquals(OkWithoutContent, response.getStatus());
-    }*/
+    }
 }

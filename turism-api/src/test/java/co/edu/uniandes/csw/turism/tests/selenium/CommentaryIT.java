@@ -56,6 +56,9 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class CommentaryIT {
     
+    /* se commentarea la prueba se tiene algunos defectos , se espera en el siguiente ciclo 
+    corregila
+    */
     @Test
     @InSequence(0)
     public void prueba() {
