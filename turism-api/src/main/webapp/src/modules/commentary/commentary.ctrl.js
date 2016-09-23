@@ -23,9 +23,10 @@ SOFTWARE.
 */
 (function (ng) {
     var mod = ng.module('commentaryModule');
-
-    mod.controller('commentaryCtrl', ['$scope', 'model',
-        function ($scope, model) {
+    
+    mod.controller('commentaryCtrl', ['$scope', 'model','references',
+        function ($scope, model,references) {
+            $scope.references = references;
             $scope.model = model;
             //Alertas
             $scope.alerts = [];

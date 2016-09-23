@@ -30,6 +30,12 @@ public class CommentaryDTO  implements Serializable{
   {
   }  
   
+  /**
+     * Crea un objeto CommentaryDTO  a partir de un objeto CommentaryEntity.
+     *
+     * @param entity Entidad CommentaryEntity desde la cual se va a crear el nuevo objeto.
+     * @generated
+     */
   public  CommentaryDTO (CommentaryEntity entity) {
       if (entity!=null){
         this.id=entity.getId();
@@ -38,6 +44,12 @@ public class CommentaryDTO  implements Serializable{
        }
   }
   
+  /**
+     * Convierte un objeto CommentaryDTO a CommentaryEntity.
+     *
+     * @return Nueva objeto TripEntity.
+     * @generated
+     */
   public CommentaryEntity toEntity () {
       CommentaryEntity entity = new CommentaryEntity();
       entity.setId(this.getId());
