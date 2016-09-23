@@ -25,7 +25,7 @@ SOFTWARE.
 
     var mod = ng.module("tripModule");
 
-    mod.controller("tripDetailCtrl", ['$scope', "$state", "trip",
+    mod.controller("tripDetailCtrl", ['$scope', "$state", "trip", 
         function ($scope, $state, trip) {
             $scope.currentRecord = trip;
             $scope.actions = {
@@ -69,6 +69,13 @@ SOFTWARE.
                     icon: 'link',
                     fn: function () {
                         $state.go('tripCategoryList');
+                    }
+                },
+                questions: {
+                    displayName: 'FAQ',
+                    icon: 'link',
+                    fn: function () {
+                        $state.go('questionList');
                     }
                 }
             };
