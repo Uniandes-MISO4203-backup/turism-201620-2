@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.turism.dtos.detail;
 import co.edu.uniandes.csw.turism.dtos.minimum.*;
 import co.edu.uniandes.csw.turism.entities.CommentaryEntity;
 import javax.xml.bind.annotation.XmlRootElement;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -15,6 +16,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class CommentaryDetailDTO extends CommentaryDTO{
+
+    @PodamExclude
+    private ClientDTO client;
 
     /**
      * @generated
@@ -31,6 +35,9 @@ public class CommentaryDetailDTO extends CommentaryDTO{
      */
     public CommentaryDetailDTO(CommentaryEntity entity) {
         super(entity);
+        if (entity.getClient()!=null){
+            this.client= new ClientDTO(entity.getClient());
+        }
     }
 
       /**
@@ -42,7 +49,20 @@ public class CommentaryDetailDTO extends CommentaryDTO{
     @Override
     public CommentaryEntity toEntity() {
         CommentaryEntity entity = super.toEntity();//new CommentaryEntity();
+        if (this.getClient()!=null){
+           entity.setClient(this.getClient().toEntity());
+        }
         return entity; //To change body of generated methods, choose Tools | Templates.
     }
+
+
+    public ClientDTO getClient() {
+        return client;
+    }
+
+    public void setClient(ClientDTO client) {
+        this.client = client;
+    }
+
 }
 
