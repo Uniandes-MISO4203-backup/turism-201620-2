@@ -151,6 +151,7 @@ public class AgencyPersistenceTest {
         AgencyEntity entity = em.find(AgencyEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getNumberPhone(), entity.getNumberPhone());
     }
 
     /**
@@ -184,6 +185,7 @@ public class AgencyPersistenceTest {
         AgencyEntity newEntity = agencyPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getNumberPhone(), newEntity.getNumberPhone());
     }
 
     /**
@@ -217,5 +219,6 @@ public class AgencyPersistenceTest {
         AgencyEntity resp = em.find(AgencyEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getNumberPhone(), resp.getNumberPhone());
     }
 }
