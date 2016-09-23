@@ -9,6 +9,7 @@
         <class>co.edu.uniandes.csw.turism.entities.AgencyEntity</class>
         <class>co.edu.uniandes.csw.turism.entities.CategoryEntity</class>
         <class>co.edu.uniandes.csw.turism.entities.QuestionEntity</class>
+        <class>co.edu.uniandes.csw.turism.entities.CommentaryEntity</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <shared-cache-mode>NONE</shared-cache-mode>
         <properties>
