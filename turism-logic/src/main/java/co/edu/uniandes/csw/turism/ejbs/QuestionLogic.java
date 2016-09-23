@@ -78,11 +78,7 @@ public class QuestionLogic implements IQuestionLogic{
      */
     @Override
     public QuestionEntity getQuestion(Long questionid) {
-        try {
             return persistence.find(questionid);
-        }catch(NoResultException e){
-            throw new IllegalArgumentException("La pregunta no existe");
-        }
     }
     
     /**
