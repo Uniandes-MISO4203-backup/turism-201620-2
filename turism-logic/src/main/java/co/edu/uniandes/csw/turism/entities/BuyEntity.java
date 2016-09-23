@@ -19,6 +19,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class BuyEntity extends BaseEntity implements Serializable {
 
     private String description;
+    private Long quantity;
     @PodamExclude
     @ManyToOne
     private ProductEntity product;
@@ -39,6 +40,16 @@ public class BuyEntity extends BaseEntity implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setQuantity(Long quantity) {
+        this.quantity= quantity;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+     }
+    
+    
 
     
 

@@ -22,7 +22,15 @@
                 model: 'productModel',
                 options: [],
                 required: true
-            }}
+            },
+            quantity: {
+                displayName: 'Quantity',
+                type: 'String',
+                required: true
+            }
+        
+        
+        }
     });
 
     mod.config(['$stateProvider',
@@ -122,6 +130,10 @@
                 }
             });
         }]);
+    var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.names = ["Emil", "Tobias", "Linus"];
+});
 })(window.angular);
 
 

@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class BuyDTO implements Serializable{
     
     private Long id;
+    private Long quantity;
     
         public BuyDTO() {
     }
@@ -24,8 +25,10 @@ public class BuyDTO implements Serializable{
     public BuyDTO(BuyEntity entity) {
     if (entity!=null){
         this.id=entity.getId();
+        this.quantity= entity.getQuantity();
         this.name=entity.getName();
-        this.description=entity.getDescription();;
+        this.description=entity.getDescription();
+        
        }
     }
 
@@ -34,8 +37,21 @@ public class BuyDTO implements Serializable{
         entity.setId(this.getId());
         entity.setName(this.getName());
         entity.setDescription(this.getDescription());
+        entity.setQuantity(this.getQuantity());
         return entity;
     }
+    
+    
+    
+    public Long getQuantity() {
+        return quantity;
+    }
+    
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
+    }
+    
+    
     public Long getId() {
         return id;
     }
@@ -61,6 +77,7 @@ public class BuyDTO implements Serializable{
     }
     private String name;
     private String description;
+    
 
     
 }
