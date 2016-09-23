@@ -34,8 +34,8 @@ SOFTWARE.
         'categoryModule',
         'authModule',
         'roleModule',
-        'commentaryModule',
-        'questionModule'
+        'questionModule',
+        'commentaryModule'       
     ]);
 
     mod.config(['$logProvider', function ($logProvider) {
