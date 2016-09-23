@@ -71,6 +71,7 @@ SOFTWARE.
         <script src="src/modules/agency/agency.mod.js"></script>
         <script src="src/modules/category/category.mod.js"></script>
         <script src="src/modules/commentary/commentary.mod.js"></script>
+        <script src="src/modules/users/users.mod.js"></script>
        
         <script src="src/modules/client/client.ctrl.js"></script>
         <script src="src/modules/client/instance/delete/client.delete.ctrl.js"></script>
@@ -128,7 +129,10 @@ SOFTWARE.
         <script src="src/modules/commentary/instance/edit/commentary.edit.ctrl.js"></script>
         <script src="src/modules/commentary/list/commentary.list.ctrl.js"></script>
         <script src="src/modules/commentary/new/commentary.new.ctrl.js"></script>
-       
+
+        <script src="src/modules/users/users.ctrl.js"></script>
+        <script src="src/modules/users/list/user.list.ctrl.js"></script>
+
       <!-- /include -->
         <!-- endbuild -->
 
@@ -157,7 +161,8 @@ SOFTWARE.
                                 <li ng-if="product"><a ui-sref="productList">Product</a></li>
                                 <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
                                 <li ng-if="commentary"><a ui-sref="commentaryList">Commentary</a></li>
-                                 
+                                <li ng-if="users"><a ui-sref="usersList">Users</a></li>
+
                                 </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <login-button></login-button>

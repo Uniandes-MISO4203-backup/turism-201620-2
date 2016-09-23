@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-(function (ng) { 
+(function (ng) {
     var mod = ng.module('mainApp', [
         //'ngCrudMock',
         'ngCrud',
@@ -34,6 +34,7 @@ SOFTWARE.
         'categoryModule',
         'authModule',
         'roleModule',
+        'usersModule',
         'commentaryModule',
         'questionModule'
     ]);
@@ -99,13 +100,18 @@ SOFTWARE.
                         id: 'product',
                         label: 'Product',
                         icon: 'list-alt',
-                        state: 'productList'                    
+                        state: 'productList'
                     }
                     , {
                         id: 'commentary',
                         label: 'Commentarys',
                         icon: 'list-alt',
-                        state: 'commentaryList'                    
+                        state: 'commentaryList'
+                    }, {
+                        id: 'users',
+                        label: 'Users',
+                        icon: 'list-alt',
+                        state: 'usersList'
                     }
                    ]
             });

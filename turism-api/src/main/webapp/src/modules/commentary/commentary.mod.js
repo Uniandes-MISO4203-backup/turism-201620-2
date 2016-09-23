@@ -32,7 +32,19 @@ SOFTWARE.
                 displayName: 'Description',
                 type: 'String',
                 required: true
-            }        
+            },
+             client: {
+                displayName: 'Client',
+                type: 'Reference',
+                model: 'clientModel',
+                options: [],
+                required: true
+            },
+            score : {
+              displayName: 'Score',
+              type: 'Long',
+              required: true 
+            } 
         }
     });
 
@@ -52,6 +64,11 @@ SOFTWARE.
                     }
                 },
                 resolve: {
+                    references: ['$q', 'Restangular', function ($q, r) {
+                            return $q.all({
+                                  client: r.all('clients').getList()
+                            });
+                        }],
                     model: 'commentaryModel',
                     commentarys: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
@@ -78,6 +95,12 @@ SOFTWARE.
                         controller: 'commentaryNewCtrl',
                         controllerAs: 'ctrl'
                     }
+                },resolve: {
+                    references: ['$q', 'Restangular', function ($q, r) {
+                            return $q.all({
+                                  client: r.all('clients').getList()
+                            });
+                        }]
                 }
             });
             $sp.state('commentaryInstance', {
@@ -85,6 +108,11 @@ SOFTWARE.
                 abstract: true,
                 parent: 'commentary',
                 views: {
+                    references: ['$q', 'Restangular', function ($q, r) {
+                            return $q.all({
+                                  client: r.all('clients').getList()
+                            });
+                        }],
                     commentaryView: {
                         template: '<div ui-view="commentaryInstanceView"></div>'
                     }
