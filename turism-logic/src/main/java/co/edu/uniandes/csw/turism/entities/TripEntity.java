@@ -32,6 +32,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
+import javax.persistence.CascadeType;
 
 /**
  * @generated
@@ -61,6 +62,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     @OneToMany
     private List<CategoryEntity> category = new ArrayList<>();
 
+    @PodamExclude
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<QuestionEntity> questions = new ArrayList<>();
+    
     /**
      * Obtiene el atributo image.
      *
@@ -239,5 +244,25 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setCategory(List<CategoryEntity> category) {
         this.category = category;
+    }
+    
+    /**
+     * Obtiene la colección de questions.
+     *
+     * @return colección questions.
+     * @generated
+     */
+    public List<QuestionEntity> getQuestions() {
+        return questions;
+    }
+
+    /**
+     * Establece el valor de la colección de questions.
+     *
+     * @param questions nuevo valor de la colección.
+     * @generated
+     */
+    public void setQuestions(List<QuestionEntity> questions) {
+        this.questions = questions;
     }
 }
