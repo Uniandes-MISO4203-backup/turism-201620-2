@@ -40,7 +40,6 @@
     mod.config(['$stateProvider',
         function ($sp) {
             var basePath = 'src/modules/users/';
-            // var baseInstancePath = basePath + 'instance/';
 
             $sp.state('user', {
                 url: '/users?page&limit',
@@ -73,64 +72,5 @@
                     }
                 }
             });
-            // $sp.state('agencyNew', {
-            //     url: '/new',
-            //     parent: 'agency',
-            //     views: {
-            //         agencyView: {
-            //             templateUrl: basePath + 'new/agency.new.tpl.html',
-            //             controller: 'agencyNewCtrl',
-            //             controllerAs: 'ctrl'
-            //         }
-            //     }
-            // });
-            // $sp.state('agencyInstance', {
-            //     url: '/{agencyId:int}',
-            //     abstract: true,
-            //     parent: 'agency',
-            //     views: {
-            //         agencyView: {
-            //             template: '<div ui-view="agencyInstanceView"></div>'
-            //         }
-            //     },
-            //     resolve: {
-            //         agency: ['agencys', '$stateParams', function (agencys, $params) {
-            //             return agencys.get($params.agencyId);
-            //         }]
-            //     }
-            // });
-            // $sp.state('agencyDetail', {
-            //     url: '/details',
-            //     parent: 'agencyInstance',
-            //     views: {
-            //         agencyInstanceView: {
-            //             templateUrl: baseInstancePath + 'detail/agency.detail.tpl.html',
-            //             controller: 'agencyDetailCtrl'
-            //         }
-            //     }
-            // });
-            // $sp.state('agencyEdit', {
-            //     url: '/edit',
-            //     sticky: true,
-            //     parent: 'agencyInstance',
-            //     views: {
-            //         agencyInstanceView: {
-            //             templateUrl: baseInstancePath + 'edit/agency.edit.tpl.html',
-            //             controller: 'agencyEditCtrl',
-            //             controllerAs: 'ctrl'
-            //         }
-            //     }
-            // });
-            // $sp.state('agencyDelete', {
-            //     url: '/delete',
-            //     parent: 'agencyInstance',
-            //     views: {
-            //         agencyInstanceView: {
-            //             templateUrl: baseInstancePath + 'delete/agency.delete.tpl.html',
-            //             controller: 'agencyDeleteCtrl',
-            //             controllerAs: 'ctrl'
-            //         }
-            //     }
-            // });
         }]);
 })(window.angular);

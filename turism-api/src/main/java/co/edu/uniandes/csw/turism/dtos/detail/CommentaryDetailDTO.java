@@ -48,7 +48,7 @@ public class CommentaryDetailDTO extends CommentaryDTO{
      */
     @Override
     public CommentaryEntity toEntity() {
-        CommentaryEntity entity = super.toEntity();//new CommentaryEntity();
+        CommentaryEntity entity = super.toEntity();
         if (this.getClient()!=null){
            entity.setClient(this.getClient().toEntity());
         }

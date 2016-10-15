@@ -41,6 +41,7 @@ public class AgencyDTO implements Serializable{
      * @generated
      */
     public AgencyDTO() {
+        // Método auto-generado
     }
 
     /**

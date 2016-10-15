@@ -41,7 +41,6 @@ import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.turism.dtos.detail.CommentaryDetailDTO;
 import co.edu.uniandes.csw.turism.entities.CommentaryEntity;
 import java.util.ArrayList;
-import javax.ws.rs.WebApplicationException;
 import co.edu.uniandes.csw.turism.api.ICommentaryLogic;
 
 /**

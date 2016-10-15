@@ -50,7 +50,7 @@ SOFTWARE.
             $sp.state('category', {
                 url: '/categorys?page&limit',
                 abstract: true,
-                
+
                 views: {
                      mainView: {
                         templateUrl: basePath + 'category.tpl.html',

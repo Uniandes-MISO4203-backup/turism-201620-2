@@ -47,7 +47,7 @@ import java.util.ArrayList;
 @Produces(MediaType.APPLICATION_JSON)
 public class RootTripResource {
 
-    @Inject private ITripLogic TripLogic;
+    @Inject private ITripLogic tripLogic;
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
@@ -78,10 +78,10 @@ public class RootTripResource {
     @GET
     public List<TripDetailDTO> getTrips() {
         if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", TripLogic.countTrips());
-            return listEntity2DTO(TripLogic.getTrips(page, maxRecords,null));
+            this.response.setIntHeader("X-Total-Count", tripLogic.countTrips());
+            return listEntity2DTO(tripLogic.getTrips(page, maxRecords,null));
         }
-        return listEntity2DTO(TripLogic.getTrips(null,null,null));
+        return listEntity2DTO(tripLogic.getTrips(null,null,null));
     }
     
     /**
@@ -95,9 +95,9 @@ public class RootTripResource {
     @Path("{categoryid: \\d+}")
     public List<TripDetailDTO> getTripByCategory(@PathParam("categoryid") Long categoryid) {
         if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", TripLogic.countTrips());
-            return listEntity2DTO(TripLogic.getTripByCategory(page, maxRecords,categoryid));
+            this.response.setIntHeader("X-Total-Count", tripLogic.countTrips());
+            return listEntity2DTO(tripLogic.getTripByCategory(page, maxRecords,categoryid));
         }
-        return listEntity2DTO(TripLogic.getTripByCategory(null,null,categoryid));
+        return listEntity2DTO(tripLogic.getTripByCategory(null,null,categoryid));
     }
 }
