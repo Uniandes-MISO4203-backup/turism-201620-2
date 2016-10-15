@@ -61,8 +61,7 @@ public class AgencyDetailDTO extends AgencyDTO{
      */
     @Override
     public AgencyEntity toEntity() {
-        AgencyEntity entity = super.toEntity();
-        return entity;
+        return super.toEntity();
     }
 
 }

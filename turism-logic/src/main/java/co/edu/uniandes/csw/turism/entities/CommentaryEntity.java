@@ -19,7 +19,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class CommentaryEntity extends BaseEntity implements Serializable{
-    //private  long id ;
+
     private String description  ;
     private Long  score;  
     

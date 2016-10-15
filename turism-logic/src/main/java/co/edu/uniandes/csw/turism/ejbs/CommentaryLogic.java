@@ -10,7 +10,6 @@ import co.edu.uniandes.csw.turism.persistence.CommentaryPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.NoResultException; 
 import co.edu.uniandes.csw.turism.api.ICommentaryLogic;
 
 
@@ -32,6 +31,7 @@ public class CommentaryLogic implements ICommentaryLogic{
      * @return Número de registros de Product.
      * @generated
      */
+    @Override
     public int countComments() {
         return persistence.count(); //To change body of generated methods, choose Tools | Templates.
     }
@@ -51,10 +51,11 @@ public class CommentaryLogic implements ICommentaryLogic{
       /**
      * Obtiene la lista de los registros de comments
      *
+     * @param page
+     * @param maxRecords
      * @return Colección de objetos de CommentaryEntity.
      * @generated
      */
-
     @Override
     public List<CommentaryEntity> getComments(Integer page, Integer maxRecords) {
         return persistence.findAll(page, maxRecords);
@@ -63,6 +64,7 @@ public class CommentaryLogic implements ICommentaryLogic{
       /**
      * Obtiene la lista de los registros de comments
      *
+     * @param id
      * @return Colección de objetos de CommentaryEntity.
      * @generated
      */
@@ -74,19 +76,20 @@ public class CommentaryLogic implements ICommentaryLogic{
     
      /**
      * Crea un Comments 
+     * @param entity
      * @return Colección de objetos de CommentaryEntity.
      * @generated
      */
     @Override
     public CommentaryEntity createComment(CommentaryEntity entity) {
         persistence.create(entity);
-        System.out.println(" Responde ");
         return entity;
     }
 
       /**
      * Actualiza  un Comments 
      *
+     * @param entity
      * @return Instancia 
      * @generated
      */
@@ -97,7 +100,7 @@ public class CommentaryLogic implements ICommentaryLogic{
 
      /**
      * Borra  un Comments 
-     * @return instancia 
+     * @param id
      * @generated
      */
     @Override

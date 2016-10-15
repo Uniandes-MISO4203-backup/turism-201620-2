@@ -43,6 +43,7 @@ public class ProductDTO implements Serializable{
      * @generated
      */
     public ProductDTO() {
+        // Método auto-generado
     }
 
     /**

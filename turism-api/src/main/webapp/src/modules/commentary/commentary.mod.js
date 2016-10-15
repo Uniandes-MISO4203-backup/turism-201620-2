@@ -43,8 +43,8 @@ SOFTWARE.
             score : {
               displayName: 'Score',
               type: 'Long',
-              required: true 
-            } 
+              required: true
+            }
         }
     });
 
@@ -56,7 +56,7 @@ SOFTWARE.
             $sp.state('commentary', {
                 url: '/commentarys?page&limit',
                 abstract: true,
-                
+
                 views: {
                      mainView: {
                         templateUrl: basePath + 'commentary.tpl.html',

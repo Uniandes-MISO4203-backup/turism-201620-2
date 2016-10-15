@@ -29,7 +29,6 @@ import co.edu.uniandes.csw.turism.persistence.AgencyPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.NoResultException;
 
 /**
  * @generated
@@ -46,6 +45,7 @@ public class AgencyLogic implements IAgencyLogic {
      * @return Número de registros de Agency.
      * @generated
      */
+    @Override
     public int countAgencys() {
         return persistence.count();
     }
@@ -81,6 +81,7 @@ public class AgencyLogic implements IAgencyLogic {
      * @return Instancia de AgencyEntity con los datos del Agency consultado.
      * @generated
      */
+    @Override
     public AgencyEntity getAgency(Long id) {
         return persistence.find(id);
     }

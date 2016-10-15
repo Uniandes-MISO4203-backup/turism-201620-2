@@ -51,6 +51,7 @@ public class TripLogic implements ITripLogic {
      * @return Número de registros de Trip.
      * @generated
      */
+    @Override
     public int countTrips() {
         return persistence.count();
     }
