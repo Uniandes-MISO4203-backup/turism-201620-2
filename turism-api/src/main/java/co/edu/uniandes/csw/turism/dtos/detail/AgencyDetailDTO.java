@@ -50,7 +50,6 @@ public class AgencyDetailDTO extends AgencyDTO{
      */
     public AgencyDetailDTO(AgencyEntity entity) {
         super(entity);
-        
     }
 
     /**
