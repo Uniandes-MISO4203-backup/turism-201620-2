@@ -77,6 +77,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('itemList');
                     }
+                },
+                paymentMethods: {
+                    displayName: 'Payment Methods',
+                    icon: 'link',
+                    fn: function () {
+                        $state.go('paymentMethodList');
+                    }
                 }
             };
         }]);
