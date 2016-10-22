@@ -168,4 +168,10 @@ public class TripResource {
         existsTrip(tripsId);
         return QuestionResource.class;
     }
+    
+    @Path("{tripsId: \\d+}/contacts")
+    public Class<DestinationResource> getDestinationResource(@PathParam("tripsId") Long tripsId) {
+        existsTrip(tripsId);
+        return DestinationResource.class;
+    }
 }
