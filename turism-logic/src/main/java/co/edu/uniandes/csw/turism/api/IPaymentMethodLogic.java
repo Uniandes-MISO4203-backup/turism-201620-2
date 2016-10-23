@@ -17,7 +17,7 @@ public interface IPaymentMethodLogic {
     public List<PaymentMethodEntity> getPaymentMethods(Long clientId);
     public List<PaymentMethodEntity> getPaymentMethods(Integer page, Integer maxRecords, Long clientId);
     public PaymentMethodEntity getPaymentMethod(Long paymentMethodId);
-    public PaymentMethodEntity createPaymentMethod(Long paymentMethodId, PaymentMethodEntity entity);
-    public PaymentMethodEntity updatePaymentMethod(Long paymentMethodId, PaymentMethodEntity entity);
+    public PaymentMethodEntity createPaymentMethod(Long clientId, PaymentMethodEntity entity);
+    public PaymentMethodEntity updatePaymentMethod(Long clientId, PaymentMethodEntity entity);
     public void deletePaymentMethod(Long id);
 }
