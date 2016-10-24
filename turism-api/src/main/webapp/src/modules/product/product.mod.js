@@ -54,7 +54,7 @@ SOFTWARE.
             $sp.state('product', {
                 url: '/products?page&limit',
                 abstract: true,
-                
+
                 views: {
                      mainView: {
                         templateUrl: basePath + 'product.tpl.html',
@@ -138,11 +138,7 @@ SOFTWARE.
                     }
                 }
             });
-            
-            
-            
-            
-            
+
             $sp.state('productBuys', {
                 url: '/buys',
                 parent: 'productDetail',
@@ -185,13 +181,10 @@ SOFTWARE.
                         }]
                 }
             });
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
 	}]);
 })(window.angular);

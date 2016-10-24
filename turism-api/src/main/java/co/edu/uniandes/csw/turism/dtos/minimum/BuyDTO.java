@@ -18,8 +18,11 @@ public class BuyDTO implements Serializable{
     
     private Long id;
     private Long quantity;
+    private String name;
+    private String description;
     
-        public BuyDTO() {
+    public BuyDTO() {
+        // Método auto-generado
     }
 
     public BuyDTO(BuyEntity entity) {
@@ -75,9 +78,5 @@ public class BuyDTO implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
-    private String name;
-    private String description;
-    
 
-    
 }

@@ -48,7 +48,7 @@ SOFTWARE.
             $sp.state('agency', {
                 url: '/agencys?page&limit',
                 abstract: true,
-                
+
                 views: {
                      mainView: {
                         templateUrl: basePath + 'agency.tpl.html',

@@ -13,7 +13,6 @@ import co.edu.uniandes.csw.turism.entities.TripEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.NoResultException;
 
 /**
  *
@@ -33,6 +32,7 @@ public class QuestionLogic implements IQuestionLogic{
      * @return Número de registros de Question.
      * @generated
      */
+    @Override
     public int countQuestions() {
         return persistence.count();
     }

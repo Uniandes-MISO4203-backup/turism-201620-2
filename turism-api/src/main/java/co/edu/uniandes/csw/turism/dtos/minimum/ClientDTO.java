@@ -41,6 +41,7 @@ public class ClientDTO implements Serializable{
      * @generated
      */
     public ClientDTO() {
+        // Método auto-generado
     }
 
     /**

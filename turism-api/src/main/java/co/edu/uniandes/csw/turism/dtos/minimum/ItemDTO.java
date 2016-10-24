@@ -41,6 +41,7 @@ public class ItemDTO implements Serializable{
      * @generated
      */
     public ItemDTO() {
+        // Método auto-generado
     }
 
     /**

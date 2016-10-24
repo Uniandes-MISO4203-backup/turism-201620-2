@@ -50,6 +50,7 @@ public class ItemLogic implements IItemLogic {
      * @return Número de registros de Item.
      * @generated
      */
+    @Override
     public int countItems() {
         return persistence.count();
     }

@@ -48,6 +48,7 @@ public class TripDTO implements Serializable{
      * @generated
      */
     public TripDTO() {
+        // Método auto-generado
     }
 
     /**

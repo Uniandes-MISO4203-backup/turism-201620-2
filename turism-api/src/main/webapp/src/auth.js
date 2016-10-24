@@ -1,4 +1,4 @@
-(function (ng) { 
+(function (ng) {
     var mod = ng.module('roleModule', ['ngCrud']);
     mod.controller('roleCtrl', ['$rootScope', 'Restangular','$state', function ($rootScope, Restangular) {
 
