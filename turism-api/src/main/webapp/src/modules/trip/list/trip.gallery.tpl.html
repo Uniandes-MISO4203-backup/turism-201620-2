@@ -20,7 +20,7 @@
                 <div class="caption">
                     <p><strong>Name: </strong> {{trip.name}}</p>
                     <p><strong>Price: </strong> {{trip.price| currency}}</p>
-                    <button class="btn btn-default btn-sm" ng-click="addToWishlist()">Add to wish list</button>
+                    <button class="btn btn-default btn-sm" ui-sref="userWishList({trip_id:trip.id})">Add to wish list</button>
                 </div>
             </div>
         </div>

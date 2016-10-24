@@ -26,8 +26,8 @@
 
     var mod = ng.module("itemModule");
 
-    mod.controller("userItemNewCtrl", ["$scope", "$state", 'Restangular',
-        function ($scope, $state, Restangular) {
+    mod.controller("userItemNewCtrl", ["$scope", "$state", "$stateParams", 'Restangular',
+        function ($scope, $state, $stateParams, Restangular) {
             $scope.currentRecord = {};
             $scope.toolbarTitle = "My wish list";
             $scope.references = {};
@@ -64,6 +64,10 @@
                 Restangular.all('products').getList().then(function (products) {
                     $scope.references = {trip: trips, product: products};
                 })
+            });
+
+            Restangular.all('trips').getList({tripId:$stateParams.trip_id}).then(function (trip) {
+                $scope.currentRecord = {trip:trip};
             });
 
             $scope.actions = {

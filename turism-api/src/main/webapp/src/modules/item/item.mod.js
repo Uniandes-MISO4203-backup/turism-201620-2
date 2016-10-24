@@ -166,7 +166,7 @@
                 }
             });
             $sp.state('userWishList', {
-                url: '/userWishList',
+                url: '/userWishList/:trip_id',
                 views: {
                     mainView: {
                         templateUrl: basePath + 'new/userItem.new.tpl.html',
