@@ -50,6 +50,10 @@ SOFTWARE.
                 });
             };
             $scope.getCategorys("");
+
+            $scope.addToWishlist = function () {
+                $state.go('userWishList');
+            };
             
             this.pageChanged = function () {
                 $state.go('tripList', {page: this.currentPage});

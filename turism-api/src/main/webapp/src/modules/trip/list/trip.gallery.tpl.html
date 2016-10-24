@@ -9,16 +9,19 @@
     </div>
     <div class="col-md-10">
         <div ng-repeat="trip in records">
-            <div style="box-shadow: 2px 2px 5px gray; border-radius: 5px;margin: 5px" class="col-md-4 col-sm-6 col-lg-3 well">
-            <div class="col-md-12">
-                <div class="img-thumbnail" >
-                    <a ng-href="{{trip.image}}" target="_blank"><img style="width: 250px;height: 250px" class="img-responsive" ng-src="{{trip.image}}"></a>
+            <div style="box-shadow: 2px 2px 5px gray; border-radius: 5px;margin: 5px"
+                 class="col-md-4 col-sm-6 col-lg-3 well">
+                <div class="col-md-12">
+                    <div class="img-thumbnail">
+                        <a ng-href="{{trip.image}}" target="_blank"><img style="width: 250px;height: 250px"
+                                                                         class="img-responsive" ng-src="{{trip.image}}"></a>
+                    </div>
                 </div>
-            </div>
-            <div class="caption" >
-                <p><strong>Name: </strong> {{trip.name}}</p>
-                <p><strong>Price: </strong> {{trip.price| currency}}</p>              
-            </div>
+                <div class="caption">
+                    <p><strong>Name: </strong> {{trip.name}}</p>
+                    <p><strong>Price: </strong> {{trip.price| currency}}</p>
+                    <button class="btn btn-default btn-sm" ng-click="addToWishlist()">Add to wish list</button>
+                </div>
             </div>
         </div>
     </div>    

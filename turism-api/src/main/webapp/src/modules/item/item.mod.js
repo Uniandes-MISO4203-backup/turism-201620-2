@@ -1,34 +1,35 @@
 /*
-The MIT License (MIT)
+ The MIT License (MIT)
 
-Copyright (c) 2015 Los Andes University
+ Copyright (c) 2015 Los Andes University
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
 (function (ng) {
     var mod = ng.module('itemModule', ['ngCrud', 'ui.router']);
 
     mod.constant('itemModel', {
         name: 'item',
         displayName: 'Item',
-		url: 'wishList',
-        fields: {            name: {
+        url: 'wishList',
+        fields: {
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -51,11 +52,12 @@ SOFTWARE.
                 model: 'productModel',
                 options: [],
                 required: true
-            }        }
+            }
+        }
     });
 
     mod.config(['$stateProvider',
-        function($sp){
+        function ($sp) {
             var basePath = 'src/modules/item/';
             var baseInstancePath = basePath + 'instance/';
 
@@ -64,22 +66,23 @@ SOFTWARE.
                 abstract: true,
                 parent: 'clientDetail',
                 views: {
-                     clientChieldView: {
+                    clientChieldView: {
                         templateUrl: basePath + 'item.tpl.html',
                         controller: 'itemCtrl'
                     }
                 },
                 resolve: {
                     references: ['$q', 'Restangular', function ($q, r) {
-                            return $q.all({
-                                trip: r.all('trips').getList()
-,                                 product: r.all('products').getList()
-                            });
-                        }],
+                        return $q.all({
+                            trip: r.all('trips').getList()
+                            , product: r.all('products').getList()
+                        });
+                    }],
                     model: 'itemModel',
                     items: ['client', '$stateParams', 'model', function (client, $params, model) {
-                            return client.getList(model.url, $params);
-                        }]                }
+                        return client.getList(model.url, $params);
+                    }]
+                }
             });
             $sp.state('itemList', {
                 url: '/list',
@@ -114,8 +117,8 @@ SOFTWARE.
                 },
                 resolve: {
                     item: ['items', '$stateParams', function (items, $params) {
-                            return items.get($params.itemId);
-                        }]
+                        return items.get($params.itemId);
+                    }]
                 }
             });
             $sp.state('itemDetail', {
@@ -162,5 +165,15 @@ SOFTWARE.
                     }
                 }
             });
-	}]);
+            $sp.state('userWishList', {
+                url: '/userWishList',
+                views: {
+                    mainView: {
+                        templateUrl: basePath + 'new/userItem.new.tpl.html',
+                        controller: 'userItemNewCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
+        }]);
 })(window.angular);
