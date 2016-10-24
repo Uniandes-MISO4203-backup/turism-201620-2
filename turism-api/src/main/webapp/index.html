@@ -145,12 +145,34 @@ SOFTWARE.
         <script src="src/modules/buy/new/buy.new.ctrl.js"></script>
         <script src="src/modules/product/instance/buys/edit/product.buys.edit.ctrl.js"></script>
         <script src="src/modules/product/instance/buys/list/product.buys.list.ctrl.js"></script>
+        
+        
+        
+        
+        <!-- estilos personalizados-->
+        <link href="src/static/css/styles.css" rel="stylesheet">
+        <link href="src/static/css/bootstrap.min.css" rel="stylesheet">
+        <!--estilos para el carousel-->
+        <link href="src/static/css/carousel/owl.carousel.css" rel="stylesheet">
+        <link href="src/static/css/carousel/owl.theme.css" rel="stylesheet">
+        <!--fin carousel-->
+        <!--estilos para el menu-->
+        <link href="src/static/css/menu.css" rel="stylesheet">
+        <!--fin de estilos-->
+     
+     <!-- estilos personalizados-->   
+        <script src="src/static/js/jquery.min.js"></script>
+        <script src="src/static/js/owl.carousel.js"></script>
+        <script src="src/static/js/bootstrap.min.js"></script>
+        <script src="src/static/js/owl.carousel.js"></script>
+        
 
       <!-- /include -->
         <!-- endbuild -->
+        
 
     </head>
-    <body style="padding-top: 60px;">
+    <body  style="padding-top: 60px;">  
         <div class="container-fluid">
             <div class="col-md-12">
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -163,7 +185,7 @@ SOFTWARE.
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" ui-sref="tripGallery">Turism</a>
+                            <a class="navbar-brand" ui-sref="tripGallery">WalkersDevelop</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -181,11 +203,27 @@ SOFTWARE.
                             <ul class="nav navbar-nav navbar-right">
                                 <login-button></login-button>
                             </ul>
+                            
                         </div> <!-- /.navbar-collapse -->
                     </div> <!-- /.container-fluid -->
                 </nav>
             </div>
             <div ui-view="mainView"></div>
         </div>
-    </body>
+     
+    <section class="copyright">
+        <h2></h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="copy_right_text">
+                    <!-- COPYRIGHT TEXT -->
+                        <p>Copyright &copy; 2016. All Rights Reserved.</p>        
+                        <p>WalkerDevelopers</p>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </section>
+        </body>
 </html>
