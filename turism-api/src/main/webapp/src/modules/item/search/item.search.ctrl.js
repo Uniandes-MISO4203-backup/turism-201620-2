@@ -26,8 +26,8 @@ SOFTWARE.
 
     var mod = ng.module("itemModule");
 
-    mod.controller("itemSearchCtrl", ["$scope", "$state", "items",
-        function ($scope, $state, items) {
+    mod.controller("itemSearchCtrl", ["$scope", "$state",
+        function ($scope, $state) {
             $scope.show=false;
             $scope.currentRecord = {};
             $scope.actions = {

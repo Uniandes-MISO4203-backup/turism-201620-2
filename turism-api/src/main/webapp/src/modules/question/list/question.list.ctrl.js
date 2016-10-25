@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,8 +7,8 @@
 
     var mod = ng.module("questionModule");
 
-    mod.controller("questionListCtrl", ["$scope", '$state', 'questions', '$stateParams','Restangular',
-        function ($scope, $state, questions, $params,Restangular) {
+    mod.controller("questionListCtrl", ["$scope", '$state', 'questions', '$stateParams',
+        function ($scope, $state, questions, $params) {
             $scope.records = questions;
 
             //Paginación

@@ -23,12 +23,12 @@ public class CommentaryDTO  implements Serializable{
   private Long score ;
 
 
-/**
-* @generated
-*/ 
-  public CommentaryDTO () 
-  {
-  }  
+    /**
+     * @generated
+     */
+    public CommentaryDTO() {
+        // Método auto-generado
+    }  
   
   /**
      * Crea un objeto CommentaryDTO  a partir de un objeto CommentaryEntity.

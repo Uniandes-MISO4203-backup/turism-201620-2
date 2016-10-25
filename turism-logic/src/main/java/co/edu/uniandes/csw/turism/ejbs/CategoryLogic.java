@@ -29,7 +29,6 @@ import co.edu.uniandes.csw.turism.persistence.CategoryPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.NoResultException;
 
 /**
  * @generated
@@ -46,6 +45,7 @@ public class CategoryLogic implements ICategoryLogic {
      * @return Número de registros de Category.
      * @generated
      */
+    @Override
     public int countCategorys() {
         return persistence.count();
     }
@@ -88,7 +88,7 @@ public class CategoryLogic implements ICategoryLogic {
     /**
      * Obtiene la lista de los registros de Category indicando su padre.
      *
-     * * @param parentCategoryid Categoria padre.
+     * @param parentCategoryid Categoria padre.
      * @return Colección de objetos de CategoryEntity.
      * @generated
      */
@@ -104,6 +104,7 @@ public class CategoryLogic implements ICategoryLogic {
      * @return Instancia de CategoryEntity con los datos del Category consultado.
      * @generated
      */
+    @Override
     public CategoryEntity getCategory(Long id) {
         return persistence.find(id);
     }

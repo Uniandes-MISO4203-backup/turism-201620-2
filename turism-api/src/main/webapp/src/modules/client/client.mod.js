@@ -48,7 +48,7 @@ SOFTWARE.
             $sp.state('client', {
                 url: '/clients?page&limit',
                 abstract: true,
-                
+
                 views: {
                      mainView: {
                         templateUrl: basePath + 'client.tpl.html',

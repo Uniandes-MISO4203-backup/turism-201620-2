@@ -35,11 +35,9 @@ SOFTWARE.
                     icon: 'save',
                     fn: function () {
                         if ($scope.commentaryForm.$valid) {
-                           //alert (" Responde 38");
                                commentarys.post($scope.currentRecord).then(function (rc) {
                                $state.go('commentaryDetail', {commentaryId: rc.id}, {reload: true});
                             });
-                            //alert (" Responde !!! scope "+$scope.currentRecord+" state "+$state);
                         }
                     }
                 },

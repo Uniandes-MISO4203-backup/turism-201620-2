@@ -24,6 +24,7 @@ public class QuestionDTO implements Serializable{
      * @generated
      */
     public QuestionDTO() {
+        // Método auto-generado
     }
 
     /**

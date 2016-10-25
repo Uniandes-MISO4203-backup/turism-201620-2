@@ -29,15 +29,10 @@
         function ($scope, $state, clients, agencies, $params, $rootScope) {
             $scope.clients = clients;
             $scope.agencies = agencies;
-            console.log(clients);
-            console.log(agencies);
-
-            var roles = $rootScope.roles;
 
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
-            // this.totalItems = users.totalRecords;
 
             this.pageChanged = function () {
                 $state.go('usersList', {page: this.currentPage});
