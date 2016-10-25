@@ -24,15 +24,14 @@ SOFTWARE.
 package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
+import javax.persistence.*;
+
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
-import java.sql.Date;
+import java.util.Date;
 import uk.co.jemos.podam.common.PodamExclude;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import java.util.List;
 import java.util.ArrayList;
-import javax.persistence.CascadeType;
 
 /**
  * @generated
@@ -43,7 +42,8 @@ public class TripEntity extends BaseEntity implements Serializable {
     private String image;
 
     private Long price;
-    
+
+    @Temporal(TemporalType.DATE)
     private Date departureDate;
     
     private String destination;
