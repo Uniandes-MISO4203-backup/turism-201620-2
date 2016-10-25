@@ -68,7 +68,7 @@ SOFTWARE.
     mod.config(['authServiceProvider', function (auth) {
             auth.setValues({
                 apiUrl: 'api/users/',
-                successState: 'tripGallery',
+                successState: 'tripGallery'
             });
             auth.setRoles({
                 'client': [{
