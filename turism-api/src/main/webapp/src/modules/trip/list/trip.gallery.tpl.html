@@ -21,16 +21,8 @@
                     <p style="text-align:right; margin-right: 18px;">Por noche desde<br> {{trip.price| currency}}</p>
                     <button class="btn btn-default btn-sm" ui-sref="userWishList({trip_id:trip.id})">Add to wish list
                     </button>
+                    <a ui-sref="tripDetailsInfo({tripId:trip.id})" ><p>Detalle</p></a>
                 </div>
-<<<<<<< HEAD
-            </div>
-            <div class="caption" >
-                <p><strong>Name: </strong> {{trip.name}}</p>
-                <p><strong>Price: </strong> {{trip.price| currency}}</p>  
-                <a ui-sref="tripDetailsInfo({tripId:trip.id})" ><p>Detalle</p></a>
-            </div>
-=======
->>>>>>> 0f4fdbf87f653c8cb2b16485e288771dc28fdd32
             </div>
         </div>
     </div>
