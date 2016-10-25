@@ -82,7 +82,7 @@ public class PaymentMethodLogic implements IPaymentMethodLogic {
         try {
             return persistence.find(paymentMethodId);
         } catch (NoResultException e) {
-            throw new IllegalArgumentException("El PaymentMethod no existe");
+            throw new IllegalArgumentException("El PaymentMethod no existe", e);
         }
     }
 
