@@ -17,7 +17,8 @@
             </div>
             <div class="caption" >
                 <p><strong>Name: </strong> {{trip.name}}</p>
-                <p><strong>Price: </strong> {{trip.price| currency}}</p>              
+                <p><strong>Price: </strong> {{trip.price| currency}}</p>  
+                <a ui-sref="tripDetailsInfo({tripId:trip.id})" ><p>Detalle</p></a>
             </div>
             </div>
         </div>
