@@ -191,25 +191,21 @@ public class UserItemTest {
      *
      * @generated
      */
-//    @Test
-//    public void createItemTest() throws IOException {
-//        ItemDTO item = factory.manufacturePojo(ItemDTO.class);
-//        Cookie cookieSessionId = login(username, password);
-//
-//        Response response = target
-//                .request().cookie(cookieSessionId)
-//                .post(Entity.entity(item, MediaType.APPLICATION_JSON));
-//
-//        ItemDTO itemTest = (ItemDTO) response.readEntity(ItemDTO.class);
-//
-//        Assert.assertEquals(Created, response.getStatus());
-//
-//        Assert.assertEquals(item.getName(), itemTest.getName());
-//        Assert.assertEquals(item.getQty(), itemTest.getQty());
-//
-//        ItemEntity entity = em.find(ItemEntity.class, itemTest.getId());
-//        Assert.assertNotNull(entity);
-//    }
+    @Test
+    public void createItemTest() throws IOException {
+        ItemDTO item = factory.manufacturePojo(ItemDTO.class);
+        Cookie cookieSessionId = login(username, password);
+
+        Response response = target
+                .request().cookie(cookieSessionId)
+                .post(Entity.entity(item, MediaType.APPLICATION_JSON));
+
+        ItemDTO itemTest = (ItemDTO) response.readEntity(ItemDTO.class);
+
+        Assert.assertEquals(Created, response.getStatus());
+        ItemEntity entity = em.find(ItemEntity.class, itemTest.getId());
+        Assert.assertNotNull(entity);
+    }
 
     /**
      * Prueba para consultar la lista de Items
@@ -223,8 +219,6 @@ public class UserItemTest {
         Response response = target
                 .request().cookie(cookieSessionId).get();
 
-        String listItem = response.readEntity(String.class);
-        List<ItemDTO> listItemTest = new ObjectMapper().readValue(listItem, List.class);
         Assert.assertEquals(Ok, response.getStatus());
     }
 

@@ -91,11 +91,13 @@ public class UserItemResource {
         if (accountHref != null) {
             Account account = Utils.getClient().getResource(accountHref, Account.class);
             Integer clientsId = (Integer) account.getCustomData().get("client_id");
-            if (page != null && maxRecords != null) {
-                this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
-                return listEntity2DTO(itemLogic.getItems(page, maxRecords, clientsId.longValue()));
+            if(clientsId != null) {
+                if (page != null && maxRecords != null) {
+                    this.response.setIntHeader("X-Total-Count", itemLogic.countItems());
+                    return listEntity2DTO(itemLogic.getItems(page, maxRecords, clientsId.longValue()));
+                }
+                return listEntity2DTO(itemLogic.getItems(clientsId.longValue()));
             }
-            return listEntity2DTO(itemLogic.getItems(clientsId.longValue()));
         }
         throw new WebApplicationException("User not authorized to do this", 403);
     }
