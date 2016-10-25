@@ -28,6 +28,7 @@ SOFTWARE.
         'ui.router',
         'clientModule',
         'itemModule',
+        'paymentMethodModule',
         'tripModule',
         'productModule',
         'agencyModule',
@@ -61,13 +62,13 @@ SOFTWARE.
         }]);
 
     mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-                $urlRouterProvider.otherwise('/');
+                $urlRouterProvider.otherwise('/tripGallery');
         }]);
 
     mod.config(['authServiceProvider', function (auth) {
             auth.setValues({
                 apiUrl: 'api/users/',
-                successState: 'tripGallery'
+                successState: 'tripGallery',
             });
             auth.setRoles({
                 'client': [{

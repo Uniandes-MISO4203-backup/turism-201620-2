@@ -83,7 +83,7 @@ public class RootTripResource {
         }
         return listEntity2DTO(tripLogic.getTrips(null,null,null));
     }
-    
+        
     /**
      * Obtiene la lista de los registros de Trip por categoria.
      *
@@ -100,4 +100,10 @@ public class RootTripResource {
         }
         return listEntity2DTO(tripLogic.getTripByCategory(null,null,categoryid));
     }
+    
+   @GET
+   @Path("detail/{id: \\d+}")
+   public TripDetailDTO getTripDetail(@PathParam("id") Long id) {
+       return new TripDetailDTO(tripLogic.getTrip(id));
+   }
 }

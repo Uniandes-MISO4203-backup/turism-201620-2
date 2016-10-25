@@ -174,11 +174,16 @@ public class ClientResource {
         }
     }
     
-    
     @Path("{clientsId: \\d+}/wishList")
     public Class<ItemResource> getItemResource(@PathParam("clientsId") Long clientsId){
         existsClient(clientsId);
         return ItemResource.class;
+    }
+    
+    @Path("{clientId: \\d+}/paymentMethods")
+    public Class<PaymentMethodResource> getPaymentMethodResource(@PathParam("clientId") Long clientId){
+        existsClient(clientId);
+        return PaymentMethodResource.class;
     }
     
 }

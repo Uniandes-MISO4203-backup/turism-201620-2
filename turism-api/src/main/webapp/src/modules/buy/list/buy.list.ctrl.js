@@ -2,9 +2,10 @@
 
     var mod = ng.module("buyModule");
 
-    mod.controller("buyListCtrl", ["$scope", '$state', 'buys', '$stateParams','Restangular',
-        function ($scope, $state, buys, $params,Restangular) {
+    mod.controller("buyListCtrl", ["$scope", '$state', 'buys', 'products', '$stateParams','Restangular',
+        function ($scope, $state, buys, products, $params,Restangular) {
             $scope.records = buys;
+            $scope.products = products;
 
             //Paginación
             this.itemsPerPage = $params.limit;
@@ -47,6 +48,23 @@
                         $state.reload();
                     }
                 }            };
+            
+            
+            
+            $scope.productActions = {
+                detail: {
+                    displayName: 'Detail',
+                    icon: 'eye-open',
+                    fn: function (rc) {
+                        $state.go('productDetail', {productId: rc.id});
+                    },
+                    show: function () {
+                        return true;
+                    }
+                }
+            };
+            
+            
             $scope.recordActions = {
                 detail: {
                     displayName: 'Detail',

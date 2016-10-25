@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module('buyModule', ['ngCrud', 'ui.router']);
+    var mod = ng.module('buyModule', ['ngCrud', 'ui.router','productModule']);
 
     mod.constant('buyModel', {
         name: 'buy',
@@ -56,7 +56,12 @@
                     model: 'buyModel',
                     buys: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
-                        }]
+                        }],                    
+                    products: ['Restangular', 'productModel', '$stateParams', function (r, productModel, $params) {
+                        return r.all(productModel.url).getList($params);
+                    }]
+                    
+                    
                 }
             });
             $sp.state('buyList', {
