@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<header>
+    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+</header>
+<div class="container-fluid well">
+    <div class="col-md-12">
+        <p>
+            <label><strong>Name: </strong></label>
+            <span id="name">{{currentRecord.name}}</span>
+        </p>
+        <p>
+            <label><strong>Type: </strong></label>
+            <span id="type">{{currentRecord.cardType}}</span>
+        </p>
+        <p>
+            <label><strong>Card Number: </strong></label>
+            <span id="cardNumber">{{currentRecord.cardNumber}}</span>
+        </p>
+        <p>
+            <label><strong>Expiration Month: </strong></label>
+            <span id="expirationMonth">{{currentRecord.expirationMonth}}</span>
+        </p>
+        <p>
+            <label><strong>Expiration Year: </strong></label>
+            <span id="expirationYear">{{currentRecord.expirationYear}}</span>
+        </p>
+    </div>
+</div>
+<div ui-view="paymentMethodChieldView"></div>
