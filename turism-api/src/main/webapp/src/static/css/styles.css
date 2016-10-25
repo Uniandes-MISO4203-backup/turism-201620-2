@@ -23,6 +23,33 @@ min-height:92px !important;
     font-size: larger;
 }
 
+.well{
+    background-color: #ffffff !important;
+    border: none !important;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+.img-thumbnail{
+    border: none !important;
+    background-size: cover;
+}
+
+
+.text_encima {
+	position: absolute;
+	color: #ffffff;
+	font-size: 20px;
+        margin-left: 5px;
+        margin-top: 5px;
+        line-height: 20px;
+           
+}
+#textogallery{
+    margin-right: 8px;
+}
+
 /*---------------------------------------
    SECTION ABOUT              
 -----------------------------------------*/
