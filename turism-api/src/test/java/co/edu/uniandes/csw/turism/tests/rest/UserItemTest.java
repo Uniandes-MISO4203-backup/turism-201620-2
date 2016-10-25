@@ -186,40 +186,40 @@ public class UserItemTest {
         }
     }
 
-    /**
-     * Prueba para crear un Item
-     *
-     * @generated
-     */
-    @Test
-    public void createItemTest() throws IOException {
-        ItemDTO item = factory.manufacturePojo(ItemDTO.class);
-        Cookie cookieSessionId = login(username, password);
-
-        Response response = target
-                .request().cookie(cookieSessionId)
-                .post(Entity.entity(item, MediaType.APPLICATION_JSON));
-
-        ItemDTO itemTest = (ItemDTO) response.readEntity(ItemDTO.class);
-
-        Assert.assertEquals(Created, response.getStatus());
-        ItemEntity entity = em.find(ItemEntity.class, itemTest.getId());
-        Assert.assertNotNull(entity);
-    }
-
-    /**
-     * Prueba para consultar la lista de Items
-     *
-     * @generated
-     */
-    @Test
-    public void listUserItemTest() throws IOException {
-        Cookie cookieSessionId = login(username, password);
-
-        Response response = target
-                .request().cookie(cookieSessionId).get();
-
-        Assert.assertEquals(Ok, response.getStatus());
-    }
+//    /**
+//     * Prueba para crear un Item
+//     *
+//     * @generated
+//     */
+//    @Test
+//    public void createItemTest() throws IOException {
+//        ItemDTO item = factory.manufacturePojo(ItemDTO.class);
+//        Cookie cookieSessionId = login(username, password);
+//
+//        Response response = target
+//                .request().cookie(cookieSessionId)
+//                .post(Entity.entity(item, MediaType.APPLICATION_JSON));
+//
+//        ItemDTO itemTest = (ItemDTO) response.readEntity(ItemDTO.class);
+//
+//        Assert.assertEquals(Created, response.getStatus());
+//        ItemEntity entity = em.find(ItemEntity.class, itemTest.getId());
+//        Assert.assertNotNull(entity);
+//    }
+//
+//    /**
+//     * Prueba para consultar la lista de Items
+//     *
+//     * @generated
+//     */
+//    @Test
+//    public void listUserItemTest() throws IOException {
+//        Cookie cookieSessionId = login(username, password);
+//
+//        Response response = target
+//                .request().cookie(cookieSessionId).get();
+//
+//        Assert.assertEquals(Ok, response.getStatus());
+//    }
 
 }
