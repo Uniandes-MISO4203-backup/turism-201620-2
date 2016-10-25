@@ -26,9 +26,10 @@ SOFTWARE.
     var mod = ng.module("tripModule");
 
     mod.controller("tripDetailsCtrl", ["$scope", '$state', 'trip', '$stateParams','Restangular',
-        function ($scope, $state, trip, $params,Restangular) {
+        function ($scope, $state, trip, $stateParams,Restangular) {
             $scope.currentRecord = trip;
 
+            console.log("aca entra");
             
         }]);
 })(window.angular);

@@ -222,7 +222,7 @@ SOFTWARE.
             $sp.state('tripDetailsInfo', {
                 url: '/tripDetailsInfo/{tripId:int}',
                 views: {
-                     detailsInfoView: {
+                    mainView: {
                         templateUrl: basePath + 'details/trip.details.tpl.html',
                         controller: 'tripDetailsCtrl',
                         controllerAs: 'ctrl'
@@ -231,6 +231,7 @@ SOFTWARE.
                 resolve: {
                     model: 'tripModel',
                     trip: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                        console.log("esto se llama");
                             return r.all(model.url1).get($params.tripId);
                         }]                }
             });
