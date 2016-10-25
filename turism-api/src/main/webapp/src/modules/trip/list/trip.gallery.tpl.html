@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<div class="list">            
-    <div ng-if="true" class="col-md-2 well" >
+<div class="list">
+    <div ng-if="true" class="col-md-2">
         <h4>Categorías</h4>
         <span style="cursor: pointer" class="glyphicon glyphicon-repeat" ng-click="filtrar('')"></span>
         <ul style="list-style:none">
-            <li ng-repeat="category in categorys"><a ng-click="filtrar(category.id)" style="cursor: pointer">{{category.name}}</a></li>
+            <li ng-repeat="category in categorys"><a ng-click="filtrar(category.id)" style="cursor: pointer">{{category.name}}</a>
+            </li>
         </ul>
     </div>
     <div class="col-md-10">
         <div ng-repeat="trip in records">
-            <div style="box-shadow: 2px 2px 5px gray; border-radius: 5px;margin: 5px"
-                 class="col-md-4 col-sm-6 col-lg-3 well">
+            <div class="col-md-4 col-sm-6 col-lg-4">
                 <div class="col-md-12">
-                    <div class="img-thumbnail">
-                        <a ng-href="{{trip.image}}" target="_blank"><img style="width: 250px;height: 250px"
-                                                                         class="img-responsive" ng-src="{{trip.image}}"></a>
-                    </div>
+                    <span class="text_encima">{{trip.name}}</span>
+                    <a ng-href="{{trip.image}}" target="_blank"><img style="width: 420px;height: 210px"
+                                                                     class="img-responsive" ng-src="{{trip.image}}"></a>
+
                 </div>
                 <div class="caption">
-                    <p><strong>Name: </strong> {{trip.name}}</p>
-                    <p><strong>Price: </strong> {{trip.price| currency}}</p>
-                    <button class="btn btn-default btn-sm" ui-sref="userWishList({trip_id:trip.id})">Add to wish list</button>
+                    <p style="text-align:right; margin-right: 18px;">Por noche desde<br> {{trip.price| currency}}</p>
+                    <button class="btn btn-default btn-sm" ui-sref="userWishList({trip_id:trip.id})">Add to wish list
+                    </button>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
+
