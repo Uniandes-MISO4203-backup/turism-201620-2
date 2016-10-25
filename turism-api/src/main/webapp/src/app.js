@@ -28,6 +28,7 @@ SOFTWARE.
         'ui.router',
         'clientModule',
         'itemModule',
+        'paymentMethodModule',
         'tripModule',
         'productModule',
         'agencyModule',
