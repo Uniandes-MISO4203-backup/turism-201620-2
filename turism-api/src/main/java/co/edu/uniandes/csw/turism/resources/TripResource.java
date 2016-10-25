@@ -169,7 +169,7 @@ public class TripResource {
         return QuestionResource.class;
     }
     
-    @Path("{tripsId: \\d+}/contacts")
+    @Path("{tripsId: \\d+}/destinations")
     public Class<DestinationResource> getDestinationResource(@PathParam("tripsId") Long tripsId) {
         existsTrip(tripsId);
         return DestinationResource.class;
