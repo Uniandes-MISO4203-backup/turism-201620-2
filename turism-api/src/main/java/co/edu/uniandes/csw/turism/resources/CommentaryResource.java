@@ -42,9 +42,10 @@ import co.edu.uniandes.csw.turism.dtos.detail.CommentaryDetailDTO;
 import co.edu.uniandes.csw.turism.entities.CommentaryEntity;
 import java.util.ArrayList;
 import co.edu.uniandes.csw.turism.api.ICommentaryLogic;
+import javax.ws.rs.WebApplicationException;
 
 /**
- * URI: commentarys/
+ * URI: trips/{comentaryId: \\d+}/commentarys/
  * @generated
  */
 @Path("/commentarys")
@@ -56,6 +57,7 @@ public class CommentaryResource {
     @Context private HttpServletResponse response;
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
+    @PathParam("tripsId") private Long tripsId;
 
    
     /**
@@ -82,11 +84,11 @@ public class CommentaryResource {
      */
     @GET
     public List<CommentaryDetailDTO> getComments (){
-        if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", commentaryLogic.countComments());
-            return listEntity2DTO(commentaryLogic.getComments(page, maxRecords));
+       if (page != null && maxRecords != null) {
+            this.response.setIntHeader("X-Total-Count",commentaryLogic.countComments());
+            return listEntity2DTO(commentaryLogic.getComments(page, maxRecords, tripsId));
         }
-        return listEntity2DTO(commentaryLogic.getComments());
+        return listEntity2DTO(commentaryLogic.getComments(tripsId));
     }
 
     /**
@@ -97,13 +99,17 @@ public class CommentaryResource {
      * @generated
      */
     @GET
-    @Path("{id: \\d+}")
-    public CommentaryDetailDTO getComment(@PathParam("id") Long id) {
-        return new CommentaryDetailDTO(commentaryLogic.getComment(id));
+    @Path("{commentaryId: \\d+}")
+    public CommentaryDetailDTO getComment(@PathParam("commentaryId") Long commentaryId) {
+       CommentaryEntity  entity = commentaryLogic.getComment(commentaryId);
+        if (entity.getTrip() != null && !tripsId.equals(entity.getTrip().getId())) {
+            throw new WebApplicationException(404);
+        }
+        return new CommentaryDetailDTO (entity);
     }
-
+    
     /**
-     * Se encarga de crear un Comments en la base de datos
+     * Se encarga de crear un Commentys en la base de datos
      *
      * @param dto Objeto de CommentaryDetailDTO con los datos nuevos
      * @return Objeto de CommentsDetailDTOcon los datos nuevos y su ID
@@ -112,7 +118,7 @@ public class CommentaryResource {
     @POST
     @StatusCreated
     public CommentaryDetailDTO createCommentary(CommentaryDetailDTO dto) {
-        return new CommentaryDetailDTO(commentaryLogic.createComment(dto.toEntity()));
+        return new CommentaryDetailDTO (commentaryLogic.createComment(tripsId, dto.toEntity()));
     }
 
     /**
@@ -124,12 +130,12 @@ public class CommentaryResource {
      * @generated
      */
     @PUT
-    @Path("{id: \\d+}")
-    public CommentaryDetailDTO updateComment(@PathParam("id") Long id, CommentaryDetailDTO dto) {
+    @Path("{commentaryId: \\d+}")
+    public CommentaryDetailDTO updateComment(@PathParam("commentaryId") Long commentaryId, CommentaryDetailDTO dto) {
         CommentaryEntity entity = dto.toEntity();
-        entity.setId(id);
-        CommentaryEntity oldEntity = commentaryLogic.getComment(id);
-        return new CommentaryDetailDTO( commentaryLogic.updateComment(entity));
+        entity.setId(commentaryId);
+        CommentaryEntity oldEntity = commentaryLogic.getComment(commentaryId);
+        return new CommentaryDetailDTO( commentaryLogic.updateComment(tripsId, entity));
     }
 
     /**
@@ -139,9 +145,9 @@ public class CommentaryResource {
      * @generated
      */
     @DELETE
-    @Path("{id: \\d+}")
-    public void deletComment(@PathParam("id") Long id) {
-        commentaryLogic.deleteComment(id);
+    @Path("{commentaryId: \\d+}")
+    public void deletComment(@PathParam("commentaryId") Long commentaryId) {
+        commentaryLogic.deleteComment(commentaryId);
     }
     
 }

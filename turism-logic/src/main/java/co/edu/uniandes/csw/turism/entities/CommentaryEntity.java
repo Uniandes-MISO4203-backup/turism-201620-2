@@ -25,8 +25,8 @@ public class CommentaryEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @ManyToOne
-    private ClientEntity  client;
-     
+    private TripEntity  trip;
+
       /**
      * Obtiene el atributo description.
      *
@@ -39,6 +39,7 @@ public class CommentaryEntity extends BaseEntity implements Serializable{
     
       /**
      * establece el atributo  description.
+     * @param description
      * @generated
      */
 
@@ -61,12 +62,12 @@ public class CommentaryEntity extends BaseEntity implements Serializable{
     public void setScore(Long score) {
         this.score = score;
     }
-    
-    public ClientEntity getClient() {
-        return client;
+     
+    public TripEntity getTrip() {
+        return trip;
     }
 
-    public void setClient(ClientEntity client) {
-        this.client = client;
+    public void setTrip(TripEntity trip) {
+        this.trip = trip;
     }
 }

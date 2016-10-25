@@ -13,10 +13,10 @@ import java.util.List;
  */
 public interface ICommentaryLogic {
      public int countComments();
-    public List<CommentaryEntity> getComments();
-    public List<CommentaryEntity> getComments(Integer page, Integer maxRecords);
-    public CommentaryEntity getComment(Long id);
-    public CommentaryEntity createComment(CommentaryEntity entity); 
-    public CommentaryEntity updateComment(CommentaryEntity entity);
+    public List<CommentaryEntity> getComments(Long tripid);
+    public List<CommentaryEntity> getComments(Integer page, Integer maxRecords, Long tripid);
+    public CommentaryEntity getComment(Long commentid);
+    public CommentaryEntity createComment(Long tripid,CommentaryEntity entity); 
+    public CommentaryEntity updateComment(Long tripid,CommentaryEntity entity);
     public void deleteComment(Long id);
 }
