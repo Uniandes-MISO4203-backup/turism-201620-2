@@ -13,15 +13,12 @@
             <div class="col-md-4 col-sm-6 col-lg-4">
                 <div class="col-md-12">
                     <span class="text_encima">{{trip.name}}</span>
-                    <a ng-href="{{trip.image}}" target="_blank"><img style="width: 420px;height: 210px"
-                                                                     class="img-responsive" ng-src="{{trip.image}}"></a>
-
+                    <a ng-href="{{trip.image}}" ui-sref="tripDetailsInfo({tripId:trip.id})"><img style="width: 420px;height: 210px" class="img-responsive" ng-src="{{trip.image}}"></a>
                 </div>
                 <div class="caption">
                     <p style="text-align:right; margin-right: 18px;">Por noche desde<br> {{trip.price| currency}}</p>
                     <button class="btn btn-default btn-sm" ui-sref="userWishList({trip_id:trip.id})">Add to wish list
                     </button>
-                    <a ui-sref="tripDetailsInfo({tripId:trip.id})" ><p>Detalle</p></a>
                 </div>
             </div>
         </div>
