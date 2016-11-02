@@ -1,6 +1,9 @@
+
 <header>
     <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
 </header>
+<div class="col-md-6">
+    <h3>Mis productos</h3>
 <list-records fields="model.fields" records="records" actions="recordActions"></list-records>
 <pagination ng-if="ctrl.itemsPerPage < ctrl.totalItems"
             total-items="ctrl.totalItems"
@@ -12,3 +15,8 @@
             boundary-links="true" 
             rotate="false">
 </pagination>
+</div>
+<div class="col-md-6">
+    <h3>Productos mas Vendidos</h3>
+<list-records fields="model.fields" records="products" actions="productActions"></list-records>
+</div>

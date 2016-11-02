@@ -28,6 +28,7 @@ SOFTWARE.
         name: 'trip',
         displayName: 'Trip',
         url: 'trips',
+        url1: 'trips/detail',
         fields: {name: {
                 displayName: 'Name',
                 type: 'String',
@@ -220,6 +221,22 @@ SOFTWARE.
                     model: 'tripModel',
                     trips: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
+                        }]                }
+            });
+            $sp.state('tripDetailsInfo', {
+                url: '/tripDetailsInfo/{tripId:int}',
+                views: {
+                    mainView: {
+                        templateUrl: basePath + 'details/trip.details.tpl.html',
+                        controller: 'tripDetailsCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                },
+                resolve: {
+                    model: 'tripModel',
+                    trip: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                        console.log("esto se llama");
+                            return r.all(model.url1).get($params.tripId);
                         }]                }
             });
 	}]);
