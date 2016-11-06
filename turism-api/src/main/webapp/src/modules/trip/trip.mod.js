@@ -39,7 +39,11 @@ SOFTWARE.
                 type: 'Image',
                 required: true
             },
-            price: {
+            promotion : {
+                displayName: 'Is Promotion',
+                type: 'Boolean',
+                required: true
+            },price: {
                 displayName: 'Price',
                 type: 'Long',
                 required: true

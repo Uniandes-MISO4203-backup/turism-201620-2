@@ -27,8 +27,12 @@ SOFTWARE.
 <div  class="container-fluid well">
     <div class="col-md-12">
         <p>
-        <label><strong> Commentary: </strong></label><span id="commentary"> {{currentRecord.comentary}}</span>
+        <label><strong>Descripcion: </strong></label><span id="description"> {{currentRecord.description}}</span>
+        </p>
+        <p>
+        <label><strong>Score: </strong></label><span id=score> {{currentRecord.score}}</span>
         </p>
     </div>
 </div>
+<div ui-view="commentaryChieldView"></div>
 <!-- TODO -->

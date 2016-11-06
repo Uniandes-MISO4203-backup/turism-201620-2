@@ -53,6 +53,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     private int duration;
     
     private String transport;
+    
+    private boolean promotion ;
+
+    
 
     @PodamExclude
     @ManyToOne
@@ -65,6 +69,7 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> questions = new ArrayList<>();
+    private List<CommentaryEntity> commentarys = new ArrayList<>();
     
     /**
      * Obtiene el atributo image.
@@ -264,5 +269,42 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setQuestions(List<QuestionEntity> questions) {
         this.questions = questions;
+    }
+    
+    /**
+     * Obtener valor boolean  promocion 
+     * @return 
+     */
+    public boolean getPromotion() {
+        return promotion;
+    }
+
+    /**
+     * Asignar valor si en promosion  
+     * @param promotion 
+     */
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
+    
+    
+    /**
+     * Obtiene la colección de commentarys.
+     *
+     * @return colección commentarys.
+     * @generated
+     */
+    public List<CommentaryEntity> getCommentarys() {
+        return commentarys;
+    }
+
+    /**
+     * Establece el valor de la colección de questions.
+     *
+     * @param commentarys 
+     * @generated
+     */
+    public void setCommentars(List<CommentaryEntity> commentarys) {
+        this.commentarys = commentarys;
     }
 }
