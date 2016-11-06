@@ -11,11 +11,9 @@
     <class>co.edu.uniandes.csw.turism.entities.CategoryEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.QuestionEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.BuyEntity</class>
-<<<<<<< HEAD
     <class>co.edu.uniandes.csw.turism.entities.CommentaryEntity</class>
-=======
     <class>co.edu.uniandes.csw.turism.entities.PaymentMethodEntity</class>
->>>>>>> 02a0b6334b24eb3d5c3a111397dda8ce5ea82c8e
+
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
