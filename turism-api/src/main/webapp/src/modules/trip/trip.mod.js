@@ -68,7 +68,18 @@ SOFTWARE.
                 displayName: 'Transport',
                 type: 'String',
                 required: true
-            }}
+            },
+            promotion : {
+                displayName: 'Promotion',
+                type: 'Boolean',
+                required: true 
+            }, 
+            discountRate: {
+                displayName: 'Rate Promotion (%)',
+                type: 'Long',
+                required: true 
+            }
+        }
     });
 
     mod.config(['$stateProvider',
