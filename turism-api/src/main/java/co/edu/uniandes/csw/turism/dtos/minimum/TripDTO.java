@@ -43,6 +43,8 @@ public class TripDTO implements Serializable{
     private int quota;
     private int duration;
     private String transport;
+    private boolean promotion ; 
+    private Long discountRate;
 
     /**
      * @generated
@@ -68,6 +70,8 @@ public class TripDTO implements Serializable{
             this.quota = entity.getQuota();
             this.duration = entity.getDuration();
             this.transport = entity.getTransport();
+            this.promotion  = entity.getPromotion();
+            this.discountRate = entity.getDiscountRate();
         }
     }
 
@@ -88,6 +92,8 @@ public class TripDTO implements Serializable{
         entity.setQuota(this.getQuota());
         entity.setDuration(this.getDuration());
         entity.setTransport(this.getTransport());
+        entity.setPromotion(this.getPromotion());
+        entity.setDiscountRate(this.discountRate);
         return entity;
     }
 
@@ -269,6 +275,42 @@ public class TripDTO implements Serializable{
      */
     public void setTransport(String transport) {
         this.transport = transport;
+    }
+    
+    /**
+     * Obtener valor boolean  promocion 
+     * @return promotion
+     * @generated
+     */
+    public boolean getPromotion() {
+        return promotion;
+    }
+    
+    /**
+     * Asignar valor si en promosion  
+     * @param promotion 
+     * @generated
+     */
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
+
+    /**
+     * 
+     * @return discount_rate
+     *  @generated
+     */
+    public Long getDiscountRate() {
+        return discountRate;
+    }
+
+    /**
+     * 
+     * @param discountRate 
+     *  @generated
+     */
+    public void setDiscountRate(Long discountRate) {
+        this.discountRate = discountRate;
     }
 
 }
