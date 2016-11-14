@@ -217,7 +217,7 @@ div.carousel-inner .item img {
     width: 12px;
     height: 12px;
     border: 1px solid #f39c12;
-    margin: 1PX
+    margin: 1PX;
 }
 .testimonial ol.carousel-indicators li.active {
     width: 12px;
@@ -233,7 +233,7 @@ div.carousel-inner .item img {
     padding-bottom: 65px;
     padding-top: 65px;
     border-bottom: 3px solid #f39c12;
-    margin-top: 40%
+    margin-top: 40%;
 }
 .copyright p, h3{
     color: #ffffff;
