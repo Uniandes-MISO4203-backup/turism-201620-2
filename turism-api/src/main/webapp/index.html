@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  
 <!--
 The MIT License (MIT)
 
@@ -87,6 +87,7 @@ SOFTWARE.
         <script src="src/modules/item/instance/edit/item.edit.ctrl.js"></script>
         <script src="src/modules/item/list/item.list.ctrl.js"></script>
         <script src="src/modules/item/new/item.new.ctrl.js"></script>
+        <script src="src/modules/item/new/userItem.new.ctrl.js"></script>
         <script src="src/modules/item/search/item.search.ctrl.js"></script>
         
         <script src="src/modules/paymentMethod/paymentMethod.mod.js"></script>
@@ -105,6 +106,7 @@ SOFTWARE.
         <script src="src/modules/trip/instance/detail/trip.detail.ctrl.js"></script>
         <script src="src/modules/trip/instance/edit/trip.edit.ctrl.js"></script>
         <script src="src/modules/trip/list/trip.list.ctrl.js"></script>
+        <script src="src/modules/trip/details/trip.details.ctrl.js"></script>
         <script src="src/modules/trip/new/trip.new.ctrl.js"></script>
         <script src="src/modules/product/product.ctrl.js"></script>
         <script src="src/modules/product/instance/delete/product.delete.ctrl.js"></script>
@@ -161,15 +163,37 @@ SOFTWARE.
         <script src="src/modules/buy/new/buy.new.ctrl.js"></script>
         <script src="src/modules/product/instance/buys/edit/product.buys.edit.ctrl.js"></script>
         <script src="src/modules/product/instance/buys/list/product.buys.list.ctrl.js"></script>
+        
+        
+        
+        
+        <!-- estilos personalizados-->
+        <link href="src/static/css/styles.css" rel="stylesheet">
+        <link href="src/static/css/bootstrap.min.css" rel="stylesheet">
+        <!--estilos para el carousel-->
+        <link href="src/static/css/carousel/owl.carousel.css" rel="stylesheet">
+        <link href="src/static/css/carousel/owl.theme.css" rel="stylesheet">
+        <!--fin carousel-->
+        <!--estilos para el menu-->
+        <link href="src/static/css/menu.css" rel="stylesheet">
+        <!--fin de estilos-->
+     
+     <!-- estilos personalizados-->   
+        <script src="src/static/js/jquery.min.js"></script>
+        <script src="src/static/js/owl.carousel.js"></script>
+        <script src="src/static/js/bootstrap.min.js"></script>
+        <script src="src/static/js/owl.carousel.js"></script>
+        
 
       <!-- /include -->
         <!-- endbuild -->
+        
 
     </head>
-    <body style="padding-top: 60px;">
+    <body  style="padding-top: 60px;">  
         <div class="container-fluid">
-            <div class="col-md-12">
-                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="principal">
                     <div class="container-fluid">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
@@ -179,29 +203,45 @@ SOFTWARE.
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" ui-sref="tripGallery">Turism</a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="main-bar">
-                            <ul ng-controller="roleCtrl"  class="nav navbar-nav">
+                            <ul ng-controller="roleCtrl"  class="nav navbar-nav navbar-right" >
+                                <li ><a class="navbar-brand" ui-sref="tripGallery">Trips</a></li>
                                 <li ng-if="client"><a ui-sref="clientList">Client</a></li>
                                 <li ng-if="agency"><a ui-sref="agencyList">Agency</a></li>
                                 <li ng-if="product"><a ui-sref="productList">Product</a></li>
                                 <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
+                                <!--
                                 <li ng-if="commentary"><a ui-sref="commentaryList">Commentary</a></li>
+                                -->
                                 <li ng-if="users"><a ui-sref="usersList">Users</a></li>
-                                <li ng-if="users"><a ui-sref="buyList">Buys</a></li>
-
-                                </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <login-button></login-button>
-                            </ul>
+                                <li ng-if="users"><a ui-sref="buyList">Buys</a></li>                               
+                                <li ><login-button></login-button></li>                                 
+                            </ul>   
                         </div> <!-- /.navbar-collapse -->
                     </div> <!-- /.container-fluid -->
                 </nav>
             </div>
+            <br><br><br>
+            
+            
             <div ui-view="mainView"></div>
         </div>
-    </body>
+    <section class="copyright">
+        <h2></h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="copy_right_text">
+                    <!-- COPYRIGHT TEXT -->
+                        <p>Copyright &copy; 2016. All Rights Reserved.</p>        
+                        <p>WalkerDevelopers</p>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </section>
+        </body>
 </html>

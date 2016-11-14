@@ -20,16 +20,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
+import javax.persistence.*;
+
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.util.Date;
 import uk.co.jemos.podam.common.PodamExclude;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.CascadeType;
@@ -45,17 +45,21 @@ public class TripEntity extends BaseEntity implements Serializable {
     private String image;
 
     private Long price;
-    
+
     @Temporal(TemporalType.DATE)
     private Date departureDate;
-    
+
     private String destination;
-    
+
     private int quota;
-    
+
     private int duration;
-    
+
     private String transport;
+
+    private boolean promotion;
+
+    private Long discountRate;
 
     @PodamExclude
     @ManyToOne
@@ -68,18 +72,18 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> questions = new ArrayList<>();
-    
+
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DestinationEntity> destinations = new ArrayList<>();
-    
+
     /**
      * Obtiene el atributo image.
      *
      * @return atributo image.
      * @generated
      */
-    public String getImage(){
+    public String getImage() {
         return image;
     }
 
@@ -89,7 +93,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @param image nuevo valor del atributo
      * @generated
      */
-    public void setImage(String image){
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -99,7 +103,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @return atributo price.
      * @generated
      */
-    public Long getPrice(){
+    public Long getPrice() {
         return price;
     }
 
@@ -109,10 +113,10 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @param price nuevo valor del atributo
      * @generated
      */
-    public void setPrice(Long price){
+    public void setPrice(Long price) {
         this.price = price;
     }
-    
+
     /**
      * Obtiene el atributo departureDate.
      *
@@ -132,7 +136,7 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setDepartureDate(Date departureDate) {
         this.departureDate = departureDate;
     }
-    
+
     /**
      * Obtiene el atributo destination.
      *
@@ -252,7 +256,41 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setCategory(List<CategoryEntity> category) {
         this.category = category;
     }
-    
+
+    /**
+     * Obtener valor boolean promocion
+     *
+     * @return
+     */
+    public boolean getPromotion() {
+        return promotion;
+    }
+
+    /**
+     * Asignar valor si en promosion
+     *
+     * @param promotion
+     */
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
+
+    /**
+     *
+     * @return discountRate
+     */
+    public Long getDiscountRate() {
+        return discountRate;
+    }
+
+    /**
+     *
+     * @param discountRate
+     */
+    public void setDiscountRate(Long discountRate) {
+        this.discountRate = discountRate;
+    }
+
     /**
      * Obtiene la colección de questions.
      *
@@ -272,7 +310,7 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setQuestions(List<QuestionEntity> questions) {
         this.questions = questions;
     }
-    
+
     /**
      * Obtiene la colección de destinations.
      *
