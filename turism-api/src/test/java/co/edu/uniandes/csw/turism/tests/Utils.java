@@ -23,12 +23,42 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.tests;
 
+import co.edu.uniandes.csw.turism.dtos.detail.QuestionDetailDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.QuestionDTO;
+import co.edu.uniandes.csw.turism.entities.QuestionEntity;
+
 /**
- *
  * @generate
  */
 public class Utils {
     public static final String apiPath = "api";
     public static final String username = System.getenv("USERNAME_USER");
-    public static final String password = System.getenv("PASSWORD_USER"); 
+    public static final String password = System.getenv("PASSWORD_USER");
+
+    /**
+     * Returns a {@link QuestionDTO} instance
+     *
+     * @return
+     */
+    public static QuestionDTO aQuestionDTO() {
+        return new QuestionDTO();
+    }
+
+    /**
+     * Returns a {@link QuestionEntity} instance
+     *
+     * @return
+     */
+    public static QuestionEntity aQuestionEntity() {
+        return new QuestionEntity();
+    }
+
+    /**
+     * Returns a {@link QuestionDetailDTO} instance
+     *
+     * @return
+     */
+    public static QuestionDetailDTO aQuestionDetailDTO() {
+        return new QuestionDetailDTO();
+    }
 }
