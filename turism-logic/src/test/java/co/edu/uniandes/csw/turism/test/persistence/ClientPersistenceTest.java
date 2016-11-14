@@ -151,6 +151,12 @@ public class ClientPersistenceTest {
         ClientEntity entity = em.find(ClientEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getMiddleName(), entity.getMiddleName());
+        Assert.assertEquals(newEntity.getLastName(), entity.getLastName());
+        Assert.assertEquals(newEntity.getEmail(), entity.getEmail());
+        Assert.assertEquals(newEntity.getPhoneNumber(), entity.getPhoneNumber());
+        Assert.assertEquals(newEntity.getAddress(), entity.getAddress());
+        Assert.assertEquals(newEntity.getPhoto(), entity.getPhoto());
     }
 
     /**
@@ -184,6 +190,12 @@ public class ClientPersistenceTest {
         ClientEntity newEntity = clientPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getMiddleName(), newEntity.getMiddleName());
+        Assert.assertEquals(entity.getLastName(), newEntity.getLastName());
+        Assert.assertEquals(entity.getEmail(), newEntity.getEmail());
+        Assert.assertEquals(entity.getPhoneNumber(), newEntity.getPhoneNumber());
+        Assert.assertEquals(entity.getAddress(), newEntity.getAddress());
+        Assert.assertEquals(entity.getPhoto(), newEntity.getPhoto());
     }
 
     /**
@@ -217,5 +229,11 @@ public class ClientPersistenceTest {
         ClientEntity resp = em.find(ClientEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getMiddleName(), resp.getMiddleName());
+        Assert.assertEquals(newEntity.getLastName(), resp.getLastName());
+        Assert.assertEquals(newEntity.getEmail(), resp.getEmail());
+        Assert.assertEquals(newEntity.getPhoneNumber(), resp.getPhoneNumber());
+        Assert.assertEquals(newEntity.getAddress(), resp.getAddress());
+        Assert.assertEquals(newEntity.getPhoto(), resp.getPhoto());
     }
 }

@@ -27,9 +27,37 @@ SOFTWARE.
 <div  class="container-fluid well">
     <div class="col-md-12">
         <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
+            <label><strong>Photo: </strong></label>
+            <span ng-if="currentRecord.photo !== null" id="photo">
+                <img style="width: 210px;height: 210px" class="img-responsive" ng-src="{{currentRecord.photo}}">
+            </span>
+            <span ng-if="currentRecord.photo === null" id="photo">
+                <img style="width: 210px;height: 210px" class="img-responsive" src="src/static/images/noprofileimage.png">
+            </span>
+        </p>
+        <p>
+            <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
+        </p>
+        <p>
+            <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
+        </p>
+        <p>
+            <label><strong>Middle Name: </strong></label><span id="middleName"> {{currentRecord.middleName}}</span>
+        </p>
+        <p>
+            <label><strong>Last Name: </strong></label><span id="lastName"> {{currentRecord.lastName}}</span>
+        </p>
+        <p>
+            <label><strong>Email: </strong></label><span id="email"> {{currentRecord.email}}</span>
+        </p>
+        <p>
+            <label><strong>Phone number: </strong></label><span id="phoneNumber"> {{currentRecord.phoneNumber}}</span>
+        </p>
+        <p>
+            <label><strong>Address: </strong></label><span id="address"> {{currentRecord.address}}</span>
         </p>
     </div>
+
 </div>
 <div ui-view="clientChieldView"></div>
 <!-- TODO -->

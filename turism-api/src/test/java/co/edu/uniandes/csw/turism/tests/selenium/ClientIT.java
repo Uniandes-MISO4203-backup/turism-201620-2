@@ -124,6 +124,12 @@ public class ClientIT {
         ClientDTO actual_client = detailPage.getData();
 
         Assert.assertEquals(expected_client.getName(), actual_client.getName());
+        Assert.assertEquals(expected_client.getMiddleName(), actual_client.getMiddleName());
+        Assert.assertEquals(expected_client.getLastName(), actual_client.getLastName());
+        Assert.assertEquals(expected_client.getEmail(), actual_client.getEmail());
+        Assert.assertEquals(expected_client.getPhoneNumber(), actual_client.getPhoneNumber());
+        Assert.assertEquals(expected_client.getAddress(), actual_client.getAddress());
+        Assert.assertEquals(expected_client.getPhoto(), actual_client.getPhoto());
     }
 
     @Test
@@ -138,6 +144,12 @@ public class ClientIT {
         ClientDTO actual_client = detailPage.getData();
 
         Assert.assertEquals(expected_client.getName(), actual_client.getName());
+        Assert.assertEquals(expected_client.getMiddleName(), actual_client.getMiddleName());
+        Assert.assertEquals(expected_client.getLastName(), actual_client.getLastName());
+        Assert.assertEquals(expected_client.getEmail(), actual_client.getEmail());
+        Assert.assertEquals(expected_client.getPhoneNumber(), actual_client.getPhoneNumber());
+        Assert.assertEquals(expected_client.getAddress(), actual_client.getAddress());
+        Assert.assertEquals(expected_client.getPhoto(), actual_client.getPhoto());
     }
 
     @Test

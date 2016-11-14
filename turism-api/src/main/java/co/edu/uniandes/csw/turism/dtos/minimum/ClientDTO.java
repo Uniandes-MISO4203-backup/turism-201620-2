@@ -35,7 +35,12 @@ public class ClientDTO implements Serializable{
 
     private Long id;
     private String name;
+    private String middleName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
     private String address;
+    private String photo;
 
     /**
      * @generated
@@ -54,7 +59,12 @@ public class ClientDTO implements Serializable{
         if (entity != null) {
             this.id = entity.getId();
             this.name = entity.getName();
+            this.middleName = entity.getMiddleName();
+            this.lastName = entity.getLastName();
+            this.email = entity.getEmail();
+            this.phoneNumber = entity.getPhoneNumber();
             this.address = entity.getAddress();
+            this.photo = entity.getPhoto();
         }
     }
 
@@ -68,7 +78,12 @@ public class ClientDTO implements Serializable{
         ClientEntity entity = new ClientEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
+        entity.setMiddleName(this.getMiddleName());
+        entity.setLastName(this.getLastName());
+        entity.setEmail(this.getEmail());
+        entity.setPhoneNumber(this.getPhoneNumber());
         entity.setAddress(this.getAddress());
+        entity.setPhoto(this.getPhoto());
         return entity;
     }
 
@@ -111,6 +126,38 @@ public class ClientDTO implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
     
     /**
      * Obtiene el atributo address.
@@ -130,6 +177,14 @@ public class ClientDTO implements Serializable{
      */
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
 }
