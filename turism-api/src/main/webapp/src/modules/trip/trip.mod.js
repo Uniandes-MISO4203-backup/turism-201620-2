@@ -78,6 +78,11 @@ SOFTWARE.
                 displayName: 'Rate Promotion (%)',
                 type: 'Long',
                 required: true 
+            },
+            conditions: {
+                displayName: 'Conditions',
+                type: 'String',
+                required: true
             }
         }
     });
