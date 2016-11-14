@@ -38,6 +38,7 @@ SOFTWARE.
         'usersModule',
         'commentaryModule',
         'questionModule',
+        'destinationModule',
         'buyModule'
     ]);
 
