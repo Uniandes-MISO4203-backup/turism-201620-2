@@ -6,12 +6,10 @@
         function ($scope, $state, buys, products, $params,Restangular) {
             $scope.records = buys;
             $scope.products = products;
-
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
             this.totalItems = buys.totalRecords;
-
             $scope.categorys = [];
 
             $scope.getCategorys = function (parentCategory) {
@@ -47,10 +45,7 @@
                     fn: function () {
                         $state.reload();
                     }
-                }            };
-            
-            
-            
+                }            };            
             $scope.productActions = {
                 detail: {
                     displayName: 'Detail',
@@ -62,9 +57,7 @@
                         return true;
                     }
                 }
-            };
-            
-            
+            };           
             $scope.recordActions = {
                 detail: {
                     displayName: 'Detail',
@@ -99,5 +92,3 @@
             };
         }]);
 })(window.angular);
-
-
