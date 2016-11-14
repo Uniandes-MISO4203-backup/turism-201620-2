@@ -111,8 +111,8 @@ public class ItemLogic implements IItemLogic {
     public ItemEntity createItem(Long clientid, ItemEntity entity) {
         ClientEntity client = clientLogic.getClient(clientid);
         entity.setClient(client);
-        entity = persistence.create(entity);
-        return entity;
+        ItemEntity newEntity = persistence.create(entity);
+        return newEntity;
     }
 
     /**

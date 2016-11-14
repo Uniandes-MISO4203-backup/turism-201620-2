@@ -32,50 +32,110 @@ public class PaymentMethodEntity extends BaseEntity implements Serializable {
 
     private int expirationYear;
 
+    /**
+     * Obtiene el atributo client
+     * 
+     * @return atributo client
+     */
     public ClientEntity getClient() {
         return client;
     }
 
+    /**
+     * Establece el valor del atributo client
+     * 
+     * @param client 
+     */
     public void setClient(ClientEntity client) {
         this.client = client;
     }
 
+    /**
+     * Obtiene el atributo cardType
+     * 
+     * @return atributo cardType
+     */
     public String getCardType() {
         return cardType;
     }
 
+    /**
+     * Establece el valor del atributo cardType
+     * 
+     * @param cardType 
+     */
     public void setCardType(String cardType) {
         this.cardType = cardType;
     }
 
+    /**
+     * Obtiene el atributo cardNumber
+     * 
+     * @return atributo cardNumber
+     */
     public Long getCardNumber() {
         return cardNumber;
     }
 
+    /**
+     * Establece el valor del atributo cardNumber
+     * 
+     * @param cardNumber 
+     */
     public void setCardNumber(Long cardNumber) {
         this.cardNumber = cardNumber;
     }
 
+    /**
+     * Obtiene el atributo securityCode
+     * 
+     * @return atributo securityCode
+     */
     public int getSecurityCode() {
         return securityCode;
     }
 
+    /**
+     * Establece el valor del atributo securityCode
+     * 
+     * @param securityCode 
+     */
     public void setSecurityCode(int securityCode) {
         this.securityCode = securityCode;
     }
 
+    /**
+     * Obtiene el atributo expirationMonth
+     * 
+     * @return atributo expirationMonth
+     */
     public int getExpirationMonth() {
         return expirationMonth;
     }
 
+    /**
+     * Establece el valor del atributo expirationMonth
+     * 
+     * @param expirationMonth 
+     */
     public void setExpirationMonth(int expirationMonth) {
         this.expirationMonth = expirationMonth;
     }
 
+    /**
+     * Obtiene el atributo expirationYear
+     * 
+     * @return atributo expirationYear
+     */
     public int getExpirationYear() {
         return expirationYear;
     }
 
+    /**
+     * Establece el valor del atributo expirationYear
+     * 
+     * @param expirationYear 
+     */
     public void setExpirationYear(int expirationYear) {
         this.expirationYear = expirationYear;
     }
