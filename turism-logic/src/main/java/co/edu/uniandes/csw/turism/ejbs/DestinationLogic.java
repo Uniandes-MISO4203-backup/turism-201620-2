@@ -82,7 +82,7 @@ public class DestinationLogic implements IDestinationLogic {
         try {
             return persistence.find(destinationid);
         } catch (NoResultException e) {
-            throw new IllegalArgumentException("El Destination no existe");
+            throw new IllegalArgumentException("El Destination no existe", e);
         }
     }
 
