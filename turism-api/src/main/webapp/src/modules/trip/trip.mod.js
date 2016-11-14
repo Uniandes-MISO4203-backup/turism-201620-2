@@ -188,6 +188,9 @@ SOFTWARE.
                     }
                 }
             });
+            
+            
+            
             $sp.state('tripCategoryEdit', {
                 url: '/edit',
                 parent: 'tripCategory',
@@ -219,6 +222,20 @@ SOFTWARE.
                             return r.all(model.url).getList($params);
                         }]                }
             });
+            $sp.state('abouts', {
+                url: '/about',
+                views: {
+                    mainView: {
+                        templateUrl: 'src/modules/trip/list/about.html'
+                    }
+                }
+            });
+            
+            
+            
+            
+            
+            
             $sp.state('tripDetailsInfo', {
                 url: '/tripDetailsInfo/{tripId:int}',
                 views: {

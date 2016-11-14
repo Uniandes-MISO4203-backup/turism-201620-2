@@ -156,9 +156,6 @@ SOFTWARE.
         <script src="src/modules/product/instance/buys/edit/product.buys.edit.ctrl.js"></script>
         <script src="src/modules/product/instance/buys/list/product.buys.list.ctrl.js"></script>
         
-        
-        
-        
         <!-- estilos personalizados-->
         <link href="src/static/css/styles.css" rel="stylesheet">
         <!--estilos para el carousel-->
@@ -170,7 +167,6 @@ SOFTWARE.
         <!--fin de estilos-->
      
      <!-- estilos personalizados-->   
-        <script src="src/static/js/jquery.min.js"></script>
         <script src="src/static/js/owl.carousel.js"></script>
         <script src="src/static/js/owl.carousel.js"></script>
         
@@ -205,29 +201,75 @@ SOFTWARE.
                                 <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
                                 <li ng-if="commentary"><a ui-sref="commentaryList">Commentary</a></li>
                                 <li ng-if="users"><a ui-sref="usersList">Users</a></li>
-                                <li ng-if="users"><a ui-sref="buyList">Buys</a></li>                               
+                                <li ng-if="users"><a ui-sref="buyList">Buys</a></li>  
+                                <li ><a ui-sref="abouts">Abouts</a></li>
                                 <li ><login-button></login-button></li>                                 
                             </ul>   
                         </div> <!-- /.navbar-collapse -->
                     </div> <!-- /.container-fluid -->
                 </nav>
             </div>
-            <br><br><br>
-            
-            
+            <br><br><br>          
             <div ui-view="mainView"></div>
-        </div>
     <section class="copyright">
-        <h2></h2>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="copy_right_text">
-                    <!-- COPYRIGHT TEXT -->
-                        <p>Copyright &copy; 2016. All Rights Reserved.</p>        
-                        <p>WalkerDevelopers</p>
+                <div class="col-md-3 col-md-offset-1">
+                    <h3>Contactanos</h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="src/static/images/ubicacion.png" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <p>Cll 53 No 49-109 LC 104<br>Bogotá - Colombia</p>
+                        </div>   
                     </div>
-            </div>
+                    
+                    <div class="row">                       
+                        <div class="col-md-3">
+                            <img src="src/static/images/mail.png" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <p>Correo Electroníco<br>
+                            contacto@walkersdevelop.com</p>
+                        </div>   
+                    </div>
+                    
+                    <div class="row">                    
+                        <div class="col-md-3">
+                            <img src="src/static/images/telefono.png" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <p>PBX<br>
+                            5404021-5404022</p>
+                        </div>   
+                    </div>
+                    
+                </div>
+                <div class="col-md-3">
+                    <center><h3>Metodos de Pago</h3>
+                        
+                        <img  src="src/static/images/visa.png" alt=""><br><br>
+                        <img  src="src/static/images/maestro.png" alt="">
+                    
+                    
+                    </center>
+                </div>
+                <div class="col-md-5">
+                    <center><h3>Redes Sociales</h3></center><br>
+                    <div class="row">                    
+                        <div class="col-md-4">
+                            <center><img src="src/static/images/fb.png" alt=""></center>  
+                        </div>
+                        <div class="col-md-4">
+                            <center><img src="src/static/images/tw.png" alt=""></center>
+                        </div>  
+                        <div class="col-md-4">
+                            <center><img src="src/static/images/it.png" alt=""></center>
+                        </div>
+                    </div>
+                    <br><center><img src="src/static/images/hg.png"></center>
+                </div>
         </div>
         </div>
     </section>
