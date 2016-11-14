@@ -20,6 +20,7 @@ public class DestinationDTO implements Serializable {
     private String name;
 
     public DestinationDTO() {
+        // Método auto-generado
     }
 
     public DestinationDTO(DestinationEntity entity) {
