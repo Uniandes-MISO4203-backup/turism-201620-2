@@ -115,7 +115,7 @@ public class TripLogic implements ITripLogic {
         try {
             return persistence.find(tripid);
         }catch(NoResultException e){
-            throw new IllegalArgumentException("El Trip no existe");
+            throw new IllegalArgumentException("El Trip no existe", e);
         }
     }
 
