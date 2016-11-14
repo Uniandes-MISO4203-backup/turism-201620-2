@@ -77,6 +77,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('questionList');
                     }
+                },
+                commentary: {
+                    displayName: 'Commentarys',
+                    icon: 'link',
+                    fn: function () {
+                        $state.go('commentaryList');
+                    }
                 }
             };
         }]);

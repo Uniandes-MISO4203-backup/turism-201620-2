@@ -22,13 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 (function (ng) {
-
-    var mod = ng.module("commentaryModule");
-
+    var mod = ng.module("commentaryModule"); 
     mod.controller("commentaryListCtrl", ["$scope", '$state', 'commentarys', '$stateParams',
         function ($scope, $state, commentarys, $params) {
             $scope.records = commentarys;
-
+            
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
@@ -52,7 +50,16 @@ SOFTWARE.
                     fn: function () {
                         $state.reload();
                     }
-                }            };
+                } 
+                ,
+                cancel: {
+                    displayName: 'Go back',
+                    icon: 'arrow-left',
+                    fn: function () {
+                        $state.go('tripDetail');
+                    }
+                }
+            };
             $scope.recordActions = {
                 detail: {
                     displayName: 'Detail',

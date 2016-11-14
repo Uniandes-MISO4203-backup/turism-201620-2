@@ -70,6 +70,11 @@ public class TripEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> questions = new ArrayList<>();
     
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentaryEntity> comments = new ArrayList<>();
+    
     /**
      * Obtiene el atributo image.
      *
@@ -300,5 +305,26 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setQuestions(List<QuestionEntity> questions) {
         this.questions = questions;
+    }
+    
+    
+       /**
+     * Obtiene la colección de commentys.
+     *
+     * @return colección questions.
+     * @generated
+     */
+    public List<CommentaryEntity> getComments() {
+        return comments;
+    }
+    
+    /**
+     * Establece el valor de la colección de questions.
+     *
+     * @param comments nuevo valor de la colección.
+     * @generated
+     */
+    public void setComments(List<CommentaryEntity> comments) {
+        this.comments = comments;
     }
 }
