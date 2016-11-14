@@ -259,7 +259,6 @@ SOFTWARE.
                 resolve: {
                     model: 'tripModel',
                     trip: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
-                        console.log("esto se llama");
                             return r.all(model.url1).get($params.tripId);
                         }]                }
             });
