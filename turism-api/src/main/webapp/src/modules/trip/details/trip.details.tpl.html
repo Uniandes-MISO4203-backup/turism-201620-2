@@ -1,28 +1,35 @@
 <div  class="container-fluid well">
     <div class="col-md-12">
         <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
+            <a ng-href="{{currentRecord.image}}">
+                <img style="width: 420px;height: 210px" class="img-responsive" ng-src="{{currentRecord.image}}">
+            </a>
         </p>
         <p>
-        <label><strong>Image: </strong></label><span id="image"> {{currentRecord.image}}</span>
+            <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
         </p>
         <p>
-        <label><strong>Price: </strong></label><span id="price"> {{currentRecord.price}}</span>
+            <label><strong>Price: </strong></label><span id="price"> ${{currentRecord.price}}</span>
         </p>
         <p>
-        <label><strong>Departure date: </strong></label><span id="departureDate"> {{currentRecord.departureDate}}</span>
+            <label><strong>Departure date: </strong></label><span id="departureDate"> {{currentRecord.departureDate}}</span>
         </p>
         <p>
-        <label><strong>Destination: </strong></label><span id="destination"> {{currentRecord.destination}}</span>
+            <label><strong>Destination: </strong></label><span id="destination"> {{currentRecord.destination}}</span>
         </p>
         <p>
-        <label><strong>Quota: </strong></label><span id="quota"> {{currentRecord.quota}}</span>
+            <label><strong>Quota: </strong></label><span id="quota"> {{currentRecord.quota}}</span>
         </p>
         <p>
-        <label><strong>Duration: </strong></label><span id="duration"> {{currentRecord.duration}}</span>
+            <label><strong>Duration: </strong></label><span id="duration"> {{currentRecord.duration}}</span>
         </p>
         <p>
-        <label><strong>Transport: </strong></label><span id="transport"> {{currentRecord.transport}}</span>
+            <label><strong>Transport: </strong></label><span id="transport"> {{currentRecord.transport}}</span>
+        </p>
+        <p>
+            <a href="#" class="btn btn-default">
+                <span class="glyphicon glyphicon-th-list"></span> List
+            </a>
         </p>
         <p>
         <label><strong>Promotion: </strong></label><span id="promotion"> {{currentRecord.promotion}}</span>
