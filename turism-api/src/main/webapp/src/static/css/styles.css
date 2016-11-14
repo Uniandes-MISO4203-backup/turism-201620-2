@@ -217,7 +217,7 @@ div.carousel-inner .item img {
     width: 12px;
     height: 12px;
     border: 1px solid #f39c12;
-    margin: 1PX;
+    margin: 1px 1px 1px 1px;
 }
 .testimonial ol.carousel-indicators li.active {
     width: 12px;
