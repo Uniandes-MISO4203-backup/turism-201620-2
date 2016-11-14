@@ -26,6 +26,10 @@ package co.edu.uniandes.csw.turism.tests;
 import co.edu.uniandes.csw.turism.dtos.detail.QuestionDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.QuestionDTO;
 import co.edu.uniandes.csw.turism.entities.QuestionEntity;
+import co.edu.uniandes.csw.turism.entities.TripEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @generate
@@ -60,5 +64,31 @@ public class Utils {
      */
     public static QuestionDetailDTO aQuestionDetailDTO() {
         return new QuestionDetailDTO();
+    }
+
+    /**
+     * Returns a list of {@link TripEntity}
+     *
+     * @return
+     */
+    public static List<TripEntity> aTripEntityList() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * Returns a Long
+     *
+     * @return
+     */
+    public static Long aLong() {
+        return Long.MIN_VALUE;
+    }
+
+    /**
+     * Returns a {@link TripEntity} instance
+     * @return
+     */
+    public static TripEntity aTripEntity() {
+        return new TripEntity();
     }
 }

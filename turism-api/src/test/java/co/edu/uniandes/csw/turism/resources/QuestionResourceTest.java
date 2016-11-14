@@ -2,23 +2,18 @@ package co.edu.uniandes.csw.turism.resources;
 
 import co.edu.uniandes.csw.turism.api.IQuestionLogic;
 import co.edu.uniandes.csw.turism.entities.QuestionEntity;
-import co.edu.uniandes.csw.turism.tests.Utils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import static co.edu.uniandes.csw.turism.tests.Utils.aQuestionDTO;
 import static co.edu.uniandes.csw.turism.tests.Utils.aQuestionDetailDTO;
 import static co.edu.uniandes.csw.turism.tests.Utils.aQuestionEntity;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by TOSHIBA on 14/11/2016.
