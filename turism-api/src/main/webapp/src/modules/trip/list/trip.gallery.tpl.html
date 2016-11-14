@@ -16,7 +16,13 @@
                     <a ng-href="{{trip.image}}" ui-sref="tripDetailsInfo({tripId:trip.id})"><img style="width: 420px;height: 210px" class="img-responsive" ng-src="{{trip.image}}"></a>
                 </div>
                 <div class="caption">
-                    <p style="text-align:right; margin-right: 18px;">Por noche desde<br> {{trip.price| currency}}</p>
+                    <p style="text-align:right; margin-right: 18px;">Por noche desde<br>
+                        <b>
+                            {{trip.promotion ? "Antes "+(trip.price|currency) +"  Ahora  "+((trip.price - ((trip.price*35)/100))|currency) : (trip.price|currency) }}</b>
+                    </p>
+                    <p style="text-align:right; margin-right: 18px;"><b>{{trip.promotion ? " Ahorra "+ (trip.discountRate)+" % ":""}} </b></p>
+                        
+                </div>
                     <button class="btn btn-default btn-sm" ui-sref="userWishList({trip_id:trip.id})">Add to wish list
                     </button>
                 </div>

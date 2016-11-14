@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+*/ 
 package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
@@ -53,6 +53,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     private int duration;
     
     private String transport;
+    
+    private boolean promotion ; 
+
+    private Long discountRate;
 
     @PodamExclude
     @ManyToOne
@@ -244,6 +248,38 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setCategory(List<CategoryEntity> category) {
         this.category = category;
+    }
+    
+    /**
+     * Obtener valor boolean  promocion 
+     * @return 
+     */
+    public boolean getPromotion() {
+        return promotion;
+    }
+
+    /**
+     * Asignar valor si en promosion  
+     * @param promotion 
+     */
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
+
+    /**
+     * 
+     * @return discountRate
+     */
+    public Long getDiscountRate() {
+        return discountRate;
+    }
+
+    /**
+     * 
+     * @param discountRate 
+     */
+    public void setDiscountRate(Long discountRate) {
+        this.discountRate = discountRate;
     }
     
     /**
