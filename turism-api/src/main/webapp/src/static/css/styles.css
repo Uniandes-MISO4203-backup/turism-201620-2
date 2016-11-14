@@ -35,6 +35,9 @@ min-height:92px !important;
     border: none !important;
     background-size: cover;
 }
+p{
+    text-align: justify;
+}
 
 
 .text_encima {
@@ -50,9 +53,10 @@ min-height:92px !important;
     color: #ffffff;
     font-size: 20px;
     margin-left: 2px;
-    margin-top: 51%;
-
-        
+    margin-top: 51%;   
+}
+div#footer-1.col-md-3, div#footer-2.col-md-3, div#footer-3.col-md-5  {
+    text-align: center;
     
 }
 
