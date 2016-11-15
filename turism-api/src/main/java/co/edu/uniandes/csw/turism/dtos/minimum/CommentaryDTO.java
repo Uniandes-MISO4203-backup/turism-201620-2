@@ -110,10 +110,10 @@ public class CommentaryDTO  implements Serializable{
 
      /**
      * Establece el atributo score
+     * @param score
      * @generated
      */
     public void setScore(Long score) {
         this.score = score;
     }
 }
-
