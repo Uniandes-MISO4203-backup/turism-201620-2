@@ -1,8 +1,7 @@
-
 /*---------------------------------------
         barra de navegacion              
 -----------------------------------------*/
-.collapse navbar-collapse>li>a{
+.collapse navbar-collapse li a{
     color: #ffffff;
 }
 
