@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.turism.dtos.minimum;
 
 import co.edu.uniandes.csw.turism.entities.TripEntity;
+
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
@@ -32,7 +33,7 @@ import java.util.Date;
  * @generated
  */
 @XmlRootElement
-public class TripDTO implements Serializable{
+public class TripDTO implements Serializable {
 
     private Long id;
     private String name;
@@ -43,8 +44,9 @@ public class TripDTO implements Serializable{
     private int quota;
     private int duration;
     private String transport;
-    private boolean promotion ; 
+    private boolean promotion;
     private Long discountRate;
+    private String conditions;
 
     /**
      * @generated
@@ -70,8 +72,9 @@ public class TripDTO implements Serializable{
             this.quota = entity.getQuota();
             this.duration = entity.getDuration();
             this.transport = entity.getTransport();
-            this.promotion  = entity.getPromotion();
+            this.promotion = entity.getPromotion();
             this.discountRate = entity.getDiscountRate();
+            this.conditions = entity.getConditions();
         }
     }
 
@@ -94,6 +97,7 @@ public class TripDTO implements Serializable{
         entity.setTransport(this.getTransport());
         entity.setPromotion(this.getPromotion());
         entity.setDiscountRate(this.discountRate);
+        entity.setConditions(this.conditions);
         return entity;
     }
 
@@ -276,19 +280,21 @@ public class TripDTO implements Serializable{
     public void setTransport(String transport) {
         this.transport = transport;
     }
-    
+
     /**
-     * Obtener valor boolean  promocion 
+     * Obtener valor boolean  promocion
+     *
      * @return promotion
      * @generated
      */
     public boolean getPromotion() {
         return promotion;
     }
-    
+
     /**
-     * Asignar valor si en promosion  
-     * @param promotion 
+     * Asignar valor si en promosion
+     *
+     * @param promotion
      * @generated
      */
     public void setPromotion(boolean promotion) {
@@ -296,21 +302,34 @@ public class TripDTO implements Serializable{
     }
 
     /**
-     * 
      * @return discount_rate
-     *  @generated
+     * @generated
      */
     public Long getDiscountRate() {
         return discountRate;
     }
 
     /**
-     * 
-     * @param discountRate 
-     *  @generated
+     * @param discountRate
+     * @generated
      */
     public void setDiscountRate(Long discountRate) {
         this.discountRate = discountRate;
     }
 
+    /**
+     * @return the {@link TripDTO} conditions
+     */
+    public String getConditions() {
+        return conditions;
+    }
+
+    /**
+     * Assigns the value for {@link TripDTO} conditions
+     *
+     * @param conditions the condition value
+     */
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
+    }
 }

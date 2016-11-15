@@ -16,14 +16,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
- */
+*/
 package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
 
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
+
 import java.util.Date;
+
 import uk.co.jemos.podam.common.PodamExclude;
 
 import java.util.List;
@@ -57,6 +59,8 @@ public class TripEntity extends BaseEntity implements Serializable {
 
     private Long discountRate;
 
+    private String conditions;
+
     @PodamExclude
     @ManyToOne
     private AgencyEntity agency;
@@ -72,7 +76,7 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentaryEntity> comments = new ArrayList<>();
-    
+
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DestinationEntity> destinations = new ArrayList<>();
@@ -258,7 +262,11 @@ public class TripEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * <<<<<<< HEAD
+     * Obtener valor boolean  promocion
+     * =======
      * Obtener valor boolean promocion
+     * >>>>>>> de3f7a132e24daf11fc923195e33c1343515fc9c
      *
      * @return
      */
@@ -276,6 +284,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * <<<<<<< HEAD
+     * =======
+     * <p>
+     * >>>>>>> de3f7a132e24daf11fc923195e33c1343515fc9c
      *
      * @return discountRate
      */
@@ -284,6 +296,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * <<<<<<< HEAD
+     * =======
+     * <p>
+     * >>>>>>> de3f7a132e24daf11fc923195e33c1343515fc9c
      *
      * @param discountRate
      */
@@ -310,9 +326,26 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setQuestions(List<QuestionEntity> questions) {
         this.questions = questions;
     }
-    
-    
-         /**
+
+    /**
+     * Obtiene el las condiciones de un {@link TripEntity}
+     *
+     * @return las condiciones de un {@link TripEntity}
+     */
+    public String getConditions() {
+        return conditions;
+    }
+
+    /**
+     * Asigna el valor de las condiciones de un {@link TripEntity}
+     *
+     * @param conditions las condiciones del {@link TripEntity}
+     */
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
+    }
+
+    /**
      * Obtiene la colección de commentys.
      *
      * @return colección questions.
@@ -321,7 +354,7 @@ public class TripEntity extends BaseEntity implements Serializable {
     public List<CommentaryEntity> getComments() {
         return comments;
     }
-    
+
     /**
      * Establece el valor de la colección de questions.
      *
@@ -350,5 +383,5 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setDestinations(List<DestinationEntity> destinations) {
         this.destinations = destinations;
-}
+    }
 }
