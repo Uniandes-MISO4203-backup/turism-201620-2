@@ -27,17 +27,11 @@ SOFTWARE.
     mod.constant('commentaryModel', {
         name: 'commentary',
         displayName: 'Commentary',
-		url: 'commentarys',
-        fields: {      description: {
+		url: 'commentary',
+        fields: {      
+                description: {
                 displayName: 'Description',
                 type: 'String',
-                required: true
-            },
-             client: {
-                displayName: 'Client',
-                type: 'Reference',
-                model: 'clientModel',
-                options: [],
                 required: true
             },
             score : {
@@ -56,23 +50,18 @@ SOFTWARE.
             $sp.state('commentary', {
                 url: '/commentarys?page&limit',
                 abstract: true,
-
+                parent: 'tripDetail',
                 views: {
-                     mainView: {
+                     tripChieldView: {
                         templateUrl: basePath + 'commentary.tpl.html',
                         controller: 'commentaryCtrl'
                     }
                 },
                 resolve: {
-                    references: ['$q', 'Restangular', function ($q, r) {
-                            return $q.all({
-                                  client: r.all('clients').getList()
-                            });
-                        }],
                     model: 'commentaryModel',
-                    commentarys: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
-                            return r.all(model.url).getList($params);
-                        }]
+                    commentarys: ['trip', '$stateParams', 'model', function (trip, $params, model) {
+                            return trip.getList(model.url, $params);
+                    }]
                 }
             });
             $sp.state('commentaryList', {
@@ -95,12 +84,6 @@ SOFTWARE.
                         controller: 'commentaryNewCtrl',
                         controllerAs: 'ctrl'
                     }
-                },resolve: {
-                    references: ['$q', 'Restangular', function ($q, r) {
-                            return $q.all({
-                                  client: r.all('clients').getList()
-                            });
-                        }]
                 }
             });
             $sp.state('commentaryInstance', {
@@ -108,11 +91,6 @@ SOFTWARE.
                 abstract: true,
                 parent: 'commentary',
                 views: {
-                    references: ['$q', 'Restangular', function ($q, r) {
-                            return $q.all({
-                                  client: r.all('clients').getList()
-                            });
-                        }],
                     commentaryView: {
                         template: '<div ui-view="commentaryInstanceView"></div>'
                     }

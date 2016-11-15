@@ -1,18 +1,14 @@
 /*
 The MIT License (MIT)
-
 Copyright (c) 2015 Los Andes University
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,14 +16,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
- */
+*/
 package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
 
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
+
 import java.util.Date;
+
 import uk.co.jemos.podam.common.PodamExclude;
 
 import java.util.List;
@@ -61,6 +59,8 @@ public class TripEntity extends BaseEntity implements Serializable {
 
     private Long discountRate;
 
+    private String conditions;
+
     @PodamExclude
     @ManyToOne
     private AgencyEntity agency;
@@ -72,6 +72,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> questions = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentaryEntity> comments = new ArrayList<>();
 
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -258,7 +262,11 @@ public class TripEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * <<<<<<< HEAD
+     * Obtener valor boolean  promocion
+     * =======
      * Obtener valor boolean promocion
+     * >>>>>>> de3f7a132e24daf11fc923195e33c1343515fc9c
      *
      * @return
      */
@@ -276,6 +284,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * <<<<<<< HEAD
+     * =======
+     * <p>
+     * >>>>>>> de3f7a132e24daf11fc923195e33c1343515fc9c
      *
      * @return discountRate
      */
@@ -284,6 +296,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * <<<<<<< HEAD
+     * =======
+     * <p>
+     * >>>>>>> de3f7a132e24daf11fc923195e33c1343515fc9c
      *
      * @param discountRate
      */
@@ -309,6 +325,44 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setQuestions(List<QuestionEntity> questions) {
         this.questions = questions;
+    }
+
+    /**
+     * Obtiene el las condiciones de un {@link TripEntity}
+     *
+     * @return las condiciones de un {@link TripEntity}
+     */
+    public String getConditions() {
+        return conditions;
+    }
+
+    /**
+     * Asigna el valor de las condiciones de un {@link TripEntity}
+     *
+     * @param conditions las condiciones del {@link TripEntity}
+     */
+    public void setConditions(String conditions) {
+        this.conditions = conditions;
+    }
+
+    /**
+     * Obtiene la colección de commentys.
+     *
+     * @return colección questions.
+     * @generated
+     */
+    public List<CommentaryEntity> getComments() {
+        return comments;
+    }
+
+    /**
+     * Establece el valor de la colección de questions.
+     *
+     * @param comments nuevo valor de la colección.
+     * @generated
+     */
+    public void setComments(List<CommentaryEntity> comments) {
+        this.comments = comments;
     }
 
     /**

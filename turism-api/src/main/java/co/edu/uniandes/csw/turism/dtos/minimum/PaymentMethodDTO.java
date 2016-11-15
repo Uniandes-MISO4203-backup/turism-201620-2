@@ -25,6 +25,7 @@ public class PaymentMethodDTO implements Serializable {
     private int expirationYear;
     
     public PaymentMethodDTO() {
+        // Método auto-generado
     }
     
     public PaymentMethodDTO(PaymentMethodEntity entity) {

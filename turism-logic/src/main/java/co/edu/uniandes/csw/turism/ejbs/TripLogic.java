@@ -115,7 +115,7 @@ public class TripLogic implements ITripLogic {
         try {
             return persistence.find(tripid);
         }catch(NoResultException e){
-            throw new IllegalArgumentException("El Trip no existe");
+            throw new IllegalArgumentException("El Trip no existe", e);
         }
     }
 
@@ -131,8 +131,7 @@ public class TripLogic implements ITripLogic {
     public TripEntity createTrip(Long agencyid, TripEntity entity) {
         AgencyEntity agency = agencyLogic.getAgency(agencyid);
         entity.setAgency(agency);
-        entity = persistence.create(entity);
-        return entity;
+        return persistence.create(entity);
     }
 
     /**

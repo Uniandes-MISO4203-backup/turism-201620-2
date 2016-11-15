@@ -28,8 +28,6 @@
                 type: 'String',
                 required: true
             }
-
-
         }
     });
 
@@ -59,9 +57,7 @@
                         }],                    
                     products: ['Restangular', 'productModel', '$stateParams', function (r, productModel, $params) {
                         return r.all(productModel.url).getList($params);
-                    }]
-                    
-                    
+                    }]                    
                 }
             });
             $sp.state('buyList', {
@@ -140,5 +136,3 @@ app.controller('myCtrl', function($scope) {
     $scope.names = ["Emil", "Tobias", "Linus"];
 });
 })(window.angular);
-
-

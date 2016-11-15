@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.resources;
 
 import co.edu.uniandes.csw.auth.provider.StatusCreated;
@@ -42,37 +42,43 @@ import co.edu.uniandes.csw.turism.dtos.detail.CommentaryDetailDTO;
 import co.edu.uniandes.csw.turism.entities.CommentaryEntity;
 import java.util.ArrayList;
 import co.edu.uniandes.csw.turism.api.ICommentaryLogic;
+import javax.ws.rs.WebApplicationException;
 
 /**
- * URI: commentarys/
+ * URI: trips/{commentsId: \\d+}/commentarys/
+ *
  * @generated
  */
-@Path("/commentarys")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CommentaryResource {
 
-    @Inject private ICommentaryLogic commentaryLogic;
-    @Context private HttpServletResponse response;
-    @QueryParam("page") private Integer page;
-    @QueryParam("limit") private Integer maxRecords;
+    @Inject
+    private ICommentaryLogic commentaryLogic;
+    @Context
+    private HttpServletResponse response;
+    @QueryParam("page")
+    private Integer page;
+    @QueryParam("limit")
+    private Integer maxRecords;
+    @PathParam("tripsId")
+    private Long tripsId;
 
-   
     /**
-     * Convierte una lista de CommentaryEntity a una lista de CommentaryDetailDTO.
+     * Convierte una lista de CommentaryEntity a una lista de
+     * CommentaryDetailDTO.
      *
      * @param entityList Lista de CommentaryEntity a convertir.
      * @return Lista de CommentaryDetailDTO convertida.
      * @generated
      */
-    private List<CommentaryDetailDTO> listEntity2DTO(List<CommentaryEntity> entityList){
+    private List<CommentaryDetailDTO> listEntity2DTO(List<CommentaryEntity> entityList) {
         List<CommentaryDetailDTO> list = new ArrayList<>();
         for (CommentaryEntity entity : entityList) {
             list.add(new CommentaryDetailDTO(entity));
         }
         return list;
     }
-
 
     /**
      * Obtiene la lista de los registros de Comments
@@ -81,25 +87,30 @@ public class CommentaryResource {
      * @generated
      */
     @GET
-    public List<CommentaryDetailDTO> getComments (){
+    public List<CommentaryDetailDTO> getComments() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", commentaryLogic.countComments());
-            return listEntity2DTO(commentaryLogic.getComments(page, maxRecords));
+            return listEntity2DTO(commentaryLogic.getComments(page, maxRecords, tripsId));
         }
-        return listEntity2DTO(commentaryLogic.getComments());
+        return listEntity2DTO(commentaryLogic.getComments(tripsId));
     }
 
     /**
      * Obtiene los datos de una instancia de Comments a partir de su ID
      *
-     * @param id Identificador de la instancia a consultar
-     * @return Instancia de CommentaryDetailDTO con los datos del Product consultado
+     * @param commentId Identificador de la instancia a consultar
+     * @return Instancia de CommentaryDetailDTO con los datos del Product
+     * consultado
      * @generated
      */
     @GET
-    @Path("{id: \\d+}")
-    public CommentaryDetailDTO getComment(@PathParam("id") Long id) {
-        return new CommentaryDetailDTO(commentaryLogic.getComment(id));
+    @Path("{commentId: \\d+}")
+    public CommentaryDetailDTO getComment(@PathParam("commentId") Long commentId) {
+        CommentaryEntity entity = commentaryLogic.getComment(commentId);
+        if (entity.getTrip() != null && !tripsId.equals(entity.getTrip().getId())) {
+            throw new WebApplicationException(404);
+        }
+        return new CommentaryDetailDTO(entity);
     }
 
     /**
@@ -112,37 +123,36 @@ public class CommentaryResource {
     @POST
     @StatusCreated
     public CommentaryDetailDTO createCommentary(CommentaryDetailDTO dto) {
-        return new CommentaryDetailDTO(commentaryLogic.createComment(dto.toEntity()));
+        return new CommentaryDetailDTO(commentaryLogic.createComment(tripsId, dto.toEntity()));
     }
 
     /**
      * Actualiza la información de una instancia de Product
      *
-     * @param id Identificador de la instancia de Product a modificar
+     * @param commentId Identificador de la instancia de Product a modificar
      * @param dto Instancia de CommentaryDetailDTO con los nuevos datos
      * @return Instancia de CommentaryDetailDTO con los datos actualizados
      * @generated
      */
     @PUT
-    @Path("{id: \\d+}")
-    public CommentaryDetailDTO updateComment(@PathParam("id") Long id, CommentaryDetailDTO dto) {
+    @Path("{commentId: \\d+}")
+    public CommentaryDetailDTO updateComment(@PathParam("commentId") Long commentId, CommentaryDetailDTO dto) {
         CommentaryEntity entity = dto.toEntity();
-        entity.setId(id);
-        CommentaryEntity oldEntity = commentaryLogic.getComment(id);
-        return new CommentaryDetailDTO( commentaryLogic.updateComment(entity));
+        entity.setId(commentId);
+        return new CommentaryDetailDTO(commentaryLogic.updateComment(tripsId, entity));
     }
 
     /**
      * Elimina una instancia de Product de la base de datos
      *
-     * @param id Identificador de la instancia a eliminar
+     * @param commentId Identificador de la instancia a eliminar
      * @generated
      */
     @DELETE
-    @Path("{id: \\d+}")
-    public void deletComment(@PathParam("id") Long id) {
-        commentaryLogic.deleteComment(id);
+    @Path("{commentId: \\d+}")
+    public void deletComment(@PathParam("commentId") Long commentId) {
+        commentaryLogic.deleteComment(commentId);
     }
-    
+
 }
 

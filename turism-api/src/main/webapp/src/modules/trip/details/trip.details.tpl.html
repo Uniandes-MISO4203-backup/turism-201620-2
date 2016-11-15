@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <p>
             <a ng-href="{{currentRecord.image}}">
-                <img style="width: 420px;height: 210px" class="img-responsive" ng-src="{{currentRecord.image}}">
+                <img style="width: 420px;height: 210px" class="img-responsive" ng-src="{{currentRecord.image}}" alt="">
             </a>
         </p>
         <p>
@@ -36,6 +36,9 @@
         </p>
         <p>
         <label><strong>*Promotion Rate(%): </strong></label><span id="discountRate"> {{currentRecord.discountRate}}</span>
+        </p>
+        <p>
+        <label><strong>Conditions: </strong></label><span id="conditions"> {{currentRecord.conditions}}</span>
         </p>
     </div>
 </div>

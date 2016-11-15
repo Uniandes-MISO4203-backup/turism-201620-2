@@ -82,7 +82,7 @@ public class DestinationLogic implements IDestinationLogic {
         try {
             return persistence.find(destinationid);
         } catch (NoResultException e) {
-            throw new IllegalArgumentException("El Destination no existe");
+            throw new IllegalArgumentException("El Destination no existe", e);
         }
     }
 
@@ -98,8 +98,7 @@ public class DestinationLogic implements IDestinationLogic {
     public DestinationEntity createDestination(Long tripid, DestinationEntity entity) {
         TripEntity trip = tripLogic.getTrip(tripid);
         entity.setTrip(trip);
-        entity = persistence.create(entity);
-        return entity;
+        return persistence.create(entity);
     }
 
     /**
