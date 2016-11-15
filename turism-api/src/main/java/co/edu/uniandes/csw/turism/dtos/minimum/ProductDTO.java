@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.dtos.minimum;
 
 import co.edu.uniandes.csw.turism.entities.ProductEntity;
@@ -32,7 +32,7 @@ import java.sql.Date;
  * @generated
  */
 @XmlRootElement
-public class ProductDTO implements Serializable{
+public class ProductDTO implements Serializable {
 
     private Long id;
     private String name;
@@ -49,16 +49,17 @@ public class ProductDTO implements Serializable{
     /**
      * Crea un objeto ProductDTO a partir de un objeto ProductEntity.
      *
-     * @param entity Entidad ProductEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad ProductEntity desde la cual se va a crear el nuevo
+     * objeto.
      * @generated
      */
     public ProductDTO(ProductEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.price=entity.getPrice();
-        this.expirationDate=entity.getExpirationDate();
-       }
+        if (entity != null) {
+            this.id = entity.getId();
+            this.name = entity.getName();
+            this.price = entity.getPrice();
+            this.expirationDate = entity.getExpirationDate();
+        }
     }
 
     /**
@@ -73,7 +74,7 @@ public class ProductDTO implements Serializable{
         entity.setName(this.getName());
         entity.setPrice(this.getPrice());
         entity.setExpirationDate(this.getExpirationDate());
-    return entity;
+        return entity;
     }
 
     /**
@@ -135,16 +136,13 @@ public class ProductDTO implements Serializable{
     public void setPrice(Long price) {
         this.price = price;
     }
-    
-    
-    public Date getExpirationDate(){
+
+    public Date getExpirationDate() {
         return expirationDate;
     }
-    
-    
-    public void setExpirationdate(Date expirationDate){
-        this.expirationDate= expirationDate;
+
+    public void setExpirationdate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
-    
 
 }

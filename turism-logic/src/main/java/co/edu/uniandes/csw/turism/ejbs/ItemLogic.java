@@ -95,7 +95,7 @@ public class ItemLogic implements IItemLogic {
         try {
             return persistence.find(itemid);
         }catch(NoResultException e){
-            throw new IllegalArgumentException("El Item no existe");
+            throw new IllegalArgumentException("El Item no existe", e);
         }
     }
 
@@ -111,8 +111,7 @@ public class ItemLogic implements IItemLogic {
     public ItemEntity createItem(Long clientid, ItemEntity entity) {
         ClientEntity client = clientLogic.getClient(clientid);
         entity.setClient(client);
-        entity = persistence.create(entity);
-        return entity;
+        return persistence.create(entity);
     }
 
     /**

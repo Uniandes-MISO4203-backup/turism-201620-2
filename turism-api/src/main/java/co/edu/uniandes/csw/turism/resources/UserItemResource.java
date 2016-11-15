@@ -30,7 +30,6 @@ import co.edu.uniandes.csw.turism.dtos.detail.ClientDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.detail.ItemDetailDTO;
 import co.edu.uniandes.csw.turism.entities.ItemEntity;
 import com.stormpath.sdk.account.Account;
-import org.apache.shiro.authz.UnauthorizedException;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;

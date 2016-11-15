@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.dtos.minimum;
 
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
@@ -31,12 +31,12 @@ import java.io.Serializable;
  * @generated
  */
 @XmlRootElement
-public class AgencyDTO implements Serializable{
+public class AgencyDTO implements Serializable {
 
     private Long id;
     private String name;
     private Integer numberPhone;
-    
+
     /**
      * @generated
      */
@@ -47,15 +47,16 @@ public class AgencyDTO implements Serializable{
     /**
      * Crea un objeto AgencyDTO a partir de un objeto AgencyEntity.
      *
-     * @param entity Entidad AgencyEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad AgencyEntity desde la cual se va a crear el nuevo
+     * objeto.
      * @generated
      */
     public AgencyDTO(AgencyEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.numberPhone=entity.getNumberPhone();
-       }
+        if (entity != null) {
+            this.id = entity.getId();
+            this.name = entity.getName();
+            this.numberPhone = entity.getNumberPhone();
+        }
     }
 
     /**
@@ -69,7 +70,7 @@ public class AgencyDTO implements Serializable{
         entity.setId(this.getId());
         entity.setName(this.getName());
         entity.setNumberPhone(this.getNumberPhone());
-    return entity;
+        return entity;
     }
 
     /**
@@ -111,7 +112,7 @@ public class AgencyDTO implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    
+
     /**
      * Obtiene el atributo numberPhone.
      *
@@ -127,7 +128,7 @@ public class AgencyDTO implements Serializable{
      *
      * @param numberPhone nuevo valor del atributo
      * @generated
-     */      
+     */
     public void setNumberPhone(Integer numberPhone) {
         this.numberPhone = numberPhone;
     }

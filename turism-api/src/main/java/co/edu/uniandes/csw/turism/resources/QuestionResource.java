@@ -113,7 +113,6 @@ public class QuestionResource {
     public QuestionDetailDTO updateQuestion(@PathParam("questionId") Long questionId, QuestionDetailDTO dto) {
         QuestionEntity entity = dto.toEntity();
         entity.setId(questionId);
-        QuestionEntity oldEntity = questionLogic.getQuestion(questionId);
         return new QuestionDetailDTO(questionLogic.updateQuestion(tripsId, entity));
     }
     

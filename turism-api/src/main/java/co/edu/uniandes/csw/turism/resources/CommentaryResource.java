@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.resources;
 
 import co.edu.uniandes.csw.auth.provider.StatusCreated;
@@ -44,36 +44,41 @@ import java.util.ArrayList;
 import co.edu.uniandes.csw.turism.api.ICommentaryLogic;
 import javax.ws.rs.WebApplicationException;
 
-
 /**
  * URI: trips/{commentsId: \\d+}/commentarys/
+ *
  * @generated
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CommentaryResource {
 
-    @Inject private ICommentaryLogic commentaryLogic;
-    @Context private HttpServletResponse response;
-    @QueryParam("page") private Integer page;
-    @QueryParam("limit") private Integer maxRecords;
-    @PathParam("tripsId") private Long tripsId;
-   
+    @Inject
+    private ICommentaryLogic commentaryLogic;
+    @Context
+    private HttpServletResponse response;
+    @QueryParam("page")
+    private Integer page;
+    @QueryParam("limit")
+    private Integer maxRecords;
+    @PathParam("tripsId")
+    private Long tripsId;
+
     /**
-     * Convierte una lista de CommentaryEntity a una lista de CommentaryDetailDTO.
+     * Convierte una lista de CommentaryEntity a una lista de
+     * CommentaryDetailDTO.
      *
      * @param entityList Lista de CommentaryEntity a convertir.
      * @return Lista de CommentaryDetailDTO convertida.
      * @generated
      */
-    private List<CommentaryDetailDTO> listEntity2DTO(List<CommentaryEntity> entityList){
+    private List<CommentaryDetailDTO> listEntity2DTO(List<CommentaryEntity> entityList) {
         List<CommentaryDetailDTO> list = new ArrayList<>();
         for (CommentaryEntity entity : entityList) {
             list.add(new CommentaryDetailDTO(entity));
         }
         return list;
     }
-
 
     /**
      * Obtiene la lista de los registros de Comments
@@ -82,7 +87,7 @@ public class CommentaryResource {
      * @generated
      */
     @GET
-    public List<CommentaryDetailDTO> getComments (){
+    public List<CommentaryDetailDTO> getComments() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", commentaryLogic.countComments());
             return listEntity2DTO(commentaryLogic.getComments(page, maxRecords, tripsId));
@@ -94,7 +99,8 @@ public class CommentaryResource {
      * Obtiene los datos de una instancia de Comments a partir de su ID
      *
      * @param commentId Identificador de la instancia a consultar
-     * @return Instancia de CommentaryDetailDTO con los datos del Product consultado
+     * @return Instancia de CommentaryDetailDTO con los datos del Product
+     * consultado
      * @generated
      */
     @GET
@@ -104,7 +110,7 @@ public class CommentaryResource {
         if (entity.getTrip() != null && !tripsId.equals(entity.getTrip().getId())) {
             throw new WebApplicationException(404);
         }
-        return  new CommentaryDetailDTO(entity);
+        return new CommentaryDetailDTO(entity);
     }
 
     /**
@@ -117,7 +123,7 @@ public class CommentaryResource {
     @POST
     @StatusCreated
     public CommentaryDetailDTO createCommentary(CommentaryDetailDTO dto) {
-        return new CommentaryDetailDTO(commentaryLogic.createComment(tripsId,dto.toEntity()));
+        return new CommentaryDetailDTO(commentaryLogic.createComment(tripsId, dto.toEntity()));
     }
 
     /**
@@ -133,8 +139,7 @@ public class CommentaryResource {
     public CommentaryDetailDTO updateComment(@PathParam("commentId") Long commentId, CommentaryDetailDTO dto) {
         CommentaryEntity entity = dto.toEntity();
         entity.setId(commentId);
-        CommentaryEntity oldEntity = commentaryLogic.getComment(commentId);
-        return new CommentaryDetailDTO( commentaryLogic.updateComment(tripsId,entity));
+        return new CommentaryDetailDTO(commentaryLogic.updateComment(tripsId, entity));
     }
 
     /**
@@ -148,6 +153,6 @@ public class CommentaryResource {
     public void deletComment(@PathParam("commentId") Long commentId) {
         commentaryLogic.deleteComment(commentId);
     }
-    
+
 }
 

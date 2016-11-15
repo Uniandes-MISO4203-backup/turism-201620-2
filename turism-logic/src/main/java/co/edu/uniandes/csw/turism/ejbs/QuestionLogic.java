@@ -93,8 +93,7 @@ public class QuestionLogic implements IQuestionLogic{
     public QuestionEntity createQuestion(Long tripid, QuestionEntity entity) {
         TripEntity trip = tripLogic.getTrip(tripid);
         entity.setTrip(trip);
-        entity = persistence.create(entity);
-        return entity;
+        return persistence.create(entity);
     }
     
     /**

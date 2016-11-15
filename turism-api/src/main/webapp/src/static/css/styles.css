@@ -1,8 +1,7 @@
-
 /*---------------------------------------
         barra de navegacion              
 -----------------------------------------*/
-.collapse navbar-collapse>li>a{
+.collapse navbar-collapse li a{
     color: #ffffff;
 }
 
@@ -68,25 +67,6 @@ div#footer-1.col-md-3, div#footer-2.col-md-3, div#footer-3.col-md-5  {
 /*---------------------------------------
    SECTION ABOUT              
 -----------------------------------------*/
-#loading {
-   width: 100%;
-   height: 100%;
-   top: 0;
-   left: 0;
-   position: fixed;
-   display: block;
-   opacity: 0.7;
-   background-color: #fff;
-   z-index: 99;
-   text-align: center;
-}
-
-#loading-image {
-  position: absolute;
-  top: 100px;
-  left: 240px;
-  z-index: 100;
-}
 .about {
     background: #F1F1F1;
 }
@@ -217,7 +197,7 @@ div.carousel-inner .item img {
     width: 12px;
     height: 12px;
     border: 1px solid #f39c12;
-    margin: 1PX;
+    margin: 1px 1px 1px 1px;
 }
 .testimonial ol.carousel-indicators li.active {
     width: 12px;

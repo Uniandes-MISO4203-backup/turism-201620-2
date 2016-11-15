@@ -14,12 +14,12 @@ import java.io.Serializable;
  * @author af.osorio10
  */
 @XmlRootElement
-public class QuestionDTO implements Serializable{
-    
+public class QuestionDTO implements Serializable {
+
     private Long id;
     private String name;
     private String respuesta;
-    
+
     /**
      * @generated
      */
@@ -30,15 +30,16 @@ public class QuestionDTO implements Serializable{
     /**
      * Crea un objeto QuestionDTO a partir de un objeto QuestionEntity.
      *
-     * @param entity Entidad QuestionEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad QuestionEntity desde la cual se va a crear el nuevo
+     * objeto.
      * @generated
      */
     public QuestionDTO(QuestionEntity entity) {
-	if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.respuesta=entity.getRespuesta();
-       }
+        if (entity != null) {
+            this.id = entity.getId();
+            this.name = entity.getName();
+            this.respuesta = entity.getRespuesta();
+        }
     }
 
     /**
@@ -113,6 +114,6 @@ public class QuestionDTO implements Serializable{
      */
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
-    }         
-    
+    }
+
 }
