@@ -23,9 +23,11 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.tests;
 
+import co.edu.uniandes.csw.turism.dtos.detail.BuyDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.detail.DestinationDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.detail.QuestionDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.QuestionDTO;
+import co.edu.uniandes.csw.turism.entities.BuyEntity;
 import co.edu.uniandes.csw.turism.entities.DestinationEntity;
 import co.edu.uniandes.csw.turism.entities.QuestionEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
@@ -119,5 +121,37 @@ public class Utils {
      */
     public static DestinationEntity aDestinationEntity() {
         return new DestinationEntity();
+    }
+
+    /**
+     * returns a list of {@link BuyEntity}
+     * @return
+     */
+    public static List<BuyEntity> aBuysEntityList() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * Returns an instance of {@link BuyEntity}
+     * @return
+     */
+    public static BuyEntity aButEntity() {
+        return new BuyEntity();
+    }
+
+    /**
+     * returns a list of {@link BuyDetailDTO}
+     * @return
+     */
+    public static List<BuyDetailDTO> aBuyDetailDTOList() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * returns a list of {@link BuyEntity}
+     * @return
+     */
+    public static List<BuyEntity> aButEntityList() {
+        return new ArrayList<>();
     }
 }
