@@ -204,6 +204,9 @@ SOFTWARE.
                     }
                 }
             });
+            
+            
+            
             $sp.state('tripCategoryEdit', {
                 url: '/edit',
                 parent: 'tripCategory',
@@ -235,6 +238,20 @@ SOFTWARE.
                             return r.all(model.url).getList($params);
                         }]                }
             });
+            $sp.state('abouts', {
+                url: '/about',
+                views: {
+                    mainView: {
+                        templateUrl: 'src/modules/trip/list/about.html'
+                    }
+                }
+            });
+            
+            
+            
+            
+            
+            
             $sp.state('tripDetailsInfo', {
                 url: '/tripDetailsInfo/{tripId:int}',
                 views: {
@@ -247,7 +264,6 @@ SOFTWARE.
                 resolve: {
                     model: 'tripModel',
                     trip: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
-                        console.log("esto se llama");
                             return r.all(model.url1).get($params.tripId);
                         }]                }
             });

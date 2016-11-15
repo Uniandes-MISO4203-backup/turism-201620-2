@@ -38,6 +38,7 @@ SOFTWARE.
         'usersModule',
         'commentaryModule',
         'questionModule',
+        'destinationModule',
         'buyModule'
     ]);
 
@@ -110,6 +111,11 @@ SOFTWARE.
                         icon: 'list-alt',
                         state: 'commentaryList'
                     }, {
+                        id: 'trip',
+                        label: 'trips',
+                        icon: 'list-alt',
+                        state: 'abouts'
+                    },{
                         id: 'users',
                         label: 'Users',
                         icon: 'list-alt',

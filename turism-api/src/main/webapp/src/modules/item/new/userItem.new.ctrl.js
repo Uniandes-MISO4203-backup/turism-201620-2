@@ -77,7 +77,6 @@
                     fn: function () {
                         if ($scope.itemForm.$valid) {
                             Restangular.all('client/wishList').post($scope.currentRecord).then(function (rc) {
-                                console.log(rc);
                                 $state.go('itemList', {clientId: rc.id}, {reload: true});
                             });
                         }

@@ -16,9 +16,9 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @XmlRootElement
 public class CommentaryDetailDTO extends CommentaryDTO{
-
+    
     @PodamExclude
-    private ClientDTO client;
+    private TripDTO trip;
 
     /**
      * @generated
@@ -35,8 +35,8 @@ public class CommentaryDetailDTO extends CommentaryDTO{
      */
     public CommentaryDetailDTO(CommentaryEntity entity) {
         super(entity);
-        if (entity.getClient()!=null){
-            this.client= new ClientDTO(entity.getClient());
+        if (entity.getTrip()!=null){
+        this.trip = new TripDTO(entity.getTrip());
         }
     }
 
@@ -49,20 +49,31 @@ public class CommentaryDetailDTO extends CommentaryDTO{
     @Override
     public CommentaryEntity toEntity() {
         CommentaryEntity entity = super.toEntity();
-        if (this.getClient()!=null){
-           entity.setClient(this.getClient().toEntity());
+        if (this.getTrip()!=null){
+        entity.setTrip(this.getTrip().toEntity());
         }
         return entity; //To change body of generated methods, choose Tools | Templates.
     }
 
-
-    public ClientDTO getClient() {
-        return client;
+/**
+     * Obtiene el atributo trip.
+     *
+     * @return atributo trip.
+     * @author af.osorio10
+     */
+    public TripDTO getTrip() {
+        return trip;
     }
 
-    public void setClient(ClientDTO client) {
-        this.client = client;
+    /**
+     * Establece el valor del atributo trip.
+     *
+     * @param trip nuevo valor del atributo
+     * @author af.osorio10
+     */
+    public void setTrip(TripDTO trip) {
+        this.trip = trip;
     }
-
+   
 }
 
