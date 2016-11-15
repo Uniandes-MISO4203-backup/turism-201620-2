@@ -12,6 +12,7 @@
     <class>co.edu.uniandes.csw.turism.entities.QuestionEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.CommentaryEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.BuyEntity</class>
+    <class>co.edu.uniandes.csw.turism.entities.DestinationEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.PaymentMethodEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>

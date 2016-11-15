@@ -65,6 +65,7 @@ SOFTWARE.
         <script src="src/auth.js"></script>
         <script src="src/modules/client/client.mod.js"></script>
         <script src="src/modules/item/item.mod.js"></script>
+        <script src="src/modules/destination/destination.mod.js"></script>
         <script src="src/modules/question/question.mod.js"></script>
         <script src="src/modules/trip/trip.mod.js"></script>
         <script src="src/modules/product/product.mod.js"></script>
@@ -126,6 +127,13 @@ SOFTWARE.
         <script src="src/modules/category/list/category.list.ctrl.js"></script>
         <script src="src/modules/category/new/category.new.ctrl.js"></script>
         
+        <script src="src/modules/destination/destination.ctrl.js"></script>
+        <script src="src/modules/destination/instance/delete/destination.delete.ctrl.js"></script>
+        <script src="src/modules/destination/instance/detail/destination.detail.ctrl.js"></script>
+        <script src="src/modules/destination/instance/edit/destination.edit.ctrl.js"></script>
+        <script src="src/modules/destination/list/destination.list.ctrl.js"></script>
+        <script src="src/modules/destination/new/destination.new.ctrl.js"></script>
+        
         <script src="src/modules/question/question.ctrl.js"></script>
         <script src="src/modules/question/instance/delete/question.delete.ctrl.js"></script>
         <script src="src/modules/question/instance/detail/question.detail.ctrl.js"></script>
@@ -156,12 +164,8 @@ SOFTWARE.
         <script src="src/modules/product/instance/buys/edit/product.buys.edit.ctrl.js"></script>
         <script src="src/modules/product/instance/buys/list/product.buys.list.ctrl.js"></script>
         
-        
-        
-        
         <!-- estilos personalizados-->
         <link href="src/static/css/styles.css" rel="stylesheet">
-        <link href="src/static/css/bootstrap.min.css" rel="stylesheet">
         <!--estilos para el carousel-->
         <link href="src/static/css/carousel/owl.carousel.css" rel="stylesheet">
         <link href="src/static/css/carousel/owl.theme.css" rel="stylesheet">
@@ -171,9 +175,7 @@ SOFTWARE.
         <!--fin de estilos-->
      
      <!-- estilos personalizados-->   
-        <script src="src/static/js/jquery.min.js"></script>
         <script src="src/static/js/owl.carousel.js"></script>
-        <script src="src/static/js/bootstrap.min.js"></script>
         <script src="src/static/js/owl.carousel.js"></script>
         
 
@@ -209,29 +211,72 @@ SOFTWARE.
                                 <li ng-if="commentary"><a ui-sref="commentaryList">Commentary</a></li>
                                 -->
                                 <li ng-if="users"><a ui-sref="usersList">Users</a></li>
-                                <li ng-if="users"><a ui-sref="buyList">Buys</a></li>                               
+                                <li ng-if="users"><a ui-sref="buyList">Buys</a></li>  
+                                <li ><a ui-sref="abouts">About us</a></li>
                                 <li ><login-button></login-button></li>                                 
                             </ul>   
                         </div> <!-- /.navbar-collapse -->
                     </div> <!-- /.container-fluid -->
                 </nav>
             </div>
-            <br><br><br>
-            
-            
+            <br><br><br>          
             <div ui-view="mainView"></div>
-        </div>
     <section class="copyright">
-        <h2></h2>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="copy_right_text">
-                    <!-- COPYRIGHT TEXT -->
-                        <p>Copyright &copy; 2016. All Rights Reserved.</p>        
-                        <p>WalkerDevelopers</p>
+                <div class="col-md-3 col-md-offset-1">
+                    <h3>Contactanos</h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="src/static/images/ubicacion.png" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <p>Cll 53 No 49-109 LC 104<br>Bogotá - Colombia</p>
+                        </div>   
                     </div>
-            </div>
+                    
+                    <div class="row">                       
+                        <div class="col-md-3">
+                            <img src="src/static/images/mail.png" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <p>Correo Electroníco<br>
+                            contacto@walkersdevelop.com</p>
+                        </div>   
+                    </div>
+                    
+                    <div class="row">                    
+                        <div class="col-md-3" id="footer-1">
+                            <img src="src/static/images/telefono.png" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <p>PBX<br>
+                            5404021-5404022</p>
+                        </div>   
+                    </div>
+                    
+                </div>
+                <div class="col-md-3" id="footer-2">
+                   <h3>Metodos de Pago</h3>
+                        
+                        <img  src="src/static/images/visa.png" alt=""><br><br>
+                        <img  src="src/static/images/maestro.png" alt="">
+                </div>
+                <div class="col-md-5" id="footer-3">
+                    <h3>Redes Sociales</h3><br>
+                    <div class="row">                    
+                        <div class="col-md-4">
+                            <><img src="src/static/images/fb.png" alt=""></>  
+                        </div>
+                        <div class="col-md-4">
+                            <><img src="src/static/images/tw.png" alt=""></>
+                        </div>  
+                        <div class="col-md-4">
+                            <><img src="src/static/images/it.png" alt=""></>
+                        </div>
+                    </div>
+                    <br><><img src="src/static/images/hg.png" alt=""></>
+                </div>
         </div>
         </div>
     </section>
