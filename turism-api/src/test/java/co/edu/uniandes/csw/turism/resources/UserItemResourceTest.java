@@ -42,6 +42,6 @@ public class UserItemResourceTest {
     @Test(expected = WebApplicationException.class)
     public void shouldThrowWebApplicationExceptionWhenNotAuthorizedToCreatetems() throws Exception {
         when(req.getRemoteUser()).thenReturn(null);
-        subject.getItems();
+        subject.createItem(null);
     }
 }

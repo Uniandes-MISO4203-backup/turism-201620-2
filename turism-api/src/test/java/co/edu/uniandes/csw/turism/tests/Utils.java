@@ -23,8 +23,12 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.tests;
 
+import co.edu.uniandes.csw.turism.dtos.detail.BuyDetailDTO;
+import co.edu.uniandes.csw.turism.dtos.detail.DestinationDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.detail.QuestionDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.QuestionDTO;
+import co.edu.uniandes.csw.turism.entities.BuyEntity;
+import co.edu.uniandes.csw.turism.entities.DestinationEntity;
 import co.edu.uniandes.csw.turism.entities.QuestionEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 
@@ -90,5 +94,64 @@ public class Utils {
      */
     public static TripEntity aTripEntity() {
         return new TripEntity();
+    }
+
+    /**
+     * returns a list of {@link DestinationEntity}
+     * @return
+     */
+    public static List<DestinationEntity> aDestinationEntityList() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * Returns an instance of {@link DestinationDetailDTO}
+     * @return
+     */
+    public static DestinationDetailDTO aDestinationDetailDTO() {
+        DestinationDetailDTO dto = new DestinationDetailDTO();
+        dto.setId(Long.valueOf(0));
+        dto.setName("name");
+        return dto;
+    }
+
+    /**
+     * Returns an instance of {@link DestinationEntity}
+     * @return
+     */
+    public static DestinationEntity aDestinationEntity() {
+        return new DestinationEntity();
+    }
+
+    /**
+     * returns a list of {@link BuyEntity}
+     * @return
+     */
+    public static List<BuyEntity> aBuysEntityList() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * Returns an instance of {@link BuyEntity}
+     * @return
+     */
+    public static BuyEntity aButEntity() {
+        return new BuyEntity();
+    }
+
+    /**
+     * returns a list of {@link BuyDetailDTO}
+     * @return
+     */
+    public static List<BuyDetailDTO> aBuyDetailDTOList() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * returns a list of {@link BuyEntity}
+     * @return
+     */
+    public static List<BuyEntity> aButEntityList() {
+        return new ArrayList<>();
     }
 }
