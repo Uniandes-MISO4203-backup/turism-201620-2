@@ -23,8 +23,10 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.tests;
 
+import co.edu.uniandes.csw.turism.dtos.detail.DestinationDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.detail.QuestionDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.QuestionDTO;
+import co.edu.uniandes.csw.turism.entities.DestinationEntity;
 import co.edu.uniandes.csw.turism.entities.QuestionEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 
@@ -90,5 +92,32 @@ public class Utils {
      */
     public static TripEntity aTripEntity() {
         return new TripEntity();
+    }
+
+    /**
+     * returns a list of {@link DestinationEntity}
+     * @return
+     */
+    public static List<DestinationEntity> aDestinationEntityList() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * Returns an instance of {@link DestinationDetailDTO}
+     * @return
+     */
+    public static DestinationDetailDTO aDestinationDetailDTO() {
+        DestinationDetailDTO dto = new DestinationDetailDTO();
+        dto.setId(Long.valueOf(0));
+        dto.setName("name");
+        return dto;
+    }
+
+    /**
+     * Returns an instance of {@link DestinationEntity}
+     * @return
+     */
+    public static DestinationEntity aDestinationEntity() {
+        return new DestinationEntity();
     }
 }
