@@ -136,5 +136,4 @@ public class DestinationResource {
     public void deleteDestination(@PathParam("destinationId") Long destinationId) {
         destinationLogic.deleteDestination(destinationId);
     }
-
 }

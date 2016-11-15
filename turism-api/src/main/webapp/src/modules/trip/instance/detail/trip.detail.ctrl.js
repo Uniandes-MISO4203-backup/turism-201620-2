@@ -64,6 +64,13 @@ SOFTWARE.
                         $state.go('tripList');
                     }
                 },
+                destinations: {
+                    displayName: 'Destinos',
+                    icon: 'glyphicon glyphicon-map-marker',
+                    fn: function () {
+                        $state.go('destinationList');
+                    }
+                },
                 category: {
                     displayName: 'Category',
                     icon: 'link',
