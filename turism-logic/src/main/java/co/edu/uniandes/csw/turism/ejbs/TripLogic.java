@@ -131,8 +131,7 @@ public class TripLogic implements ITripLogic {
     public TripEntity createTrip(Long agencyid, TripEntity entity) {
         AgencyEntity agency = agencyLogic.getAgency(agencyid);
         entity.setAgency(agency);
-        TripEntity newEntity = persistence.create(entity);
-        return newEntity;
+        return persistence.create(entity);
     }
 
     /**

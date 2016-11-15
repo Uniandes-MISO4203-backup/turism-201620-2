@@ -128,7 +128,6 @@ public class CommentaryResource {
     public CommentaryDetailDTO updateComment(@PathParam("id") Long id, CommentaryDetailDTO dto) {
         CommentaryEntity entity = dto.toEntity();
         entity.setId(id);
-        CommentaryEntity oldEntity = commentaryLogic.getComment(id);
         return new CommentaryDetailDTO( commentaryLogic.updateComment(entity));
     }
 

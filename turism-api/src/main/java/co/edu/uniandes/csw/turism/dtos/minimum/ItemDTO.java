@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.dtos.minimum;
 
 import co.edu.uniandes.csw.turism.entities.ItemEntity;
@@ -31,7 +31,7 @@ import java.io.Serializable;
  * @generated
  */
 @XmlRootElement
-public class ItemDTO implements Serializable{
+public class ItemDTO implements Serializable {
 
     private Long id;
     private String name;
@@ -47,15 +47,16 @@ public class ItemDTO implements Serializable{
     /**
      * Crea un objeto ItemDTO a partir de un objeto ItemEntity.
      *
-     * @param entity Entidad ItemEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad ItemEntity desde la cual se va a crear el nuevo
+     * objeto.
      * @generated
      */
     public ItemDTO(ItemEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.qty=entity.getQty();
-       }
+        if (entity != null) {
+            this.id = entity.getId();
+            this.name = entity.getName();
+            this.qty = entity.getQty();
+        }
     }
 
     /**
@@ -69,7 +70,7 @@ public class ItemDTO implements Serializable{
         entity.setId(this.getId());
         entity.setName(this.getName());
         entity.setQty(this.getQty());
-    return entity;
+        return entity;
     }
 
     /**

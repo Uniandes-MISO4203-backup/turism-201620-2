@@ -98,8 +98,7 @@ public class DestinationLogic implements IDestinationLogic {
     public DestinationEntity createDestination(Long tripid, DestinationEntity entity) {
         TripEntity trip = tripLogic.getTrip(tripid);
         entity.setTrip(trip);
-        DestinationEntity newEntity = persistence.create(entity);
-        return newEntity;
+        return persistence.create(entity);
     }
 
     /**

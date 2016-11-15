@@ -98,8 +98,7 @@ public class PaymentMethodLogic implements IPaymentMethodLogic {
     public PaymentMethodEntity createPaymentMethod(Long clientId, PaymentMethodEntity entity) {
         ClientEntity client = clientLogic.getClient(clientId);
         entity.setClient(client);
-        PaymentMethodEntity newEntity = persistence.create(entity);
-        return newEntity;
+        return persistence.create(entity);
     }
 
     /**
