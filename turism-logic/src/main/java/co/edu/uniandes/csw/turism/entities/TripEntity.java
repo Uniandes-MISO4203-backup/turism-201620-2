@@ -1,18 +1,14 @@
 /*
 The MIT License (MIT)
-
 Copyright (c) 2015 Los Andes University
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -73,6 +69,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<QuestionEntity> questions = new ArrayList<>();
 
+    @PodamExclude
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentaryEntity> comments = new ArrayList<>();
+    
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DestinationEntity> destinations = new ArrayList<>();
@@ -310,6 +310,27 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setQuestions(List<QuestionEntity> questions) {
         this.questions = questions;
     }
+    
+    
+         /**
+     * Obtiene la colección de commentys.
+     *
+     * @return colección questions.
+     * @generated
+     */
+    public List<CommentaryEntity> getComments() {
+        return comments;
+    }
+    
+    /**
+     * Establece el valor de la colección de questions.
+     *
+     * @param comments nuevo valor de la colección.
+     * @generated
+     */
+    public void setComments(List<CommentaryEntity> comments) {
+        this.comments = comments;
+    }
 
     /**
      * Obtiene la colección de destinations.
@@ -329,5 +350,5 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setDestinations(List<DestinationEntity> destinations) {
         this.destinations = destinations;
-    }
+}
 }

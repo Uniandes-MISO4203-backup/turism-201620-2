@@ -21,3 +21,4 @@ public interface IDestinationLogic {
     public DestinationEntity updateDestination(Long tripid, DestinationEntity entity);
     public void deleteDestination(Long id);
 }
+

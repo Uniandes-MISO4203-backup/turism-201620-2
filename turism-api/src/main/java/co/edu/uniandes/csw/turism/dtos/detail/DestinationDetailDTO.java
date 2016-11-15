@@ -50,3 +50,4 @@ public class DestinationDetailDTO extends DestinationDTO {
         this.trip = trip;
     }
 }
+
