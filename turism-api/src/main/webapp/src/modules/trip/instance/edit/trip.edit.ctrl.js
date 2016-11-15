@@ -33,6 +33,7 @@ SOFTWARE.
                     displayName: 'Save',
                     icon: 'save',
                     fn: function () {
+                        console.log($scope.tripForm.$valid);
                         if ($scope.tripForm.$valid) {
                             $scope.currentRecord.put().then(function (rc) {
                                 $state.go('tripDetail', {tripId: rc.id}, {reload: true});
