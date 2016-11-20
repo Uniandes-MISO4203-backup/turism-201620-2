@@ -170,10 +170,6 @@ SOFTWARE.
         <!--estilos para el carousel-->
         <link href="src/static/css/carousel/owl.carousel.css" rel="stylesheet">
         <link href="src/static/css/carousel/owl.theme.css" rel="stylesheet">
-        <!--fin carousel-->
-        <!--estilos para el menu-->
-        <link href="src/static/css/menu.css" rel="stylesheet">
-        <!--fin de estilos-->
     
         
 
@@ -183,10 +179,10 @@ SOFTWARE.
 
     </head>
     <body  style="padding-top: 60px;">  
-        <div class="container-fluid">
+        <div class="container">
             
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="principal">
-                    <div class="container-fluid">
+                    <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-bar">
@@ -196,9 +192,12 @@ SOFTWARE.
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-
+                                
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="main-bar">
+                            <ul class="nav navbar-nav navbar-left">
+                                <li><a ui-sref="tripGallery">WalkersDevelop</a></li>
+                                </ul>
                             <ul ng-controller="roleCtrl"  class="nav navbar-nav navbar-right" >
                                 <li ><a class="navbar-brand" ui-sref="tripGallery">Trips</a></li>
                                 <li ng-if="client"><a ui-sref="clientList">Client</a></li>
