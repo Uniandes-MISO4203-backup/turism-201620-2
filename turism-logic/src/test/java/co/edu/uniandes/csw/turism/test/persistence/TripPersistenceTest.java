@@ -25,6 +25,7 @@ package co.edu.uniandes.csw.turism.test.persistence;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.TripPersistence;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,6 +160,14 @@ public class TripPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getDepartureDate()), new SimpleDateFormat("dd/MM/yyyy").format(entity.getDepartureDate()));
+        Assert.assertEquals(newEntity.getDestination(), entity.getDestination());
+        Assert.assertEquals(newEntity.getQuota(), entity.getQuota());
+        Assert.assertEquals(newEntity.getDuration(), entity.getDuration());
+        Assert.assertEquals(newEntity.getTransport(), entity.getTransport());
+        Assert.assertEquals(newEntity.getPromotion(), entity.getPromotion());
+        Assert.assertEquals(newEntity.getDiscountRate(), entity.getDiscountRate());
+        Assert.assertEquals(newEntity.getConditions(), entity.getConditions());
     }
 
     /**
@@ -194,6 +203,14 @@ public class TripPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getImage(), newEntity.getImage());
         Assert.assertEquals(entity.getPrice(), newEntity.getPrice());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(entity.getDepartureDate()), new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getDepartureDate()));
+        Assert.assertEquals(entity.getDestination(), newEntity.getDestination());
+        Assert.assertEquals(entity.getQuota(), newEntity.getQuota());
+        Assert.assertEquals(entity.getDuration(), newEntity.getDuration());
+        Assert.assertEquals(entity.getTransport(), newEntity.getTransport());
+        Assert.assertEquals(entity.getPromotion(), newEntity.getPromotion());
+        Assert.assertEquals(entity.getDiscountRate(), newEntity.getDiscountRate());
+        Assert.assertEquals(entity.getConditions(), newEntity.getConditions());
     }
 
     /**
@@ -229,5 +246,13 @@ public class TripPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getImage(), resp.getImage());
         Assert.assertEquals(newEntity.getPrice(), resp.getPrice());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getDepartureDate()), new SimpleDateFormat("dd/MM/yyyy").format(resp.getDepartureDate()));
+        Assert.assertEquals(newEntity.getDestination(), resp.getDestination());
+        Assert.assertEquals(newEntity.getQuota(), resp.getQuota());
+        Assert.assertEquals(newEntity.getDuration(), resp.getDuration());
+        Assert.assertEquals(newEntity.getTransport(), resp.getTransport());
+        Assert.assertEquals(newEntity.getPromotion(), resp.getPromotion());
+        Assert.assertEquals(newEntity.getDiscountRate(), resp.getDiscountRate());
+        Assert.assertEquals(newEntity.getConditions(), resp.getConditions());
     }
 }

@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.turism.test.persistence;
 import co.edu.uniandes.csw.turism.entities.DestinationEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.DestinationPersistence;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -116,6 +117,10 @@ public class DestinationPersistenceTest {
         DestinationEntity entity = em.find(DestinationEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getInitialDate()), new SimpleDateFormat("dd/MM/yyyy").format(entity.getInitialDate()));
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getFinalDate()), new SimpleDateFormat("dd/MM/yyyy").format(entity.getFinalDate()));
+        Assert.assertEquals(newEntity.getDuration(), entity.getDuration());
+        Assert.assertEquals(newEntity.getActivities(), entity.getActivities());
     }
 
     /**
@@ -145,6 +150,10 @@ public class DestinationPersistenceTest {
         DestinationEntity newEntity = destinationPersistence.find(entity.getTrip().getId(), entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(entity.getInitialDate()), new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getInitialDate()));
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(entity.getFinalDate()), new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getFinalDate()));
+        Assert.assertEquals(entity.getDuration(), newEntity.getDuration());
+        Assert.assertEquals(entity.getActivities(), newEntity.getActivities());
     }
 
     /**
@@ -174,6 +183,10 @@ public class DestinationPersistenceTest {
         DestinationEntity resp = em.find(DestinationEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getInitialDate()), new SimpleDateFormat("dd/MM/yyyy").format(resp.getInitialDate()));
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getFinalDate()), new SimpleDateFormat("dd/MM/yyyy").format(resp.getFinalDate()));
+        Assert.assertEquals(newEntity.getDuration(), resp.getDuration());
+        Assert.assertEquals(newEntity.getActivities(), resp.getActivities());
     }
 
 }
