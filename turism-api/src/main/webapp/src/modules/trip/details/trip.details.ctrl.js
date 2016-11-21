@@ -33,6 +33,5 @@
                 console.log(JSON.stringify(response));
             });
 
-            
         }]);
 })(window.angular);
