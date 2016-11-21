@@ -28,5 +28,11 @@
     mod.controller("tripDetailsCtrl", ["$scope", '$state', 'trip', '$stateParams', 'Restangular',
         function ($scope, $state, trip, $stateParams, Restangular) {
             $scope.currentRecord = trip;
+
+            Restangular.all("trips").customGET(trip.id + '/questions').then(function (response) {
+                console.log(JSON.stringify(response));
+            });
+
+            
         }]);
 })(window.angular);
