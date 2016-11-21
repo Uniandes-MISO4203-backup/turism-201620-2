@@ -15,7 +15,7 @@
                 type: 'String',
                 required: true,
             },
-            inicialDate: {
+            initialDate: {
                 displayName: 'Fecha Inicial',
                 type: 'Date',
                 required: true
