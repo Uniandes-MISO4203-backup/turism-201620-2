@@ -28,67 +28,18 @@
 
     mod.controller("userItemNewCtrl", ["$scope", "$state", "$stateParams", 'Restangular',
         function ($scope, $state, $stateParams, Restangular) {
-            $scope.currentRecord = {};
-            $scope.toolbarTitle = "My wish list";
-            $scope.references = {};
-            $scope.model = {
-                fields: {
-                    name: {
-                        displayName: 'Name',
-                        type: 'String',
-                        required: true
-                    },
-                    qty: {
-                        displayName: 'Qty',
-                        type: 'Long',
-                        required: true
-                    },
-                    trip: {
-                        displayName: 'Trip',
-                        type: 'Reference',
-                        model: 'tripModel',
-                        options: [],
-                        required: true
-                    },
-                    product: {
-                        displayName: 'Product',
-                        type: 'Reference',
-                        model: 'productModel',
-                        options: [],
-                        required: true
-                    }
-                }
-            };
 
-            Restangular.all('trips').getList().then(function (trips) {
-                Restangular.all('products').getList().then(function (products) {
-                    $scope.references = {trip: trips, product: products};
-                })
+            Restangular.all('trips').get('detail/' + $stateParams.trip_id).then(function (trip) {
+                console.log(JSON.stringify(trip));
+                $scope.currentRecord = {
+                    name: 'new item',
+                    qty: 1,
+                    trip: trip
+                };
+                Restangular.all('client/wishList').post($scope.currentRecord).then(function (rc) {
+                    $state.go('itemList', {clientId: rc.id}, {reload: true});
+                });
             });
 
-            Restangular.all('trips').getList({tripId:$stateParams.trip_id}).then(function (trip) {
-                $scope.currentRecord = {trip:trip};
-            });
-
-            $scope.actions = {
-                save: {
-                    displayName: 'Save',
-                    icon: 'save',
-                    fn: function () {
-                        if ($scope.itemForm.$valid) {
-                            Restangular.all('client/wishList').post($scope.currentRecord).then(function (rc) {
-                                $state.go('itemList', {clientId: rc.id}, {reload: true});
-                            });
-                        }
-                    }
-                },
-                cancel: {
-                    displayName: 'Cancel',
-                    icon: 'remove',
-                    fn: function () {
-                        $state.go('tripGallery');
-                    }
-                }
-            };
         }]);
 })(window.angular);

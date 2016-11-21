@@ -10,11 +10,12 @@
     </div>
     <div class="col-md-10">
         <div ng-repeat="trip in records">
-            <div class="col-md-4 col-sm-6 col-lg-4">
-                <div class="col-md-12">
+            <div class="col-md-4 col-sm-6 col-lg-4" id="img-list">
+                <div class="col-md-12" >
                     <span class="text_encima">{{trip.name}}</span>
                     <span class="text_encima_inferior">{{trip.promotion ? "-"+(trip.discountRate)+" %OFF":""}}</span> 
                     <a ng-href="{{trip.image}}" ui-sref="tripDetailsInfo({tripId:trip.id})"><img style="width: 420px;height: 210px" class="img-responsive" ng-src="{{trip.image}}" alt=""></a>
+                    <span class="text-content"><span><a href="#">Views</a></span></span>
                 </div>
 
                    
