@@ -67,6 +67,7 @@
             });
 
             Restangular.all('trips').getList({tripId:$stateParams.trip_id}).then(function (trip) {
+                console.log(JSON.stringify(trip));
                 $scope.currentRecord = {trip:trip};
             });
 
