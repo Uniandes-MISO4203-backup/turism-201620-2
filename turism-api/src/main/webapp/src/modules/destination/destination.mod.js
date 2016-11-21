@@ -13,6 +13,26 @@
         fields: {            name: {
                 displayName: 'Destino',
                 type: 'String',
+                required: true,
+            },
+            inicialDate: {
+                displayName: 'Fecha Inicial',
+                type: 'Date',
+                required: true
+            },
+            finalDate: {
+                displayName: 'Fecha Final',
+                type: 'Date',
+                required: true
+            },
+            duration: {
+                displayName: 'Duración',
+                type: 'Integer',
+                required: true
+            },
+            activities: {
+                displayName: 'Actividades',
+                type: 'TextArea',
                 required: true
             }
         }
