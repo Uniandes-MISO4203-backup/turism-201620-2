@@ -20,16 +20,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.test.logic;
 
 import co.edu.uniandes.csw.turism.ejbs.TripLogic;
 import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
-import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.persistence.TripPersistence;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -145,7 +145,8 @@ public class TripLogicTest {
     }
 
     /**
-     * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
      *
      * @generated
      */
@@ -169,7 +170,8 @@ public class TripLogicTest {
             data.add(entity);
         }
     }
-   /**
+
+    /**
      * Prueba para crear un Trip
      *
      * @generated
@@ -184,6 +186,14 @@ public class TripLogicTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getDepartureDate()), new SimpleDateFormat("dd/MM/yyyy").format(entity.getDepartureDate()));
+        Assert.assertEquals(newEntity.getDestination(), entity.getDestination());
+        Assert.assertEquals(newEntity.getQuota(), entity.getQuota());
+        Assert.assertEquals(newEntity.getDuration(), entity.getDuration());
+        Assert.assertEquals(newEntity.getTransport(), entity.getTransport());
+        Assert.assertEquals(newEntity.getPromotion(), entity.getPromotion());
+        Assert.assertEquals(newEntity.getDiscountRate(), entity.getDiscountRate());
+        Assert.assertEquals(newEntity.getConditions(), entity.getConditions());
     }
 
     /**
@@ -206,7 +216,6 @@ public class TripLogicTest {
         }
     }
 
-    
     /**
      * Prueba para consultar un Trip
      *
@@ -221,6 +230,14 @@ public class TripLogicTest {
         Assert.assertEquals(entity.getName(), resultEntity.getName());
         Assert.assertEquals(entity.getImage(), resultEntity.getImage());
         Assert.assertEquals(entity.getPrice(), resultEntity.getPrice());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(entity.getDepartureDate()), new SimpleDateFormat("dd/MM/yyyy").format(resultEntity.getDepartureDate()));
+        Assert.assertEquals(entity.getDestination(), resultEntity.getDestination());
+        Assert.assertEquals(entity.getQuota(), resultEntity.getQuota());
+        Assert.assertEquals(entity.getDuration(), resultEntity.getDuration());
+        Assert.assertEquals(entity.getTransport(), resultEntity.getTransport());
+        Assert.assertEquals(entity.getPromotion(), resultEntity.getPromotion());
+        Assert.assertEquals(entity.getDiscountRate(), resultEntity.getDiscountRate());
+        Assert.assertEquals(entity.getConditions(), resultEntity.getConditions());
     }
 
     /**
@@ -256,10 +273,19 @@ public class TripLogicTest {
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getImage(), resp.getImage());
         Assert.assertEquals(pojoEntity.getPrice(), resp.getPrice());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(pojoEntity.getDepartureDate()), new SimpleDateFormat("dd/MM/yyyy").format(resp.getDepartureDate()));
+        Assert.assertEquals(pojoEntity.getDestination(), resp.getDestination());
+        Assert.assertEquals(pojoEntity.getQuota(), resp.getQuota());
+        Assert.assertEquals(pojoEntity.getDuration(), resp.getDuration());
+        Assert.assertEquals(pojoEntity.getTransport(), resp.getTransport());
+        Assert.assertEquals(pojoEntity.getPromotion(), resp.getPromotion());
+        Assert.assertEquals(pojoEntity.getDiscountRate(), resp.getDiscountRate());
+        Assert.assertEquals(pojoEntity.getConditions(), resp.getConditions());
     }
 
     /**
-     * Prueba para obtener una instancia de Category asociada a una instancia Trip
+     * Prueba para obtener una instancia de Category asociada a una instancia
+     * Trip
      *
      * @generated
      */
@@ -274,7 +300,8 @@ public class TripLogicTest {
     }
 
     /**
-     * Prueba para obtener una colección de instancias de Category asociadas a una instancia Trip
+     * Prueba para obtener una colección de instancias de Category asociadas a
+     * una instancia Trip
      *
      * @generated
      */
@@ -285,7 +312,7 @@ public class TripLogicTest {
     }
 
     /**
-     *Prueba para asociar un Category existente a un Trip
+     * Prueba para asociar un Category existente a un Trip
      *
      * @generated
      */
@@ -300,7 +327,8 @@ public class TripLogicTest {
     }
 
     /**
-     * Prueba para remplazar las instancias de Category asociadas a una instancia de Trip
+     * Prueba para remplazar las instancias de Category asociadas a una
+     * instancia de Trip
      *
      * @generated
      */
@@ -328,4 +356,3 @@ public class TripLogicTest {
         Assert.assertNull(response);
     }
 }
-

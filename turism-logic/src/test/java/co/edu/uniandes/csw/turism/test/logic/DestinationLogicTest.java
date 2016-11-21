@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.turism.ejbs.DestinationLogic;
 import co.edu.uniandes.csw.turism.entities.DestinationEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.DestinationPersistence;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -116,6 +117,10 @@ public class DestinationLogicTest {
         DestinationEntity entity = em.find(DestinationEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getInitialDate()), new SimpleDateFormat("dd/MM/yyyy").format(entity.getInitialDate()));
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(newEntity.getFinalDate()), new SimpleDateFormat("dd/MM/yyyy").format(entity.getFinalDate()));
+        Assert.assertEquals(newEntity.getDuration(), entity.getDuration());
+        Assert.assertEquals(newEntity.getActivities(), entity.getActivities());
     }
 
     /**
@@ -148,6 +153,10 @@ public class DestinationLogicTest {
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(entity.getInitialDate()), new SimpleDateFormat("dd/MM/yyyy").format(resultEntity.getInitialDate()));
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(entity.getFinalDate()), new SimpleDateFormat("dd/MM/yyyy").format(resultEntity.getFinalDate()));
+        Assert.assertEquals(entity.getDuration(), resultEntity.getDuration());
+        Assert.assertEquals(entity.getActivities(), resultEntity.getActivities());
     }
 
     /**
@@ -179,6 +188,10 @@ public class DestinationLogicTest {
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(pojoEntity.getInitialDate()), new SimpleDateFormat("dd/MM/yyyy").format(resp.getInitialDate()));
+        Assert.assertEquals(new SimpleDateFormat("dd/MM/yyyy").format(pojoEntity.getFinalDate()), new SimpleDateFormat("dd/MM/yyyy").format(resp.getFinalDate()));
+        Assert.assertEquals(pojoEntity.getDuration(), resp.getDuration());
+        Assert.assertEquals(pojoEntity.getActivities(), resp.getActivities());
     }
 
 }
