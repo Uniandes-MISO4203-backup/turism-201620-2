@@ -115,6 +115,11 @@ public class UserItemResource {
         if (accountHref != null) {
             Account account = Utils.getClient().getResource(accountHref, Account.class);
             Integer clientsId = (Integer) account.getCustomData().get("client_id");
+
+            if(clientsId == null){
+                throw new WebApplicationException("User is not client", 403);
+            }
+
             itemLogic.createItem(clientsId.longValue(), dto.toEntity());
             ClientDetailDTO clientDetailDTO = new ClientDetailDTO();
             clientDetailDTO.setId(clientsId.longValue());
