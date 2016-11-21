@@ -1,6 +1,6 @@
 package co.edu.uniandes.csw.turism.resources;
 
-import co.edu.uniandes.csw.turism.api.ICommentaryLogic;
+import co.edu.uniandes.csw.turism.api.IDestinationLogic;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -16,12 +16,12 @@ import static org.mockito.Mockito.when;
 /**
  * Created by TOSHIBA on 20/11/2016.
  */
-public class TripCommentaryResourceTest {
+public class TripDestinationResourceTest {
     @Mock
-    private ICommentaryLogic commentaryLogic;
+    private IDestinationLogic destinationLogic;
 
     @InjectMocks
-    private TripCommentaryResource subject;
+    private TripDestinationsResource subject;
 
     @Before
     public void setUp() throws Exception {
@@ -30,7 +30,7 @@ public class TripCommentaryResourceTest {
 
     @Test
     public void shouldNotReturnNullWhenGettingCommentaries() throws Exception {
-        when(commentaryLogic.getComments(anyLong())).thenReturn(new ArrayList<>());
-        assertNotNull(subject.getComments());
+        when(destinationLogic.getDestinations(anyLong())).thenReturn(new ArrayList<>());
+        assertNotNull(subject.getDestinations());
     }
 }

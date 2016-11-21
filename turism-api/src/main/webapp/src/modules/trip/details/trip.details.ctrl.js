@@ -29,12 +29,16 @@
         function ($scope, $state, trip, $stateParams, Restangular) {
             $scope.currentRecord = trip;
 
-            Restangular.all("trips").customGET(trip.id + '/questions').then(function (response) {
-                console.log(JSON.stringify(response));
+            Restangular.all("trips").customGET(trip.id + '/questions').then(function (tripQuestions) { 
+                $scope.questions = tripQuestions;
             });
-
-            Restangular.all("trips").customGET(trip.id + '/commentaries').then(function (response) {
-                console.log('COMENTARIOS-> ' + JSON.stringify(response));
+            
+            Restangular.all("trips").customGET(trip.id + '/commentaries').then(function (tripCommentaries) {
+                $scope.commentaries = tripCommentaries;
+            });
+            
+            Restangular.all("trips").customGET(trip.id + '/destinations').then(function (tripDestinations) {
+                $scope.destinations = tripDestinations;
             });
 
         }]);
