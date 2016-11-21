@@ -33,5 +33,9 @@
                 console.log(JSON.stringify(response));
             });
 
+            Restangular.all("trips").customGET(trip.id + '/commentaries').then(function (response) {
+                console.log('COMENTARIOS-> ' + JSON.stringify(response));
+            });
+
         }]);
 })(window.angular);
