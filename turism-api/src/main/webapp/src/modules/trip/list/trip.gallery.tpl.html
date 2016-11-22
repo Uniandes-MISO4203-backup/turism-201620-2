@@ -20,6 +20,8 @@
 
                    
                 <div class="caption" >
+                    <button class="btn btn-default btn-sm"  ui-sref="userWishList({trip_id:trip.id})">Add to wish list
+                    </button>
                        <p style="float: right;">
                             <strong>{{trip.promotion ? "Antes "+(trip.price|currency) +"  Ahora  "+((trip.price - ((trip.price*trip.discountRate)/100))|currency) : (trip.price|currency) }}</strong></p>
                 </div>
