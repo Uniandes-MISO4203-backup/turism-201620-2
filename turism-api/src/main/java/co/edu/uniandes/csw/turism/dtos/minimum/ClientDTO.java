@@ -127,34 +127,74 @@ public class ClientDTO implements Serializable{
         this.name = name;
     }
 
+    /**
+     * getMiddleName
+     *
+     * @return
+     */
     public String getMiddleName() {
         return middleName;
     }
 
+    /**
+     * setMiddleName
+     *
+     * @param middleName
+     */
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
+    /**
+     * getLastName
+     *
+     * @return
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * setLastName
+     *
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * getEmail
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * setEmail
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * getPhoneNumber
+     *
+     * @return
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * setPhoneNumber
+     *
+     * @param phoneNumber
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }

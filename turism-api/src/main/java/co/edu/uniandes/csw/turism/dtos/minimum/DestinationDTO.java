@@ -6,12 +6,12 @@
 package co.edu.uniandes.csw.turism.dtos.minimum;
 
 import co.edu.uniandes.csw.turism.entities.DestinationEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author jd.cepeda
  */
 @XmlRootElement
@@ -50,50 +50,110 @@ public class DestinationDTO implements Serializable {
         return entity;
     }
 
+    /**
+     * getId
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * setId
+     *
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * getName
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * setName
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * getInitialDate
+     *
+     * @return
+     */
     public Date getInitialDate() {
         return initialDate;
     }
 
+    /**
+     * setInitialDate
+     *
+     * @param initialDate
+     */
     public void setInitialDate(Date initialDate) {
         this.initialDate = initialDate;
     }
 
+    /**
+     * getFinalDate
+     *
+     * @return
+     */
     public Date getFinalDate() {
         return finalDate;
     }
 
+    /**
+     * setFinalDate
+     *
+     * @param finalDate
+     */
     public void setFinalDate(Date finalDate) {
         this.finalDate = finalDate;
     }
 
+    /**
+     * getDuration
+     *
+     * @return
+     */
     public int getDuration() {
         return duration;
     }
 
+    /**
+     * setDuration
+     *
+     * @param duration
+     */
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
+    /**
+     * getActivities
+     *
+     * @return
+     */
     public String getActivities() {
         return activities;
     }
 
+    /**
+     * setActivities
+     *
+     * @param activities
+     */
     public void setActivities(String activities) {
         this.activities = activities;
     }
