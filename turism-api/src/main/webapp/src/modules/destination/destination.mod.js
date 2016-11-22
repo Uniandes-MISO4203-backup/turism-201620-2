@@ -13,7 +13,7 @@
         fields: {            name: {
                 displayName: 'Destino',
                 type: 'String',
-                required: true,
+                required: true
             },
             initialDate: {
                 displayName: 'Fecha Inicial',
