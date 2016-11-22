@@ -30,7 +30,6 @@
         function ($scope, $state, $stateParams, Restangular) {
 
             Restangular.all('trips').get('detail/' + $stateParams.trip_id).then(function (trip) {
-                console.log(JSON.stringify(trip));
                 $scope.currentRecord = {
                     name: 'new item',
                     qty: 1,

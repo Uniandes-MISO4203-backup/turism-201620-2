@@ -1,26 +1,26 @@
 /*
-The MIT License (MIT)
+ The MIT License (MIT)
 
-Copyright (c) 2015 Los Andes University
+ Copyright (c) 2015 Los Andes University
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
 (function (ng) {
     var mod = ng.module('tripModule', ['ngCrud', 'ui.router']);
 
@@ -29,7 +29,8 @@ SOFTWARE.
         displayName: 'Trip',
         url: 'trips',
         url1: 'trips/detail',
-        fields: {name: {
+        fields: {
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -69,15 +70,15 @@ SOFTWARE.
                 type: 'String',
                 required: true
             },
-            promotion : {
+            promotion: {
                 displayName: 'Promotion',
                 type: 'Boolean',
-                required: true 
-            }, 
+                required: true
+            },
             discountRate: {
                 displayName: 'Rate Promotion (%)',
                 type: 'Long',
-                required: true 
+                required: true
             },
             conditions: {
                 displayName: 'Conditions',
@@ -88,7 +89,7 @@ SOFTWARE.
     });
 
     mod.config(['$stateProvider',
-        function($sp){
+        function ($sp) {
             var basePath = 'src/modules/trip/';
             var baseInstancePath = basePath + 'instance/';
 
@@ -97,7 +98,7 @@ SOFTWARE.
                 abstract: true,
                 parent: 'agencyDetail',
                 views: {
-                     agencyChieldView: {
+                    agencyChieldView: {
                         templateUrl: basePath + 'trip.tpl.html',
                         controller: 'tripCtrl'
                     }
@@ -105,8 +106,9 @@ SOFTWARE.
                 resolve: {
                     model: 'tripModel',
                     trips: ['agency', '$stateParams', 'model', function (agency, $params, model) {
-                            return agency.getList(model.url, $params);
-                        }]                }
+                        return agency.getList(model.url, $params);
+                    }]
+                }
             });
             $sp.state('tripList', {
                 url: '/list',
@@ -141,8 +143,8 @@ SOFTWARE.
                 },
                 resolve: {
                     trip: ['trips', '$stateParams', function (trips, $params) {
-                            return trips.get($params.tripId);
-                        }]
+                        return trips.get($params.tripId);
+                    }]
                 }
             });
             $sp.state('tripDetail', {
@@ -189,8 +191,8 @@ SOFTWARE.
                 },
                 resolve: {
                     category: ['trip', function (trip) {
-                            return trip.getList('category');
-                        }],
+                        return trip.getList('category');
+                    }],
                     model: 'categoryModel'
                 }
             });
@@ -204,9 +206,8 @@ SOFTWARE.
                     }
                 }
             });
-            
-            
-            
+
+
             $sp.state('tripCategoryEdit', {
                 url: '/edit',
                 parent: 'tripCategory',
@@ -219,24 +220,25 @@ SOFTWARE.
                 },
                 resolve: {
                     pool: ['Restangular', 'model', function (r, model) {
-                            return r.all(model.url).getList();
-                        }]
+                        return r.all(model.url).getList();
+                    }]
                 }
             });
             $sp.state('tripGallery', {
                 url: '/tripGallery',
                 views: {
-                     mainView: {
+                    mainView: {
                         templateUrl: basePath + 'list/trip.gallery.tpl.html',
                         controller: 'tripListCtrl',
-                        controllerAs: 'ctrl'    
+                        controllerAs: 'ctrl'
                     }
                 },
                 resolve: {
                     model: 'tripModel',
                     trips: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
-                            return r.all(model.url).getList($params);
-                        }]                }
+                        return r.all(model.url).getList($params);
+                    }]
+                }
             });
             $sp.state('abouts', {
                 url: '/about',
@@ -246,12 +248,8 @@ SOFTWARE.
                     }
                 }
             });
-            
-            
-            
-            
-            
-            
+
+
             $sp.state('tripDetailsInfo', {
                 url: '/tripDetailsInfo/{tripId:int}',
                 views: {
@@ -264,8 +262,9 @@ SOFTWARE.
                 resolve: {
                     model: 'tripModel',
                     trip: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
-                            return r.all(model.url1).get($params.tripId);
-                        }]                }
+                        return r.all(model.url1).get($params.tripId);
+                    }]
+                }
             });
-	}]);
+        }]);
 })(window.angular);

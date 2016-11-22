@@ -1,15 +1,16 @@
 <div  class="container-fluid well">
-    <div class="col-md-12">
+    <div class="col-md-4">
+        <img style="width: 420px;height: 210px"class="img-responsive" ng-src="{{currentRecord.image}}">
+    </div>
+    <div class="col-md-4">
         <p>
-            <a ng-href="{{currentRecord.image}}">
-                <img style="width: 420px;height: 210px" class="img-responsive" ng-src="{{currentRecord.image}}" alt="">
-            </a>
+            <label><strong>Agencia: </strong></label><span id="name"> {{currentRecord.agency.name}}</span>
         </p>
         <p>
             <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
         </p>
         <p>
-            <label><strong>Price: </strong></label><span id="price"> ${{currentRecord.price}}</span>
+            <label><strong>Price: </strong></label><span id="price"> {{currentRecord.promotion ? "Antes "+(currentRecord.price|currency) +"  Ahora  "+((currentRecord.price - ((currentRecord.price*currentRecord.discountRate)/100))|currency) : (currentRecord.price|currency) }}</span>
         </p>
         <p>
             <label><strong>Departure date: </strong></label><span id="departureDate"> {{currentRecord.departureDate}}</span>
@@ -26,19 +27,78 @@
         <p>
             <label><strong>Transport: </strong></label><span id="transport"> {{currentRecord.transport}}</span>
         </p>
-        <p>
-            <a href="#" class="btn btn-default">
-                <span class="glyphicon glyphicon-th-list"></span> List
-            </a>
-        </p>
-        <p>
-        <label><strong>Promotion: </strong></label><span id="promotion"> {{currentRecord.promotion}}</span>
-        </p>
-        <p>
-        <label><strong>*Promotion Rate(%): </strong></label><span id="discountRate"> {{currentRecord.discountRate}}</span>
-        </p>
-        <p>
-        <label><strong>Conditions: </strong></label><span id="conditions"> {{currentRecord.conditions}}</span>
-        </p>
+    </div>
+</div>
+<div  class="container-fluid well">
+    <div class="col-md-10 col-md-offset-1">
+        <h4>Destinos</h4>
+        <table class='table'>
+        <tr>
+          <td><strong>Destino</strong></td>
+          <td><strong>Fecha Inicial</strong></td>
+          <td><strong>Fecha Final</strong></td>
+          <td><strong>Duración</strong></td>
+          <td><strong>Actividades</strong></td>
+        </tr>
+            <tr ng-if="destinations!==null" ng-repeat="d in destinations">
+                <td>{{d.name}}</td>
+                <td>{{d.initialDate}}</td>
+                <td>{{d.finalDate}}</td>
+                <td>{{d.duration}}</td>
+                <td>{{d.activities}}</td>
+            </tr>
+        </table>
+
+        <div ng-if="destinations[0]==null">
+            <p align="center">
+                No hay destinos registrados
+            </p>
+        </div>
+    </div>
+</div>
+<div  class="container-fluid well">
+    <div class="col-md-10 col-md-offset-1">
+        <h4>Comentarios</h4>
+        <table class='table'>
+            <tr ng-if="commentaries!==null" ng-repeat="c in commentaries">
+                <td>
+                    <p>
+                        <label><strong>Comentario:</strong></label><span id="name"> {{c.description}}</span>
+                    </p>
+                    <p>
+                        <label><strong>Puntuación:</strong></label><span id="name"> {{c.score}}</span>
+                    </p>
+                </td>
+            </tr>    
+        </table>
+        <div ng-if="commentaries[0]==null">
+            <p align="center">
+                No hay comentarios registrados
+            </p>
+        </div>
+    </div>
+    
+</div>
+<div  class="container-fluid well">
+    <div class="col-md-10 col-md-offset-1">
+        <h4>Preguntas Frecuentes</h4>
+        <table class='table'>
+            <tr ng-if="questions!==null" ng-repeat="q in questions">
+                <td>
+                    <p>
+                        <label><strong>P:</strong></label><strong><span id="name"> {{q.name}}</span></strong>
+                    </p>
+                    <p>
+                        <label><strong>R/:</strong></label><span id="name"> {{q.respuesta}}</span>
+                    </p>
+                </td>
+            </tr>    
+        </table>
+        
+        <div ng-if="questions[0]==null">
+            <p class="center-block">
+                No hay preguntas registradas
+            </p>
+        </div>
     </div>
 </div>
