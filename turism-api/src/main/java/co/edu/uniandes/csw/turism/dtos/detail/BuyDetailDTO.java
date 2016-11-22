@@ -36,7 +36,7 @@ public class BuyDetailDTO extends BuyDTO {
      */
     public BuyDetailDTO(BuyEntity entity) {
         super(entity);
-        if (entity.getProduct()!=null){
+        if (entity != null && entity.getProduct()!=null){
         this.product = new ProductDTO(entity.getProduct());
         }
 

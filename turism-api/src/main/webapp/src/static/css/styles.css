@@ -16,6 +16,11 @@ span.text-content span {
 }
 
 
+span.text-content span a{
+  color: white;
+}
+
+
 div#img-list div:hover span.text-content {
   opacity: 1;
 }

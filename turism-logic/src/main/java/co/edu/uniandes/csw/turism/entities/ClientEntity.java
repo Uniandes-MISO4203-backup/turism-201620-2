@@ -25,8 +25,10 @@ package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import uk.co.jemos.podam.common.PodamExclude;
+
 import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
@@ -41,21 +43,21 @@ public class ClientEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemEntity> wishList = new ArrayList<>();
-    
+
     @PodamExclude
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PaymentMethodEntity> paymentMethods = new ArrayList<>();
-    
+
     private String middleName;
-    
+
     private String lastName;
-    
+
     private String email;
-    
+
     private String phoneNumber;
-    
+
     private String address;
-    
+
     private String photo;
 
     /**
@@ -78,46 +80,96 @@ public class ClientEntity extends BaseEntity implements Serializable {
         this.wishList = wishList;
     }
 
+    /**
+     * getMiddleName
+     *
+     * @return
+     */
     public String getMiddleName() {
         return middleName;
     }
 
+    /**
+     * setMiddleName
+     *
+     * @param middleName
+     */
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
+    /**
+     * getLastName
+     *
+     * @return
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * setLastName
+     *
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * getEmail
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * setEmail
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * getPhoneNumber
+     *
+     * @return
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * setPhoneNumber
+     *
+     * @param phoneNumber
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
+
+    /**
+     * getPhoto
+     *
+     * @return
+     */
     public String getPhoto() {
         return photo;
     }
 
+    /**
+     * setPhoto
+     *
+     * @param photo
+     */
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-    
+
     /**
      * Obtiene el atributo address.
      *
@@ -137,7 +189,7 @@ public class ClientEntity extends BaseEntity implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     public List<PaymentMethodEntity> getPaymentMethods() {
         return paymentMethods;
     }

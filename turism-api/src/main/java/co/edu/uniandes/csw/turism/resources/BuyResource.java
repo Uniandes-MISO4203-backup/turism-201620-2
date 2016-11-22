@@ -131,11 +131,5 @@ public class BuyResource {
     public void deleteBuy(@PathParam("id") Long id) {
         buyLogic.deleteBuy(id);
     }
-    public void existsBuy(Long buysId){
-        BuyDetailDTO buy = getBuy(buysId);
-        if (buy== null) {
-            throw new WebApplicationException(404);
-        }
-    }
     
 }

@@ -15,13 +15,11 @@
                     <span class="text_encima">{{trip.name}}</span>
                     <span class="text_encima_inferior">{{trip.promotion ? "-"+(trip.discountRate)+" %OFF":""}}</span> 
                     <a ng-href="{{trip.image}}" ui-sref="tripDetailsInfo({tripId:trip.id})"><img style="width: 420px;height: 210px" class="img-responsive" ng-src="{{trip.image}}" alt=""></a>
-                    <span class="text-content"><span><a href="#">Views</a></span></span>
+                    <span class="text-content"><span><a ui-sref="userWishList({trip_id:trip.id})">Add to wish list</a></span></span>
                 </div>
 
                    
                 <div class="caption" >
-                    <button class="btn btn-default btn-sm"  ui-sref="userWishList({trip_id:trip.id})">Add to wish list
-                    </button>
                        <p style="float: right;">
                             <strong>{{trip.promotion ? "Antes "+(trip.price|currency) +"  Ahora  "+((trip.price - ((trip.price*trip.discountRate)/100))|currency) : (trip.price|currency) }}</strong></p>
                 </div>
